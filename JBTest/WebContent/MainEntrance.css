@@ -1,0 +1,194 @@
+html
+{
+	background: url(https://dl.dropboxusercontent.com/u/229188151/pic/grey-texture.jpg) no-repeat center center fixed; 
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+	font-family: "main";
+	opacity: 0.9px;
+	
+}
+
+#header
+{
+	width: 1300px;
+	height: 100px;
+	margin: 5px;
+	border-radius: 10px; 
+	
+	
+}
+
+#pageContainerTable
+{
+	width: 1000px;
+	heigth: 300px;
+	border-radius: 10px;
+	float: center;
+	margin: auto;
+	beckground-size: 100%;
+	padding: 50px 50px;	
+	background: url("https://dl.dropboxusercontent.com/u/229188151/pic/red_in_abstract-wide.jpg");
+	background-repeat: no-repeat;
+	opacity:3;
+	}
+	
+#pageContainer
+{
+	width: 1000px;
+	heigth: 600px;
+	border-radius: 10px;
+	float: center;
+	dir: center;
+	margin: auto;
+	beckground-size: 100%;
+	padding: 0px 50px;		
+	
+}
+
+
+#footer
+{
+	clear: both;
+	height: 100px;
+	width: 1300px;
+	border-radius: 10px;
+}
+
+#logoLinks
+{
+	clear: both;
+	height: 100px;
+	width: 1300px;
+	border-radius: 10px;
+	font-family: 'main';
+	padding: 5px;
+}
+
+
+/** sets the sign in table to center*/
+#enterTable{
+	dir: center;
+	text-align: center;
+} 
+
+#h1
+{
+	float: center;
+	text-align: center;	
+	
+}
+
+#h3
+{
+	float: right;
+	text-align: right;
+	
+}
+
+#mainTool
+{
+	float: center;
+	dir: center;
+	text-align: center;
+	background-color:#D8D8D8;
+	width:1000px;
+	height:50px;
+	border-radius: 10px;
+	background-position: center;
+	opacity: 0.5px;
+	padding: 0px 50px;	
+	
+}
+
+#mainTool a
+{
+	float: center;
+	text-align: center;
+	font-size: 15px;
+	font-weight: bold;
+	margin-right: 30px;
+	margin-left: 30px;
+	border-radius: 10px;
+	background: #F00000;
+	font-style: #00000;
+	padding: 5px;
+
+	
+	
+}
+
+/**contactUs*/
+#detail
+{
+	text-align: right;
+	font-weight: bold;
+}
+/**----*/
+/**font*/
+
+@font-face {
+	font-family: 'main';
+	src: url('https://dl.dropboxusercontent.com/u/229188151/fonts/DorianCLM-Book.eot'); /* IE9 Compat Modes */
+	src: url('https://dl.dropboxusercontent.com/u/229188151/fonts/DorianCLM-Book.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	     url('https://dl.dropboxusercontent.com/u/229188151/fonts/DorianCLM-Book.woff') format('woff'), /* Modern Browsers */
+	     url('https://dl.dropboxusercontent.com/u/229188151/fonts/DorianCLM-Book.ttf')  format('truetype'), /* Safari, Android, iOS */
+	     url('https://dl.dropboxusercontent.com/u/229188151/fonts/DorianCLM-Book.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
+
+/**logos*/
+
+#jbtest-logo
+{
+	float: right;
+	height:97px;
+	width:160px;
+}
+
+
+#johnbryce-logo
+{
+	float: center;
+	height: 50px;
+	width: 200px;
+	padding: 5px;	
+}
+#John_bryce_Link
+{
+	float: center;
+	height: 50px;
+	width: 100px;
+	padding: 5px;	
+}
+#Microsoft_Link
+{
+	float: center;
+	height: 50px;
+	width: 100px;
+	padding: 5px;	
+}
+#Prometric_Link
+{
+	float: rigth;
+	height: 50px;
+	width: 100px;
+	padding: 5px;	
+}
+
+
+#microsoft-prometric-logo
+{
+	float:right;
+}
+
+#copyright
+{
+	float: left;
+}
+
+#copyright-pic
+{
+	height: 20px;
+	width: 20px;
+}

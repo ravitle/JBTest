@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0"> <display-name>JBTest</display-name>
+  
+  <servlet>
+ 
+      <servlet-name>MainPageJSP</servlet-name>
+    <jsp-file>/WEB-INF/jsp/main.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MainPageJSP</servlet-name>
+    <url-pattern>/Main</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>MainSysPageJSP</servlet-name>
+    <jsp-file>/WEB-INF/jsp/sys_mainEntrance.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MainSysPageJSP</servlet-name>
+    <url-pattern>/Sys_MainEntrance</url-pattern>
+  </servlet-mapping>
+  <servlet>
+ 
+      <servlet-name>studentForgetPasswordJSP</servlet-name>
+    <jsp-file>/WEB-INF/jsp/StudentForgetPassword.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>studentForgetPasswordJSP</servlet-name>
+    <url-pattern>/StudentForgetPassword</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  
+      <servlet-name>passwordHasChangedJSP</servlet-name>
+    <jsp-file>/WEB-INF/jsp/PasswordHasChanged.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>passwordHasChangedJSP</servlet-name>
+    <url-pattern>/PasswordHasChanged</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  
+      <servlet-name>LinksPageJSP</servlet-name>
+    <jsp-file>/WEB-INF/jsp/links.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LinksPageJSP</servlet-name>
+    <url-pattern>/links</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  
+      <servlet-name>contacUsPageJSP</servlet-name>
+    <jsp-file>/WEB-INF/jsp/contactUs.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>contacUsPageJSP</servlet-name>
+    <url-pattern>/contactUs</url-pattern>
+  </servlet-mapping>
+  <servlet>
+ 
+      <servlet-name>contacUsThanksPageJSP</servlet-name>
+    <jsp-file>/WEB-INF/jsp/contactUsThanks.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>contacUsThanksPageJSP</servlet-name>
+    <url-pattern>/contactUsThanks</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  
+      <servlet-name>aboutUsPageJSP</servlet-name>
+    <jsp-file>/WEB-INF/jsp/aboutUs.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>aboutUsPageJSP</servlet-name>
+    <url-pattern>/aboutUs</url-pattern>
+  </servlet-mapping>
+  <servlet>
+ 
+      <servlet-name>MainSystemPageJSP</servlet-name>
+    <jsp-file>/WEB-INF/jsp/sys_main.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MainSystemPageJSP</servlet-name>
+    <url-pattern>/Sys_Main</url-pattern>
+  </servlet-mapping>
+  <servlet>
+
+      <servlet-name>ConfirmStudentPageJSP</servlet-name>
+    <jsp-file>/WEB-INF/jsp/sys_confirmStudent.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConfirmStudentPageJSP</servlet-name>
+    <url-pattern>/Sys_Confirm</url-pattern>
+  </servlet-mapping>
+  <servlet>
+ 
+      <servlet-name>SearchStudentPageJSP</servlet-name>
+    <jsp-file>/WEB-INF/jsp/searchResult.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchStudentPageJSP</servlet-name>
+    <url-pattern>/Sys_Search</url-pattern>
+  </servlet-mapping>
+  <servlet>
+
+      <servlet-name>UpdateStudentPageJSP</servlet-name>
+    <jsp-file>/WEB-INF/jsp/updateResult.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateStudentPageJSP</servlet-name>
+    <url-pattern>/Sys_Update</url-pattern>
+  </servlet-mapping>
+  <servlet>
+ 
+      <servlet-name>StudentInfoPageJSP</servlet-name>
+    <jsp-file>/WEB-INF/jsp/sys_studentInfo.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StudentInfoPageJSP</servlet-name>
+    <url-pattern>/Student_Info</url-pattern>
+  </servlet-mapping>
+  <servlet>
+
+      <servlet-name>HistorySystemPageJSP</servlet-name>
+    <jsp-file>/WEB-INF/jsp/sys_history.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HistorySystemPageJSP</servlet-name>
+    <url-pattern>/Sys_History</url-pattern>
+  </servlet-mapping>
+  <servlet>
+ 
+      <servlet-name>ScheduleSystemPageJSP</servlet-name>
+    <jsp-file>/WEB-INF/jsp/sys_schedule.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ScheduleSystemPageJSP</servlet-name>
+    <url-pattern>/Sys_Schedule</url-pattern>
+  </servlet-mapping>
+  <servlet>
+ 
+      <servlet-name>CourseSystemPageJSP</servlet-name>
+    <jsp-file>/WEB-INF/jsp/sys_courses.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CourseSystemPageJSP</servlet-name>
+    <url-pattern>/Sys_Courses</url-pattern>
+  </servlet-mapping>
+ 
+  <servlet>
+    <servlet-name>UpdateCoursePageJSP</servlet-name>
+    <jsp-file>/WEB-INF/jsp/sys_updateCourse.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateCoursePageJSP</servlet-name>
+    <url-pattern>/Sys_CourseUpdate</url-pattern>
+  </servlet-mapping>
+ 
+  <servlet>
+    <servlet-name>CreateCoursePageJSP</servlet-name>
+    <jsp-file>/WEB-INF/jsp/sys_new_course.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateCoursePageJSP</servlet-name>
+    <url-pattern>/Sys_New_Course</url-pattern>
+  </servlet-mapping>
+ 
+  <servlet>
+    <servlet-name>ConstructionSystemPageJSP</servlet-name>
+    <jsp-file>/WEB-INF/jsp/sys_construction.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ConstructionSystemPageJSP</servlet-name>
+    <url-pattern>/Sys_Construction</url-pattern>
+  </servlet-mapping>
+ 
+  <servlet>
+    <servlet-name>studentCancelTest</servlet-name>
+    <jsp-file>/WEB-INF/jsp/studentCancelTest.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>studentCancelTest</servlet-name>
+    <url-pattern>/student_cancel_test</url-pattern>
+  </servlet-mapping>
+
+  
+  <servlet>
+    <servlet-name>studentCons</servlet-name>
+    <jsp-file>/WEB-INF/jsp/studentCons.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>studentCons</servlet-name>
+    <url-pattern>/student_cons</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>studentMain</servlet-name>
+    <jsp-file>/WEB-INF/jsp/studentMain.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>studentMain</servlet-name>
+    <url-pattern>/student_main</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  
+      <servlet-name>studentRegTest</servlet-name>
+    <jsp-file>/WEB-INF/jsp/studentRegTest.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>studentRegTest</servlet-name>
+    <url-pattern>/student_reg_test</url-pattern>
+  </servlet-mapping>
+ 
+  <servlet>
+    <servlet-name>studentSch</servlet-name>
+    <jsp-file>/WEB-INF/jsp/studentSch.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>studentSch</servlet-name>
+    <url-pattern>/student_sch</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>MainRegPageJSP</servlet-name>
+    <jsp-file>/WEB-INF/jsp/reg_main.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MainRegPageJSP</servlet-name>
+    <url-pattern>/Reg</url-pattern>
+  </servlet-mapping>
+  
+  
+  <welcome-file-list>
+    <welcome-file>Main</welcome-file>
+  </welcome-file-list>
+</web-app>
