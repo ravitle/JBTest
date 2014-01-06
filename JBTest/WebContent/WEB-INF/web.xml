@@ -94,7 +94,7 @@
   <servlet>
  
       <servlet-name>SearchStudentPageJSP</servlet-name>
-    <jsp-file>/WEB-INF/jsp/searchResult.jsp</jsp-file>
+    <jsp-file>/WEB-INF/jsp/sys_searchResult.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>SearchStudentPageJSP</servlet-name>
@@ -103,7 +103,7 @@
   <servlet>
 
       <servlet-name>UpdateStudentPageJSP</servlet-name>
-    <jsp-file>/WEB-INF/jsp/updateResult.jsp</jsp-file>
+    <jsp-file>/WEB-INF/jsp/sys_updateResult.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
     <servlet-name>UpdateStudentPageJSP</servlet-name>

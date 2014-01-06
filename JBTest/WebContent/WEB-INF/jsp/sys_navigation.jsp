@@ -4,7 +4,7 @@
 
 <div id="navigation-bar">
 				<a href="Sys_Main" style="color:white">דף הבית </a>
-				<form action="Sys_Update/" method ="get" id="form" name="updateform" dir="rtl">
+				<form action="Sys_Update" method ="get" id="form" name="updateform" dir="rtl">
 					<h3>
 						עדכון פרטי סטודנט: <input type="text" name="updateReq">
 						<input type="submit" value="עדכן" id="updateButton" style="color:white">

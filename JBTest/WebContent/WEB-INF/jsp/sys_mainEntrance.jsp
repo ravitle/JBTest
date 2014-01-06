@@ -12,7 +12,7 @@
 	{
 		if (DBConnectionClass.compUserStaff(user, password) == 0)
 		{
-			
+			session.setAttribute("currSystem",user);
 			String redirectURL = "Sys_Main";
 		    response.sendRedirect(redirectURL);	
 		}

@@ -17,21 +17,11 @@
 			<%@ include file="sys_navigation.jsp"%>
 			<div id="history-sys">
 				<h2>דו"ח תקופתי</h2><br>
-				<form action="Sys_Construction" method ="post" id="form" name="historyform" dir="rtl">
+				<form action="Sys_Construction" method ="get" id="form" name="historyform" dir="rtl">
 					בחר תאריך התחלה: <input type="text" name="startDate">
 					בחר תאריך סיום: <input type="text" name="endDate">
 					<input type="submit" value="בחר" id="chooseButton"><br>
 				</form>
-				<table id="historyTable" dir="rtl" width="50%" align="center" cellpadding="5" cellspacing="5">
-					<tr bgcolor="#909090">
-						<td>ת.ז</td>
-						<td>שם משפחה</td>
-						<td>שם פרטי</td>
-						<td>תאריך</td>
-						<td>שעה</td>
-						<td>עלות</td>
-					</tr>
-			 	</table>
 			</div>
 		</div>
 		<%@ include file="footer.jsp"%>

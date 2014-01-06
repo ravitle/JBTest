@@ -23,10 +23,10 @@ public class DBArrClass
 
 	public void setTest(TestClass[] test) 
 	{
-		test[0] = new TestClass(70640,"Windows Server 2008 Active Directory Configuring");
-		test[1] = new TestClass(70642,"Windows Server 2008 Network Infrastructure Configuring");
-		test[2] = new TestClass(70646,"Windows Server 2008 Server Administrator");
-		test[3] = new TestClass(70662,"TS: Microsoft Exchange Server 2010, Configuring");
+		test[0] = new TestClass(70640,"Windows Server 2008 Active Directory Configuring",580);
+		test[1] = new TestClass(70642,"Windows Server 2008 Network Infrastructure Configuring",580);
+		test[2] = new TestClass(70646,"Windows Server 2008 Server Administrator",580);
+		test[3] = new TestClass(70662,"TS: Microsoft Exchange Server 2010, Configuring",580);
 	}
 
 	public CourseClass[] getCourse() {
@@ -66,19 +66,19 @@ public class DBArrClass
 
 	public void setSchedule(ScheduleClass[] schedule) {
 		StudentClass[] student = getStudents();
-		schedule[0] = new ScheduleClass("02.12.13","10:00",student[0],test[1],"","10BGC","");
-		schedule[1] = new ScheduleClass("05.12.13","10:00",student[1],test[1],"","11BGC","");
-		schedule[2] = new ScheduleClass("05.12.13","11:00",student[2],test[1],"","12BGC","");
-		schedule[3] = new ScheduleClass("09.12.13","10:30",student[3],test[1],"","13BGC","");
-		schedule[4] = new ScheduleClass("10.12.13","12:00",student[4],test[2],"","14BGC","");
-		schedule[5] = new ScheduleClass("01.10.13","10:00",student[5],test[2],"עבר","15BGC","");
-		schedule[6] = new ScheduleClass("01.10.13","11:00",student[6],test[2],"נכשל","16BGC","");
-		schedule[7] = new ScheduleClass("07.10.13","10:30",student[7],test[2],"נכשל","17BGC","");
-		schedule[8] = new ScheduleClass("08.10.13","10:00",student[8],test[3],"עבר","18BGC","");
-		schedule[9] = new ScheduleClass("22.10.13","11:00",student[9],test[3],"עבר","19BGC","");
-		schedule[10] = new ScheduleClass("23.10.13","10:30",student[10],test[3],"עבר","20BGC","");
-		schedule[11] = new ScheduleClass("31.10.13","12:00",student[11],test[3],"נכשל","21BGC","");
-		schedule[12] = new ScheduleClass("31.10.13","12:00",student[1],test[0],"עבר","22BGC","");
+		schedule[0] = new ScheduleClass("02.12.13","10:00",student[0],test[1],"","10BGC","לא");
+		schedule[1] = new ScheduleClass("05.12.13","10:00",student[1],test[1],"","11BGC","לא");
+		schedule[2] = new ScheduleClass("05.12.13","11:00",student[2],test[1],"","12BGC","לא");
+		schedule[3] = new ScheduleClass("09.12.13","10:30",student[3],test[1],"","13BGC","לא");
+		schedule[4] = new ScheduleClass("10.12.13","12:00",student[4],test[2],"","14BGC","לא");
+		schedule[5] = new ScheduleClass("01.10.13","10:00",student[5],test[2],"עבר","15BGC","לא");
+		schedule[6] = new ScheduleClass("01.10.13","11:00",student[6],test[2],"נכשל","16BGC","לא");
+		schedule[7] = new ScheduleClass("07.10.13","10:30",student[7],test[2],"נכשל","17BGC","לא");
+		schedule[8] = new ScheduleClass("08.10.13","10:00",student[8],test[3],"עבר","18BGC","לא");
+		schedule[9] = new ScheduleClass("22.10.13","11:00",student[9],test[3],"עבר","19BGC","לא");
+		schedule[10] = new ScheduleClass("23.10.13","10:30",student[10],test[3],"עבר","20BGC","לא");
+		schedule[11] = new ScheduleClass("31.10.13","12:00",student[11],test[3],"נכשל","21BGC","לא");
+		schedule[12] = new ScheduleClass("31.10.13","12:00",student[1],test[0],"עבר","22BGC","לא");
 		schedule[13] = new ScheduleClass("03.12.13","11:00",student[10],test[0],"","33BGC","כן");
 	}
 
@@ -87,6 +87,6 @@ public class DBArrClass
 	}
 
 	public void setStaff(StaffClass[] staff) {
-		staff[0] = new StaffClass("Zaken", "Carmi", "carmiz@jbh.co.il", "carmiz", "carmiz");
+		staff[0] = new StaffClass("זקן", "כרמי", "carmiz@jbh.co.il", "carmiz", "carmiz");
 	}
 }

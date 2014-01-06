@@ -19,6 +19,39 @@ public class DBConnectionClass
 		return theInstance;
 	}*/
 	
+	
+	public static String[][] searchHistory(String start,String end)
+	{
+		
+		String arr[][] = new String[50][50];
+		int j = 0;
+		for(int i = 0; i < db.getSchedule().length;i++)
+		{
+			if(checkDates(start,db.getSchedule()[i].getDate()) == 2 && checkDates(db.getSchedule()[i].getDate(), end) == 2)
+			{
+				arr[j][0] = Integer.toString( db.getSchedule()[i].getRegStudent().getId());
+				arr[j][1] =  db.getSchedule()[i].getRegStudent().getlNameHeb();
+				arr[j][2] =  db.getSchedule()[i].getRegStudent().getpNameHeb();
+				arr[j][3] =  db.getSchedule()[i].getDate();
+				arr[j][4] =  db.getSchedule()[i].getHour();
+				arr[j][5] =  Integer.toString(db.getSchedule()[i].getTestStudent().getCost());
+			}
+			j++;
+		}
+		return arr;
+	}
+	
+	public static String staffName(String user)
+	{
+		String p_name = "";
+		for(int i = 0; i < db.getStaff().length; i++)
+		{
+			if (db.getStaff()[i].getUserName().equals(user))
+				p_name = db.getStaff()[i].getPName();
+		}
+		return p_name;
+	}
+	
 	public static String[][] courseInfo()
 	{
 		int j = 0;
@@ -95,7 +128,7 @@ public class DBConnectionClass
 		
 		for(int i = 0; i < db.getSchedule().length; i++)
 		{
-			if (checkDates(todayDate, db.getSchedule()[i].getDate()) == 2)
+			if (checkDates(todayDate, db.getSchedule()[i].getDate()) == 2 && db.getSchedule()[i].getCancelled().equals("ма"))
 			{
 				if (j < newArr.length)
 				{
@@ -205,7 +238,7 @@ public class DBConnectionClass
 			else if (Character.getNumericValue(todayDate.charAt(i)) == Character.getNumericValue(date.charAt(i)))
 				continue;
 			else if(Character.getNumericValue(todayDate.charAt(i)) < Character.getNumericValue(date.charAt(i)))
-				return 2;
+				return 2;//2 means that todayData is previous to date and 1 after
 			else if(Character.getNumericValue(todayDate.charAt(i)) > Character.getNumericValue(date.charAt(i)))
 			{
 				if(i-1 >= 0)

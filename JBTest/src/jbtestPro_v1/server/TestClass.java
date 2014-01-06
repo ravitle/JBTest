@@ -4,11 +4,13 @@ public class TestClass
 {
 	private int testId;
 	private String testName;
+	private int cost;
 	
-	public TestClass(int id,String name)
+	public TestClass(int id,String name,int cost)
 	{
 		setTestId(id);
 		setTestName(name);
+		setCost(cost);
 	}
 	
 	public TestClass(TestClass test)
@@ -29,6 +31,14 @@ public class TestClass
 	}
 	public void setTestName(String testName) {
 		this.testName = testName;
+	}
+
+	public int getCost() {
+		return cost;
+	}
+
+	public void setCost(int cost) {
+		this.cost = cost;
 	}
 	
 }
