@@ -1,8 +1,11 @@
+<%@page import="jbtestPro_v1.server.StudentClass"%>
+<%@page import="jbtestPro_v1.server.DBConnectionClass"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import= "jbtestPro_v1.server.DBConnectionClass" %>
 
 <%
 	
+	DBConnectionClass.getStudentByID(111111111);
 	String user = request.getParameter("username");	
 	String password = request.getParameter("password");
 	
@@ -32,6 +35,7 @@
 		
 	</head>
 	<body>
+	
 		<%@ include file="header.jsp"%>
 	<div id="pageContainer">
 		<div id="mainTool" dir="rtl">
