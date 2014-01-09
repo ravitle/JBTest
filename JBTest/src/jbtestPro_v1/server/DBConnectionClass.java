@@ -464,11 +464,18 @@ public class DBConnectionClass
 	}
 
 	public static int validDate(String date) {
+		int c=0;
 		if(date == null)
 			return -1;
 		for(int i = 0;i < date.length();i++)
+		{
 			if(date.charAt(i) < '0' || date.charAt(i) > '9')
 				return -1;
+			if(date.charAt(i) == '.')
+				c++;
+		}	
+		if (c != 2)
+			return -1;
 		return 0;
 	}
 
