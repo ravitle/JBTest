@@ -50,6 +50,7 @@ public class StudentClass
 		setId(id);
 		
 	}
+
 	public StudentClass(int sr)
 	{
 		setSr(sr);

@@ -25,15 +25,17 @@ public class Sys_searchTest {
 		assertEquals(null,result);
 	}
 
-/*
+
 	@Test
 	public void testSearchByCourseCode() {
-
+		DBConnectionClass db = new DBConnectionClass();
+		CourseClass result = db.searchByCourseCode(" ");
+		assertEquals(null,result);
 	}
 
 	@Test
 	public void testSearchByDate() {
 		fail("Not yet implemented");
 	}
-*/
+
 }
