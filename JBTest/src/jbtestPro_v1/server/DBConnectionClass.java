@@ -463,7 +463,9 @@ public class DBConnectionClass
 		db = dbArr;
 	}
 
-	public static int validDate(String string) {
+	public static int validDate(String date) {
+		if(date == null || date.equals(" "))
+			return -1;
 		return 0;
 	}
 
