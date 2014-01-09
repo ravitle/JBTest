@@ -49,7 +49,14 @@ public class Sys_searchTest {
 	@Test
 	public void testSearchByDateLetters() {
 		DBConnectionClass db = new DBConnectionClass();
-		int result = db.validDate("sdfds ");
+		int result = db.validDate("erwe");
+		assertEquals(-1,result);
+	}
+
+	@Test
+	public void testSearchByDateFormat() {
+		DBConnectionClass db = new DBConnectionClass();
+		int result = db.validDate("2342342");
 		assertEquals(-1,result);
 	}
 
