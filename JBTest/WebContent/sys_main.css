@@ -34,16 +34,13 @@ body
 {
 	background-color: #f4f4f4;
 	background-size: 100%;
-<<<<<<< HEAD
 	min-height:600px;
 	padding: 50px 50px;
 	margin: auto;
 	width: 1200px;
-=======
 	background-repeat: no-repeat;
 	padding: 0px 50px;
 	margin: auto;
->>>>>>> 234152a9e195f7c6d8de78f80e026e427a047fc8
 	border-radius: 30px;
 	float: center;		
 			
