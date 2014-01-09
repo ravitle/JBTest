@@ -40,12 +40,17 @@ public class Sys_searchTest {
 	}
 
 	@Test
-	public void testSearchByDate() {
+	public void testSearchByDateNull() {
 		DBConnectionClass db = new DBConnectionClass();
 		int result = db.validDate(" ");
 		assertEquals(-1,result);
-
+	}
 	
+	@Test
+	public void testSearchByDateLetters() {
+		DBConnectionClass db = new DBConnectionClass();
+		int result = db.validDate("sdfds ");
+		assertEquals(-1,result);
 	}
 
 }
