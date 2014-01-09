@@ -307,9 +307,15 @@ public class DBConnectionClass
 
 	public static StudentClass searchStudent(String sid)
 	{
-		if(sid == null || sid == " ")
+		if(sid == null)
 		{
 			return null;
+		}
+		
+		for(int i = 0;i < sid.length();i++)
+		{
+			if(sid.charAt(i) <'0' || sid.charAt(i) > '9')
+				return null;
 		}
 		int id = Integer.parseInt(sid);
 		for (int i=0; i<db.getStudents().length ;i++)
