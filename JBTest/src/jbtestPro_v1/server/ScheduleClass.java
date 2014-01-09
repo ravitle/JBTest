@@ -21,6 +21,11 @@ public class ScheduleClass
 		regStudent = new StudentClass(student);
 		testStudent = new TestClass(test);	
 	}
+	public ScheduleClass(String date)
+	{
+		setDate(date);
+		
+	}
 	
 	public ScheduleClass(ScheduleClass schedule)
 	{

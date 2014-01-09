@@ -15,6 +15,12 @@ public class CourseClass
 			tests[i] = new TestClass(testArr[i]);
 	}
 
+	public CourseClass (int courseCode)
+	{
+		setCourseId(courseCode);
+		
+		
+	}
 	public CourseClass(CourseClass course)
 	{
 		courseId = course.courseId;

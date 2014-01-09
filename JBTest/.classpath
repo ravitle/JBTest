@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+<<<<<<< HEAD
 	<classpathentry exported="true" kind="lib" path="C:/eclipse/gwt-2.5.1/gwt-user.jar"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/sqljdbc4.jar"/>
+=======
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/sqljdbc4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ravit/Desktop/ravit/לימודים/תכנות/eclipse/gwt-2.5.1/gwt-user.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+>>>>>>> 3bdb0cafb725b32c77d5cb4b7d295d01173e1e72
 	<classpathentry kind="output" path="bin"/>
 </classpath>
