@@ -337,6 +337,7 @@ public class DBConnectionClass
 		
 		if(ccode == null || ccode.equals(" "))
 			return null;
+		
 		int id = Integer.parseInt(ccode);
 		for (int i=0; i<db.getCourse().length ;i++)
 		{

@@ -27,9 +27,15 @@ public class Sys_searchTest {
 
 
 	@Test
-	public void testSearchByCourseCode() {
+	public void testSearchByCourseCodeNull() {
 		DBConnectionClass db = new DBConnectionClass();
 		CourseClass result = db.searchByCourseCode(" ");
+		assertEquals(null,result);
+	}
+	@Test
+	public void testSearchByCourseCodeLetters() {
+		DBConnectionClass db = new DBConnectionClass();
+		CourseClass result = db.searchByCourseCode("dsfsd4 ");
 		assertEquals(null,result);
 	}
 /*
