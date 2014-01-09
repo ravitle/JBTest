@@ -15,7 +15,7 @@
 		<div id="page-container">
 			<%@ include file="studentNavigation.jsp"%>
 			<h1 align="center">לוח זמנים</h1>
-			<img id="sch" src="https://dl.dropboxusercontent.com/u/229188151/schedual.png"/><br><br>
+			<%@ include file="calender.jsp" %>
 			
 			
 		</div>

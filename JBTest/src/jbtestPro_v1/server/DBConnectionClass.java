@@ -14,17 +14,18 @@ public class DBConnectionClass
 		Connection conn=null;
 		Statement stmt = null;
 		String sql;
+		String user="user=margarita;";
+		String password="password=Mb123456";
+		String dataBaseName="databaseName=JBTest;";
+		String instanceName="instanceName=MSSQLSERVER;";
+		String sqlPath="jdbc:sqlserver://212.150.144.16:1433;";
 		try {
 			
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			String conString ="jdbc:sqlserver://212.150.144.16:1433;instanceName=MSSQLSERVER;databaseName=JBTest;user=margarita;password=Mb123456";
-			
-			System.out.print("not yet\n");
+			String conString =sqlPath+instanceName+dataBaseName+user+password;
 			conn = DriverManager.getConnection(conString);
-			
-			System.out.print("XX\n");
 			stmt = conn.createStatement();
-			sql = "SELECT id, firstnameheb, lastnameheb, sr FROM students";
+			sql = "SELECT id, firstnameheb, lastnameheb, sr FROM students WHERE id="+studentId;
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){
 				int id  = rs.getInt("id");
@@ -54,7 +55,43 @@ public class DBConnectionClass
 		
 	}
 
-
+	public static int getNumOfRegStudInDate(String date)
+	{
+		int toReturn=0;
+		Connection conn=null;
+		Statement stmt = null;
+		String sql;
+		String user="user=margarita;";
+		String password="password=Mb123456";
+		String dataBaseName="databaseName=JBTest;";
+		String instanceName="instanceName=MSSQLSERVER;";
+		String sqlPath="jdbc:sqlserver://212.150.144.16:1433;";
+		try {
+			
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			String conString =sqlPath+instanceName+dataBaseName+user+password;
+			conn = DriverManager.getConnection(conString);
+			stmt = conn.createStatement();
+			sql = "SELECT numoftests FROM schedule WHERE date='"+date+"T00:00:00.000'";
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next())
+			{
+				toReturn = rs.getInt("numoftests");
+			}
+			rs.close();
+			stmt.close();
+			conn.close();
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return toReturn;
+	}
 
 	private static DBArrClass db = new DBArrClass();
 
