@@ -111,14 +111,6 @@
   </servlet-mapping>
   <servlet>
  
-      <servlet-name>StudentInfoPageJSP</servlet-name>
-    <jsp-file>/WEB-INF/jsp/sys_studentInfo.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>StudentInfoPageJSP</servlet-name>
-    <url-pattern>/Student_Info</url-pattern>
-  </servlet-mapping>
-  <servlet>
 
       <servlet-name>HistorySystemPageJSP</servlet-name>
     <jsp-file>/WEB-INF/jsp/sys_history.jsp</jsp-file>
@@ -196,15 +188,6 @@
     <url-pattern>/student_cancel_test</url-pattern>
   </servlet-mapping>
 
-  
-  <servlet>
-    <servlet-name>studentCons</servlet-name>
-    <jsp-file>/WEB-INF/jsp/studentCons.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>studentCons</servlet-name>
-    <url-pattern>/student_cons</url-pattern>
-  </servlet-mapping>
 
   <servlet>
     <servlet-name>studentMain</servlet-name>

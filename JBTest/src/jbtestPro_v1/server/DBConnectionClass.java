@@ -1,12 +1,66 @@
 package jbtestPro_v1.server;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 public class DBConnectionClass
 {
-	private static DBArrClass db = new DBArrClass();
+	
+	public static void getStudentByID(int studentId)
+	{
+		Connection conn=null;
+		Statement stmt = null;
+		String sql;
+		try {
+			
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			String conString ="jdbc:sqlserver://212.150.144.16:1433;instanceName=MSSQLSERVER;databaseName=JBTest;user=margarita;password=Mb123456";
+			
+			System.out.print("not yet\n");
+			conn = DriverManager.getConnection(conString);
+			
+			System.out.print("XX\n");
+			stmt = conn.createStatement();
+			sql = "SELECT id, firstnameheb, lastnameheb, sr FROM students";
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next()){
+				int id  = rs.getInt("id");
+				String firstnameheb = rs.getString("firstnameheb");
+				String lastnameheb = rs.getString("lastnameheb");
+				String sr = rs.getString("sr");
+
+				System.out.print("ID: " + id);
+				System.out.print(", First Name: " + firstnameheb);
+				System.out.print(", Last Name: " + lastnameheb);
+				System.out.println(", SR: " + sr);
+
+				
+			}
+			rs.close();
+			stmt.close();
+			conn.close();
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
 		
+	}
+
+
+
+	private static DBArrClass db = new DBArrClass();
+
 	/*	private DBConnectionClass()
 	{
-		
+
 	}
 	private static DBConnectionClass theInstance;
 	public static DBConnectionClass getInstance()
@@ -18,22 +72,16 @@ public class DBConnectionClass
 			}
 		return theInstance;
 	}*/
-	
-	
-	public static void cancleTest(String id,String date)
-	{
-		System.out.println("נמחק");
-	}
-	
+
+
 	public static String[][] searchHistory(String start,String end)
 	{
-		
+
 		String arr[][] = new String[50][50];
 		int j = 0;
 		for(int i = 0; i < db.getSchedule().length;i++)
 		{
-			if((checkDates(start,db.getSchedule()[i].getDate()) == 2 || db.getSchedule()[i].getDate().equals(start) == true) &&
-					(checkDates(db.getSchedule()[i].getDate(), end) == 2 || db.getSchedule()[i].getDate().equals(end) == true))
+			if(checkDates(start,db.getSchedule()[i].getDate()) == 2 && checkDates(db.getSchedule()[i].getDate(), end) == 2)
 			{
 				arr[j][0] = Integer.toString( db.getSchedule()[i].getRegStudent().getId());
 				arr[j][1] =  db.getSchedule()[i].getRegStudent().getlNameHeb();
@@ -46,7 +94,7 @@ public class DBConnectionClass
 		}
 		return arr;
 	}
-	
+
 	public static String staffName(String user)
 	{
 		String p_name = "";
@@ -57,12 +105,12 @@ public class DBConnectionClass
 		}
 		return p_name;
 	}
-	
+
 	public static String[][] courseInfo()
 	{
 		int j = 0;
 		String[][] courseArr = new String[10][10];
-		
+
 		for(int i = 0; i < db.getCourse().length; i++)
 		{
 			if (j < courseArr.length)
@@ -74,15 +122,15 @@ public class DBConnectionClass
 		}
 		return courseArr;
 	}
-	
-	
-	
+
+
+
 	public static String[][] searchTodayTests()
 	{		
 		int j = 0;
 		String todayDate = "02.12.13";
 		String[][] todayArr = new String[4][4];
-		
+
 		for(int i = 0; i < db.getSchedule().length; i++)
 		{
 			if (db.getSchedule()[i].getDate().equals(todayDate))
@@ -97,16 +145,16 @@ public class DBConnectionClass
 				j++;
 			}
 		}
-		
+
 		return todayArr;	
 	}
-	
+
 	public static String[][] searchCancelledTests()
 	{		
 		int j = 0;
 		String todayDate = "02.12.13";
 		String[][] cancelArr = new String[10][10];
-		
+
 		for(int i = 0; i < db.getSchedule().length; i++)
 		{
 			if (checkDates(todayDate, db.getSchedule()[i].getDate()) == 2 && db.getSchedule()[i].getCancelled().equals("כן"))
@@ -122,16 +170,16 @@ public class DBConnectionClass
 				j++;
 			}
 		}
-		
+
 		return cancelArr;	
 	}
-	
+
 	public static String[][] searchNewTests()
 	{	
 		int j = 0;
 		String todayDate = "02.12.13";
 		String[][] newArr = new String[20][20];
-		
+
 		for(int i = 0; i < db.getSchedule().length; i++)
 		{
 			if (checkDates(todayDate, db.getSchedule()[i].getDate()) == 2 && db.getSchedule()[i].getCancelled().equals("לא"))
@@ -149,14 +197,14 @@ public class DBConnectionClass
 		}
 		return newArr;	
 	}
-	
+
 	public static String[][] searchStudentNewTest(String sid)
 	{
 		int id = Integer.parseInt(sid);	
 		int j = 0;
 		String todayDate = "02.12.13";
 		String[][] newArr = new String[20][20];
-		
+
 		for(int i = 0; i < db.getSchedule().length; i++)
 		{
 			if (checkDates(todayDate, db.getSchedule()[i].getDate()) == 2)
@@ -175,22 +223,22 @@ public class DBConnectionClass
 			}
 		}
 		return newArr;
-}
-	
+	}
+
 	public static String[][] searchStudentPastTests(String sid)
 	{	
 		int id = Integer.parseInt(sid);
 		int j = 0;
 		String todayDate = "02.12.13";
 		String[][] newArr = new String[20][20];
-		
+
 		for(int i = 0; i < db.getSchedule().length; i++)
 		{
 			if(checkDates(todayDate, db.getSchedule()[i].getDate()) == 1)
 			{
 				if (db.getSchedule()[i].getRegStudent().getId() == id)
 				{
-				
+
 					if (j < newArr.length)
 					{
 						newArr[j][0] = Integer.toString(db.getSchedule()[i].getTestStudent().getTestId());
@@ -205,21 +253,21 @@ public class DBConnectionClass
 		}
 		return newArr;	
 	}
-	
+
 	public static String[][] searchStudentTodayTests(String sid)
 	{	
 		int id = Integer.parseInt(sid);
 		int j = 0;
 		String todayDate = "02.12.13";
 		String[][] newArr = new String[20][20];
-		
+
 		for(int i = 0; i < db.getSchedule().length; i++)
 		{
 			if(db.getSchedule()[i].getDate().equals(todayDate))
 			{
 				if (db.getSchedule()[i].getRegStudent().getId() == id)
 				{
-				
+
 					if (j < newArr.length)
 					{
 						newArr[j][0] = Integer.toString(db.getSchedule()[i].getRegStudent().getId());
@@ -233,8 +281,8 @@ public class DBConnectionClass
 		}
 		return newArr;	
 	}
-	
-	
+
+
 	private static int checkDates(String todayDate, String date)
 	{
 		for (int i=todayDate.length()-1; i >= 0; i--)
@@ -244,31 +292,22 @@ public class DBConnectionClass
 			else if (Character.getNumericValue(todayDate.charAt(i)) == Character.getNumericValue(date.charAt(i)))
 				continue;
 			else if(Character.getNumericValue(todayDate.charAt(i)) < Character.getNumericValue(date.charAt(i)))
-			{
-				if(i-1 >= 0)
-				{
-					if(Character.getNumericValue(todayDate.charAt(i-1)) > Character.getNumericValue(date.charAt(i-1)))
-						return 1;
-					else
-						return 2;//2 means that todayData is previous to date and 1 after
-		
-				}	
-			}	
+				return 2;//2 means that todayData is previous to date and 1 after
 			else if(Character.getNumericValue(todayDate.charAt(i)) > Character.getNumericValue(date.charAt(i)))
 			{
 				if(i-1 >= 0)
 				{
 					if(Character.getNumericValue(todayDate.charAt(i-1)) < Character.getNumericValue(date.charAt(i-1)))
-							return 2;
+						return 2;
 					else
-							return 1;
+						return 1;
 				}
 			}
-				
+
 		}
 		return 0;
 	}
-	
+
 	public static StudentClass searchStudent(String sid)
 	{
 		int id = Integer.parseInt(sid);
@@ -277,11 +316,11 @@ public class DBConnectionClass
 			if (db.getStudents()[i].getId() == id)
 				return db.getStudents()[i];
 		}
-		
+
 		return null;
 	}
 
-	
+
 
 	public static CourseClass searchByCourseCode(String ccode)
 	{
@@ -291,16 +330,16 @@ public class DBConnectionClass
 			if (db.getCourse()[i].getCourseId() == id)
 				return db.getCourse()[i];
 		}
-		
+
 		return null;
 	}
-	
+
 	public static String[][] searchCourse(String scode)
 	{
 		int j = 0;
 		int code = Integer.parseInt(scode);
 		String[][] newArr = new String[20][20];
-		
+
 		for(int i = 0; i < db.getStudents().length; i++)
 		{
 			if(db.getStudents()[i].getsCourses().getCourseId() == code)
@@ -317,12 +356,12 @@ public class DBConnectionClass
 		return newArr;
 
 	}
-	
+
 	public static String[][] searchByDate(String date)
 	{
 		int j = 0;
 		String[][] newArr = new String[20][20];
-		
+
 		for(int i = 0; i < db.getSchedule().length; i++)
 		{
 			if(db.getSchedule()[i].getDate().equals(date))
@@ -342,8 +381,8 @@ public class DBConnectionClass
 		}
 		return newArr;
 	}
-	
-	
+
+
 
 	public static int compUserStaff(String userName, String password)
 	{
@@ -358,9 +397,9 @@ public class DBConnectionClass
 			}
 		}	
 		return -1;
-		
+
 	}
-	
+
 	public static int compUserStudent(String userName, String password)
 	{
 		int i;
@@ -372,10 +411,10 @@ public class DBConnectionClass
 		}	
 		return -1;
 	}
-	
+
 	public static int changePasswordCheck(int userName, String Email)
 	{
-			
+
 		int i;
 		for(i = 0; i < db.getStudents().length;i++)
 		{
@@ -384,8 +423,8 @@ public class DBConnectionClass
 		}
 		return -1;
 	}
-	
-	
+
+
 	public static int rowsNum(String[][] arr)
 	{
 		int rows = 0;
@@ -396,8 +435,8 @@ public class DBConnectionClass
 		}
 		return rows;
 	}
-	
-	
+
+
 	public static DBArrClass getDb() {
 		return db;
 	}
