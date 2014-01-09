@@ -465,17 +465,32 @@ public class DBConnectionClass
 
 	public static int validDate(String date) {
 		int c=0;
+		String[] dArr = date.split(".");
 		if(date == null)
+			return -1;
+		if(date.length() != 8)
 			return -1;
 		for(int i = 0;i < date.length();i++)
 		{
 			if(date.charAt(i) < '0' || date.charAt(i) > '9')
 				return -1;
 			if(date.charAt(i) == '.')
-				c++;
+			{
+				if (i == 3 || i == 5)
+					c++;
+			}
 		}	
 		if (c != 2)
 			return -1;
+		if(Integer.parseInt(dArr[0]) < 0 || Integer.parseInt(dArr[0]) > 31)
+				return -1;
+		if(Integer.parseInt(dArr[1]) < 0 || Integer.parseInt(dArr[1]) > 12)
+			return -1;
+		if(Integer.parseInt(dArr[3]) < 0)
+			return -1;
+		for(int i = 0; i < 3; i++)
+			if(dArr[i].length() != 2)
+				return -1;
 		return 0;
 	}
 

@@ -56,7 +56,7 @@ public class Sys_searchTest {
 	@Test
 	public void testSearchByDateFormat() {
 		DBConnectionClass db = new DBConnectionClass();
-		int result = db.validDate("2342342");
+		int result = db.validDate("2.4.12");
 		assertEquals(-1,result);
 	}
 
