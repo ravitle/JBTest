@@ -17,13 +17,10 @@ public class DBConnectionClass
 		try {
 			
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			String conString ="jdbc:sqlserver://212.150.144.16:1433;instanceName=MSSQLSERVER;databaseName=JBTest;user=margarita;password=Mb123456";
-			
-			System.out.print("not yet\n");
+			String conString ="jdbc:sqlserver://212.150.144.16:1433;instanceName=MSSQLSERVER;databaseName=JBTest;user=margarita;password=Mb123456";		
 			conn = DriverManager.getConnection(conString);
-			
-			System.out.print("XX\n");
 			stmt = conn.createStatement();
+			
 			sql = "SELECT id, firstnameheb, lastnameheb, sr FROM students";
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){
@@ -310,6 +307,10 @@ public class DBConnectionClass
 
 	public static StudentClass searchStudent(String sid)
 	{
+		if(sid == null || sid == " ")
+		{
+			return null;
+		}
 		int id = Integer.parseInt(sid);
 		for (int i=0; i<db.getStudents().length ;i++)
 		{
