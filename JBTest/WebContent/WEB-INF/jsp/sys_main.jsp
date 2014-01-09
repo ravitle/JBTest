@@ -15,10 +15,13 @@
 	<body>
 		<%@ include file="header.jsp"%>
 		<div id="page-container">
-			<h4 align = "right"><%=DBConnectionClass.staffName(currSys)%> מחובר</h4>
+			<div id = "sys-user">
+				<h4 align ="right"><%=DBConnectionClass.staffName(currSys)%> מחובר</h4>
+			</div>
 			<%@ include file="sys_search.jsp"%>
 			<%@ include file="sys_navigation.jsp"%>
 			<div id="todays-test-sys">
+				<br><br>
 				<h3>:נבחנים היום</h3>
 				<br>
 				<%@ include file="sys_todayTable.jsp"%>

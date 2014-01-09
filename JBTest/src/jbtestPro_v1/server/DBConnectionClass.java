@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
 public class DBConnectionClass
 {
 	
@@ -15,17 +16,15 @@ public class DBConnectionClass
 		Statement stmt = null;
 		String sql;
 		try {
-			
+			//to connect to the SQL server
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			String conString ="jdbc:sqlserver://212.150.144.16:1433;instanceName=MSSQLSERVER;databaseName=JBTest;user=margarita;password=Mb123456";
-			
-			System.out.print("not yet\n");
 			conn = DriverManager.getConnection(conString);
-			
-			System.out.print("XX\n");
 			stmt = conn.createStatement();
+			//--- end connection
+		
 			sql = "SELECT id, firstnameheb, lastnameheb, sr FROM students";
-			ResultSet rs = stmt.executeQuery(sql);
+			ResultSet rs = stmt.executeQuery(sql);// execute the querry 
 			while(rs.next()){
 				int id  = rs.getInt("id");
 				String firstnameheb = rs.getString("firstnameheb");
@@ -58,6 +57,8 @@ public class DBConnectionClass
 
 	private static DBArrClass db = new DBArrClass();
 
+	
+	
 	/*	private DBConnectionClass()
 	{
 
@@ -444,6 +445,5 @@ public class DBConnectionClass
 	public static void setDb(DBArrClass dbArr) {
 		db = dbArr;
 	}
-
 
 }
