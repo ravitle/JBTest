@@ -317,6 +317,10 @@ public class DBConnectionClass
 			if(sid.charAt(i) <'0' || sid.charAt(i) > '9')
 				return null;
 		}
+		
+		if(sid.length() < 9)
+			return null;
+		
 		int id = Integer.parseInt(sid);
 		for (int i=0; i<db.getStudents().length ;i++)
 		{
