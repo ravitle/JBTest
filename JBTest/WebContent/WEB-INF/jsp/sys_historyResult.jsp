@@ -26,7 +26,7 @@
 			</br></br></br></br>
 				<div id="history-sys">
 				<h2>דו"ח תקופתי</h2><br>
-				<form action="Sys_Construction" method ="get" id="form" name="historyform" dir="rtl">
+				<form action="Sys_HistoryResult" method ="get" id="form" name="historyform" dir="rtl">
 					בחר תאריך התחלה: <input type="text" name="startDate">
 					בחר תאריך סיום: <input type="text" name="endDate">
 					<input type="submit" value="בחר" id="chooseButton"><br>
@@ -41,6 +41,21 @@
 						<td>שעה</td>
 						<td>עלות</td>
 					</tr>
+									
+				<% String[][] historyArr = DBConnectionClass.searchHistory(startD,endD); %>
+					<% if (historyArr != null){ %>
+				<% int rowsHistory = DBConnectionClass.rowsNum(historyArr); %>
+				<% for (int i=0; i<rowsHistory; i++) { %>
+					<tr>
+					<% for (int j=0; j<6; j++) { %>
+						<td>
+							<%= historyArr[i][j] %>
+				 		</td>
+				   	<% } %>
+					</tr>
+				<% } %>
+				<% } %>
+										
 			 	</table>
 			</div>
 		</div>

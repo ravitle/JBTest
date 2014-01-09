@@ -121,6 +121,20 @@
   </servlet-mapping>
   <servlet>
  
+ 
+     <servlet-name>HistoryResultSystemPageJSP</servlet-name>
+    <jsp-file>/WEB-INF/jsp/sys_historyResult.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HistoryResultSystemPageJSP</servlet-name>
+    <url-pattern>/Sys_HistoryResult</url-pattern>
+  </servlet-mapping>
+  <servlet>
+ 
+ 
+ 
+ 
+ 
       <servlet-name>ScheduleSystemPageJSP</servlet-name>
     <jsp-file>/WEB-INF/jsp/sys_schedule.jsp</jsp-file>
   </servlet>

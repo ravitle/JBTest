@@ -34,10 +34,16 @@ body
 {
 	background-color: #f4f4f4;
 	background-size: 100%;
+<<<<<<< HEAD
 	min-height:600px;
 	padding: 50px 50px;
 	margin: auto;
 	width: 1200px;
+=======
+	background-repeat: no-repeat;
+	padding: 0px 50px;
+	margin: auto;
+>>>>>>> 234152a9e195f7c6d8de78f80e026e427a047fc8
 	border-radius: 30px;
 	float: center;		
 			
@@ -60,9 +66,7 @@ body
 #headline
 {
 	text-align:center;
-	font-size:50px;
-	color:red;
-	font-family: fantasy;
+	color:white;
 }
 #footer
 {
@@ -105,6 +109,18 @@ body
 	float: right;
 	padding: 5px;
 	margin: 5px 5px;
+	text-align: center;
+}
+
+#headline-reg
+{
+	background-color: #F00000;
+	width: 1200px;
+	height: 50px;
+	border-radius: 10px;
+	float: right;
+	padding: 5px;
+	margin: 20px 5px;
 	text-align: center;
 }
 
@@ -173,7 +189,6 @@ body
 #todays-test-sys
 {
 	width: 900px;
-	height: 200px;
 	text-align: center;
 	margin: 5px;
 }
@@ -182,7 +197,6 @@ body
 #new-test-sys
 {
 	width: 900px;
-	height: 350px;
 	text-align: center;
 	margin: 5px;
 }
@@ -190,7 +204,6 @@ body
 #cancle-test-sys
 {
 	width: 900px;
-	height: 200px;
 	text-align: center;
 	margin: 5px;
 }
@@ -276,6 +289,17 @@ body
 	border:1px solid black;
 	text-align: center;
 }
+
+#historyTable
+{
+	background: white;
+	border:1px solid black;
+	text-align: center;	
+	
+	
+}
+
+
 #studentConfirmTable
 {
 	background: white;
@@ -300,10 +324,18 @@ body
 .field
 {
 	display:inline-block;
-	padding: 10px 25px;
+	padding: 20px 25px;
 	float: right;
 }
 
+
+#sys-user
+ {
+	margin: 2px;
+	float: right;
+ }
+ 
+ 
 #buttondiv
 {
 	clear: both;
@@ -322,7 +354,7 @@ body
 	font-weight: bold;
 	font-size: 15px;
 	border-radius:10px;
-	background: red;
+	background: #F00000;
 	font-family: "JBTestWebFont";
 	display: inline;
 	

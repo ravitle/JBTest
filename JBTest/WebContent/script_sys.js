@@ -8,5 +8,8 @@ $(document).ready(function(){
 	$("#chooseButton").click(function(){
 		$("#form").submit();
 	});
+	$("#cancelform").click(function(){
+		$("#form").submit();
+	});
 });
 

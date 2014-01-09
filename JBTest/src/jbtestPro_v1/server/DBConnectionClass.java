@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
 public class DBConnectionClass
 {
 	
@@ -20,13 +21,30 @@ public class DBConnectionClass
 		String instanceName="instanceName=MSSQLSERVER;";
 		String sqlPath="jdbc:sqlserver://212.150.144.16:1433;";
 		try {
-			
+			//to connect to the SQL server
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+<<<<<<< HEAD
 			String conString =sqlPath+instanceName+dataBaseName+user+password;
 			conn = DriverManager.getConnection(conString);
 			stmt = conn.createStatement();
 			sql = "SELECT id, firstnameheb, lastnameheb, sr FROM students WHERE id="+studentId;
 			ResultSet rs = stmt.executeQuery(sql);
+=======
+<<<<<<< HEAD
+			String conString ="jdbc:sqlserver://212.150.144.16:1433;instanceName=MSSQLSERVER;databaseName=JBTest;user=margarita;password=Mb123456";
+			conn = DriverManager.getConnection(conString);
+			stmt = conn.createStatement();
+			//--- end connection
+		
+=======
+			String conString ="jdbc:sqlserver://212.150.144.16:1433;instanceName=MSSQLSERVER;databaseName=JBTest;user=margarita;password=Mb123456";		
+			conn = DriverManager.getConnection(conString);
+			stmt = conn.createStatement();
+			
+>>>>>>> 3bdb0cafb725b32c77d5cb4b7d295d01173e1e72
+			sql = "SELECT id, firstnameheb, lastnameheb, sr FROM students";
+			ResultSet rs = stmt.executeQuery(sql);// execute the querry 
+>>>>>>> 234152a9e195f7c6d8de78f80e026e427a047fc8
 			while(rs.next()){
 				int id  = rs.getInt("id");
 				String firstnameheb = rs.getString("firstnameheb");
@@ -95,6 +113,8 @@ public class DBConnectionClass
 
 	private static DBArrClass db = new DBArrClass();
 
+	
+	
 	/*	private DBConnectionClass()
 	{
 
@@ -347,6 +367,19 @@ public class DBConnectionClass
 
 	public static StudentClass searchStudent(String sid)
 	{
+		if(sid == null)
+		{
+			return null;
+		}
+		
+		for(int i = 0;i < sid.length();i++)
+		{
+			if(sid.charAt(i) <'0' || sid.charAt(i) > '9')
+				return null;
+		}
+		if(sid.length() < 9 || sid.length() > 9)
+			return null;
+		
 		int id = Integer.parseInt(sid);
 		for (int i=0; i<db.getStudents().length ;i++)
 		{
@@ -361,6 +394,12 @@ public class DBConnectionClass
 
 	public static CourseClass searchByCourseCode(String ccode)
 	{
+		
+		if(ccode == null)
+			return null;
+		for(int i = 0;i < ccode.length();i++)
+			if(ccode.charAt(i) < '0' || ccode.charAt(i) > '9')
+				return null;
 		int id = Integer.parseInt(ccode);
 		for (int i=0; i<db.getCourse().length ;i++)
 		{
@@ -393,6 +432,8 @@ public class DBConnectionClass
 		return newArr;
 
 	}
+	
+	
 
 	public static String[][] searchByDate(String date)
 	{
@@ -482,5 +523,39 @@ public class DBConnectionClass
 		db = dbArr;
 	}
 
+<<<<<<< HEAD
+=======
+	public static int validDate(String date) {
+		int c=0;
+		String[] dArr = date.split(".");
+		if(date == null)
+			return -1;
+		if(date.length() != 8)
+			return -1;
+		for(int i = 0;i < date.length();i++)
+		{
+			if(date.charAt(i) < '0' || date.charAt(i) > '9')
+				return -1;
+			if(date.charAt(i) == '.')
+			{
+				if (i == 3 || i == 5)
+					c++;
+			}
+		}	
+		if (c != 2)
+			return -1;
+		if(Integer.parseInt(dArr[0]) < 0 || Integer.parseInt(dArr[0]) > 31)
+				return -1;
+		if(Integer.parseInt(dArr[1]) < 0 || Integer.parseInt(dArr[1]) > 12)
+			return -1;
+		if(Integer.parseInt(dArr[3]) < 0)
+			return -1;
+		for(int i = 0; i < 3; i++)
+			if(dArr[i].length() != 2)
+				return -1;
+		return 0;
+	}
 
+
+>>>>>>> 3bdb0cafb725b32c77d5cb4b7d295d01173e1e72
 }

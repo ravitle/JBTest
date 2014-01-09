@@ -22,7 +22,7 @@
 			<%= cancelledArr[i][j] %>
  		</td>
    	<% } %>
-   	<td><form><input type="submit" value="בטל" id="cancel"></form></td>
+   	<td><form id="form" name="cancelform" action="Sys_Main" onsubmit="<% //DBConnectionClass.cancleTest(cancelledArr[i][0],cancelledArr[i][3]);%>" ><input type="submit" value="בטל" id="cancel"></form></td>
 	</tr>
 <% } %>
 <% } %>
