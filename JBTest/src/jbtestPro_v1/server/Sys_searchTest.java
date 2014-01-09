@@ -18,15 +18,21 @@ public class Sys_searchTest {
 		StudentClass result = db.searchStudent("12sad");
 		assertEquals(null,result);
 	}
-/*
+	@Test
+	public void testSearchStudentLength() {
+		DBConnectionClass db = new DBConnectionClass();
+		StudentClass result = db.searchStudent("111");
+		assertEquals(null,result);
+	}
+
 	@Test
 	public void testSearchByCourseCode() {
-		fail("Not yet implemented");
+
 	}
 
 	@Test
 	public void testSearchByDate() {
 		fail("Not yet implemented");
 	}
-*/
+
 }
