@@ -372,6 +372,8 @@ public class DBConnectionClass
 		return newArr;
 
 	}
+	
+	
 
 	public static String[][] searchByDate(String date)
 	{
@@ -459,6 +461,10 @@ public class DBConnectionClass
 
 	public static void setDb(DBArrClass dbArr) {
 		db = dbArr;
+	}
+
+	public static int validDate(String string) {
+		return 0;
 	}
 
 

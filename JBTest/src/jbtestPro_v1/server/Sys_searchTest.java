@@ -38,10 +38,14 @@ public class Sys_searchTest {
 		CourseClass result = db.searchByCourseCode("dsfsd4 ");
 		assertEquals(null,result);
 	}
-/*
+
 	@Test
 	public void testSearchByDate() {
-		fail("Not yet implemented");
+		DBConnectionClass db = new DBConnectionClass();
+		int result = db.validDate(" ");
+		assertEquals(-1,result);
+
+	
 	}
-*/
+
 }
