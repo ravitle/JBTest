@@ -335,9 +335,11 @@ public class DBConnectionClass
 	public static CourseClass searchByCourseCode(String ccode)
 	{
 		
-		if(ccode == null || ccode.equals(" "))
+		if(ccode == null)
 			return null;
-		
+		for(int i = 0;i < ccode.length();i++)
+			if(ccode.charAt(i) < '0' || ccode.charAt(i) > '9')
+				return null;
 		int id = Integer.parseInt(ccode);
 		for (int i=0; i<db.getCourse().length ;i++)
 		{
