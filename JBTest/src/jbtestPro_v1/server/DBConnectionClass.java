@@ -20,6 +20,11 @@ public class DBConnectionClass
 	}*/
 	
 	
+	public static void cancleTest(String id,String date)
+	{
+		System.out.println("נמחק");
+	}
+	
 	public static String[][] searchHistory(String start,String end)
 	{
 		
@@ -27,7 +32,8 @@ public class DBConnectionClass
 		int j = 0;
 		for(int i = 0; i < db.getSchedule().length;i++)
 		{
-			if(checkDates(start,db.getSchedule()[i].getDate()) == 2 && checkDates(db.getSchedule()[i].getDate(), end) == 2)
+			if((checkDates(start,db.getSchedule()[i].getDate()) == 2 || db.getSchedule()[i].getDate().equals(start) == true) &&
+					(checkDates(db.getSchedule()[i].getDate(), end) == 2 || db.getSchedule()[i].getDate().equals(end) == true))
 			{
 				arr[j][0] = Integer.toString( db.getSchedule()[i].getRegStudent().getId());
 				arr[j][1] =  db.getSchedule()[i].getRegStudent().getlNameHeb();
@@ -238,7 +244,16 @@ public class DBConnectionClass
 			else if (Character.getNumericValue(todayDate.charAt(i)) == Character.getNumericValue(date.charAt(i)))
 				continue;
 			else if(Character.getNumericValue(todayDate.charAt(i)) < Character.getNumericValue(date.charAt(i)))
-				return 2;//2 means that todayData is previous to date and 1 after
+			{
+				if(i-1 >= 0)
+				{
+					if(Character.getNumericValue(todayDate.charAt(i-1)) > Character.getNumericValue(date.charAt(i-1)))
+						return 1;
+					else
+						return 2;//2 means that todayData is previous to date and 1 after
+		
+				}	
+			}	
 			else if(Character.getNumericValue(todayDate.charAt(i)) > Character.getNumericValue(date.charAt(i)))
 			{
 				if(i-1 >= 0)

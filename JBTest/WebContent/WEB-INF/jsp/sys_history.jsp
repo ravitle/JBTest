@@ -17,7 +17,7 @@
 			<%@ include file="sys_navigation.jsp"%>
 			<div id="history-sys">
 				<h2>דו"ח תקופתי</h2><br>
-				<form action="Sys_Construction" method ="get" id="form" name="historyform" dir="rtl">
+				<form action="Sys_HistoryResult" method ="get" id="form" name="historyform" dir="rtl">
 					בחר תאריך התחלה: <input type="text" name="startDate">
 					בחר תאריך סיום: <input type="text" name="endDate">
 					<input type="submit" value="בחר" id="chooseButton"><br>

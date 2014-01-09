@@ -35,10 +35,8 @@ body
 	background-image: url('https://dl.dropboxusercontent.com/u/229188151/pic/simple-gray-background_1600x1000.jpg'); 	
 	background-size: 100%;
 	background-repeat: no-repeat;
-	padding: 50px 50px;
+	padding: 0px 50px;
 	margin: auto;
-	width: 1200px;
-	height: 750px;
 	border-radius: 30px;
 	float: center;		
 			
@@ -162,7 +160,7 @@ body
 #todays-test-sys
 {
 	width: 900px;
-	height: 200px;
+	
 	text-align: center;
 	margin: 5px;
 }
@@ -171,7 +169,7 @@ body
 #new-test-sys
 {
 	width: 900px;
-	height: 350px;
+	
 	text-align: center;
 	margin: 5px;
 }
@@ -179,7 +177,7 @@ body
 #cancle-test-sys
 {
 	width: 900px;
-	height: 200px;
+
 	text-align: center;
 	margin: 5px;
 }
@@ -260,6 +258,17 @@ body
 	border:1px solid black;
 	text-align: center;
 }
+
+#historyTable
+{
+	background: white;
+	border:1px solid black;
+	text-align: center;	
+	
+	
+}
+
+
 #studentConfirmTable
 {
 	background: white;
