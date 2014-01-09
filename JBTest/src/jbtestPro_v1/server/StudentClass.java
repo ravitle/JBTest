@@ -44,7 +44,12 @@ public class StudentClass
 			setFreeTest(0);
 		sCourses = new CourseClass(course);
 	}
-	
+	public StudentClass(String sid)
+	{
+		int id = Integer.parseInt(sid);
+		setId(id);
+		
+	}
 	public StudentClass(int sr)
 	{
 		setSr(sr);
