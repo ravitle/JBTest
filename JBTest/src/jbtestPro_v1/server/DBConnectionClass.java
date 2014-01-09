@@ -334,6 +334,9 @@ public class DBConnectionClass
 
 	public static CourseClass searchByCourseCode(String ccode)
 	{
+		
+		if(ccode == null || ccode.equals(" "))
+			return null;
 		int id = Integer.parseInt(ccode);
 		for (int i=0; i<db.getCourse().length ;i++)
 		{

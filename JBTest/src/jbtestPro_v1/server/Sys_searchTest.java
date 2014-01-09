@@ -32,10 +32,10 @@ public class Sys_searchTest {
 		CourseClass result = db.searchByCourseCode(" ");
 		assertEquals(null,result);
 	}
-
+/*
 	@Test
 	public void testSearchByDate() {
 		fail("Not yet implemented");
 	}
-
+*/
 }
