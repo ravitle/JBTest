@@ -7,10 +7,15 @@ import org.junit.Test;
 public class Sys_searchTest {
 
 	@Test
-	public void testSearchStudent() {
+	public void testSearchStudentNull() {
 		DBConnectionClass db = new DBConnectionClass();
 		StudentClass result = db.searchStudent(" ");
-	
+		assertEquals(null,result);
+	}
+	@Test
+	public void testSearchStudentLetters() {
+		DBConnectionClass db = new DBConnectionClass();
+		StudentClass result = db.searchStudent("12sad");
 		assertEquals(null,result);
 	}
 /*
