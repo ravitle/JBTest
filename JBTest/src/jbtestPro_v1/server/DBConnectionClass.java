@@ -318,7 +318,7 @@ public class DBConnectionClass
 				return null;
 		}
 		
-		if(sid.length() < 9)
+		if(sid.length() < 9 )
 			return null;
 		
 		int id = Integer.parseInt(sid);

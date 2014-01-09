@@ -21,9 +21,10 @@ public class Sys_searchTest {
 	@Test
 	public void testSearchStudentLength() {
 		DBConnectionClass db = new DBConnectionClass();
-		StudentClass result = db.searchStudent("111");
+		StudentClass result = db.searchStudent("11111111111");
 		assertEquals(null,result);
 	}
+
 
 	@Test
 	public void testSearchByCourseCode() {
