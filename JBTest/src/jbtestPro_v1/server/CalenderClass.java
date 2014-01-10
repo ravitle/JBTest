@@ -52,26 +52,38 @@ public class CalenderClass extends DBConnectionClass
 	
 	public static int getTodayMonth()
 	{
-		
 		Calendar now = Calendar.getInstance();   // This gets the current date and time.
-		return now.get(Calendar.MONTH)+1;
-		
+		return now.get(Calendar.MONTH)+1;	
 	}
 	
+	public static int getTodayDay()
+	{
+		Calendar now = Calendar.getInstance();   
+		return now.get(Calendar.DAY_OF_MONTH);
+	}
+	
+	public static String getTodayFullDate()
+	{
+		String day,month;
+		if(getTodayDay()<10)
+				day="0"+Integer.toString(getTodayDay());
+		else
+			day=Integer.toString(getTodayDay());
+		if(getTodayMonth()<10)
+			month="0"+Integer.toString(getTodayMonth());
+		else
+			month=Integer.toString(getTodayMonth());
+		
+		return "'"+Integer.toString(getTodayYear())+"-"+month+"-"+day+"'";
+	}
+
 	public static int getNumOfRegStudent(String day,String month,String year)
 
 	{
 		int toReturn=0;
-		
 		String fullDate=""+year+"-"+month+"-"+day;
-		 
-		toReturn=getNumOfRegStudInDate(fullDate);
-		
-		
-		return toReturn;
-		
-		
-		
+		toReturn=getNumOfRegStudInDate(fullDate);	
+		return toReturn;	
 	}
 	
 	public static int getFirstDayOfMonth(int year,int month)

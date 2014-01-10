@@ -45,17 +45,60 @@
 		</div>
 		<div class="field" dir = "rtl">
 			בחר מכללה:
-			<select required name = "Collage">
+			<select required name = "Collage" id="collage">
 				<option value="empty">בחר</option>
 				<option value="JBTJer">מכללת ג'ון ברייס ירושלים</option>
  				<option value="JBTTlv">מכללת ג'ון ברייס תל אביב</option>
   				<option value="HColl">המכללה החרדית</option>
   				<option value="Extern">אקסטרני</option>
 			</select>
+			
+			
+<script type="text/javascript">
+	$('#collage').change(function(){
+		
+		var collageId = $(this).val();
+		
+		
+		
+		
+		// sending request to server to remove from db
+		//var _ret;
+		var dataString = 'id='+ collageId;
+		
+		
+		$.ajax({
+			async: false,
+			type: "POST",
+			url: "showCoursesOfCollage",
+			data: dataString,
+			success: function(ret){
+				// success
+				
+				var _ret = ret.trim();
+				var res = _ret.split(",");
+				
+				var options = '<option value="n">בחר קורס</option>';
+					for (var i = 0; i < res.length; i+=2) {
+		  					// success
+							options += '<option value="' + res[i+1] + '">' + res[i] + '</option>';
+		  				}
+						$("#courses").html(options);
+
+			}
+		});
+
+		
+		
+		//alert(selectedRow.attr("id"));
+		//alert($(this).attr("id"));
+		//alert("Ravit is the queen");
+	});
+</script>
 		</div>
 		<div class="field" dir = "rtl">
 			בחר קורס:
-			<select required name = "Course">
+			<select required name = "Course" id="courses">
 				<option value="empty">בחר</option>
 			</select>
 		</div>

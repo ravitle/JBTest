@@ -12,17 +12,16 @@ html
 
 #header
 {
-	width: 1300px;
+	width: 1200px;
 	height: 100px;
 	margin: 5px;
 	border-radius: 10px; 
-	
-	
+	margin: auto;
 }
 
 #pageContainerTable
 {
-	
+	min-height: 500px;
 	width: 1000px;
 	border-radius: 10px;
 	float: center;
@@ -36,7 +35,7 @@ html
 	
 #pageContainer
 {
-	min-height: 700px;
+	min-height: 500px;
 	width: 1000px;
 	border-radius: 10px;
 	float: center;
@@ -44,7 +43,7 @@ html
 	margin: auto;
 	beckground-size: 100%;
 	padding: 0px 50px;		
-	
+	position: relative;
 }
 
 
@@ -52,8 +51,10 @@ html
 {
 	clear: both;
 	height: 100px;
-	width: 1300px;
+	width: 1200px;
 	border-radius: 10px;
+	margin: auto;
+
 }
 
 #logoLinks
@@ -154,7 +155,7 @@ html
 
 #johnbryce-logo
 {
-	float: center;
+	float: left;
 	height: 50px;
 	width: 200px;
 	padding: 5px;	

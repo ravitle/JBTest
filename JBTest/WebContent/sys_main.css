@@ -253,6 +253,12 @@ body
 /** --------------- */
 
 /** set tables */
+#calenderCell
+{
+	 border:2px solid black;
+	
+}
+
 #table
 {
 	background: white;

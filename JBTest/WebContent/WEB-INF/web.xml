@@ -111,6 +111,25 @@
   </servlet-mapping>
   <servlet>
  
+      <servlet-name>removeRecordFromCancelTable</servlet-name>
+    <jsp-file>/WEB-INF/jsp/removeRecordFromCancelTable.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>removeRecordFromCancelTable</servlet-name>
+    <url-pattern>/removeRecordFromCancelTable</url-pattern>
+  </servlet-mapping>
+  <servlet>
+      
+      <servlet-name>showCoursesOfCollage</servlet-name>
+    <jsp-file>/WEB-INF/jsp/showCoursesOfCollage.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>showCoursesOfCollage</servlet-name>
+    <url-pattern>/showCoursesOfCollage</url-pattern>
+  </servlet-mapping>
+  <servlet>
+     
+      
       <servlet-name>SearchStudentPageJSP</servlet-name>
     <jsp-file>/WEB-INF/jsp/sys_searchResult.jsp</jsp-file>
   </servlet>

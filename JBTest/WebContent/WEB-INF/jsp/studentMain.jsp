@@ -1,3 +1,4 @@
+<%@page import="java.util.*"%>
 <%@ page import="jbtestPro_v1.server.DBConnectionClass"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -21,6 +22,8 @@
 	<%String currStud=(String)session.getAttribute("currStudent"); %>
 	<%session.setAttribute("fName",DBConnectionClass.searchStudent(currStud).getpNameHeb()); %>
 	<%session.setAttribute("lName",DBConnectionClass.searchStudent(currStud).getlNameHeb()); %>
+	<%Vector <String[]> result=new Vector<String[]>();
+	result=	DBConnectionClass.getHistoryTestById(Integer.parseInt(currStud)); %>
 	<%@ include file="header.jsp"%>
 	<div id="page-container">
 		
@@ -34,8 +37,8 @@
 				<td>שם קורס</td>
 				<td>תאריך</td>
 				<td>שעה</td>
-			</tr>
-
+		</tr>
+		
 		</table>
 		<h1 align="center">הסטוריה</h1>
 		<table id="table" dir="rtl" width="50%" align="center" cellpadding="5" cellspacing="5">
@@ -45,7 +48,19 @@
 				<td>תאריך</td>
 				<td>שעה</td>
 				<td>ציון</td>
-			</tr>
+		</tr>
+		
+		<%for (Object o : result) { %>	
+		<tr>
+	
+			<td>  </td>
+			<td>  </td>
+			<td>  </td>
+			<td>  </td>
+		
+		
+		</tr>
+		<%} %>
 
 		</table>
 

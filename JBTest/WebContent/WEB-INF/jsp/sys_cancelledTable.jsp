@@ -16,15 +16,57 @@
 <% if (cancelledArr != null){ %>
 <% int rowsCan = DBConnectionClass.rowsNum(cancelledArr); %>
 <% for (int i=0; i<rowsCan; i++) { %>
-	<tr>
+	<tr id="cancelRow<%=i%>">
 	<% for (int j=0; j<5; j++) { %>
 		<td>
 			<%= cancelledArr[i][j] %>
  		</td>
    	<% } %>
-   	<td><form id="form" name="cancelform" action="Sys_Main" onsubmit="<% //DBConnectionClass.cancleTest(cancelledArr[i][0],cancelledArr[i][3]);%>" ><input type="submit" value="בטל" id="cancel"></form></td>
+   	<td id="tableTD">
+   		
+   		<input type="submit" value="בטל" id="cancel<%=i%>" class="cancelButton">
+   		<input type="hidden" value="<%=cancelledArr[i][0] %>" id="userId" />
+   	</td>
 	</tr>
 <% } %>
 <% } %>
 	
 </table>
+
+<script type="text/javascript">
+	$('.cancelButton').click(function(){
+		
+		// get the saba of the button
+		var selectedRow = $(this).parent().parent();
+		var UserId = selectedRow.find('#userId').val();
+		
+		
+		
+		// sending request to server to remove from db
+		//var _ret;
+		var dataString = 'id='+ UserId;
+		
+		
+		$.ajax({
+			async: false,
+			type: "POST",
+			url: "removeRecordFromCancelTable",
+			data: dataString,
+			success: function(ret){
+				// success
+				
+				var _ret = ret.trim();
+				if (_ret==1) {
+					// visual deleting - remove the element from the table
+					selectedRow.hide();
+				}
+			}
+		});
+
+		
+		
+		//alert(selectedRow.attr("id"));
+		//alert($(this).attr("id"));
+		//alert("Ravit is the queen");
+	});
+</script>
