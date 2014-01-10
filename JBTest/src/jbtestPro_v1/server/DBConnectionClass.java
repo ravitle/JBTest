@@ -6,23 +6,30 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
 public class DBConnectionClass
 {
-	
+
 	public static void getStudentByID(int studentId)
 	{
 		Connection conn=null;
 		Statement stmt = null;
 		String sql;
+		String user="user=margarita;";
+		String password="password=Mb123456";
+		String dataBaseName="databaseName=JBTest;";
+		String instanceName="instanceName=MSSQLSERVER;";
+		String sqlPath="jdbc:sqlserver://212.150.144.16:1433;";
 		try {
-			
+			//to connect to the SQL server
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			String conString ="jdbc:sqlserver://212.150.144.16:1433;instanceName=MSSQLSERVER;databaseName=JBTest;user=margarita;password=Mb123456";		
+
+			String conString =sqlPath+instanceName+dataBaseName+user+password;
 			conn = DriverManager.getConnection(conString);
 			stmt = conn.createStatement();
-			
-			sql = "SELECT id, firstnameheb, lastnameheb, sr FROM students";
+			sql = "SELECT id, firstnameheb, lastnameheb, sr FROM students WHERE id="+studentId;
 			ResultSet rs = stmt.executeQuery(sql);
+
 			while(rs.next()){
 				int id  = rs.getInt("id");
 				String firstnameheb = rs.getString("firstnameheb");
@@ -34,7 +41,7 @@ public class DBConnectionClass
 				System.out.print(", Last Name: " + lastnameheb);
 				System.out.println(", SR: " + sr);
 
-				
+
 			}
 			rs.close();
 			stmt.close();
@@ -48,12 +55,50 @@ public class DBConnectionClass
 		{
 			e.printStackTrace();
 		}
-		
+
 	}
 
+	public static int getNumOfRegStudInDate(String date)
+	{
+		int toReturn=0;
+		Connection conn=null;
+		Statement stmt = null;
+		String sql;
+		String user="user=margarita;";
+		String password="password=Mb123456";
+		String dataBaseName="databaseName=JBTest;";
+		String instanceName="instanceName=MSSQLSERVER;";
+		String sqlPath="jdbc:sqlserver://212.150.144.16:1433;";
+		try {
 
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			String conString =sqlPath+instanceName+dataBaseName+user+password;
+			conn = DriverManager.getConnection(conString);
+			stmt = conn.createStatement();
+			sql = "SELECT numoftests FROM schedule WHERE date='"+date+"T00:00:00.000'";
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next())
+			{
+				toReturn = rs.getInt("numoftests");
+			}
+			rs.close();
+			stmt.close();
+			conn.close();
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return toReturn;
+	}
 
 	private static DBArrClass db = new DBArrClass();
+
+
 
 	/*	private DBConnectionClass()
 	{
@@ -311,7 +356,7 @@ public class DBConnectionClass
 		{
 			return null;
 		}
-		
+
 		for(int i = 0;i < sid.length();i++)
 		{
 			if(sid.charAt(i) <'0' || sid.charAt(i) > '9')
@@ -319,7 +364,7 @@ public class DBConnectionClass
 		}
 		if(sid.length() < 9 || sid.length() > 9)
 			return null;
-		
+
 		int id = Integer.parseInt(sid);
 		for (int i=0; i<db.getStudents().length ;i++)
 		{
@@ -334,7 +379,7 @@ public class DBConnectionClass
 
 	public static CourseClass searchByCourseCode(String ccode)
 	{
-		
+
 		if(ccode == null)
 			return null;
 		for(int i = 0;i < ccode.length();i++)
@@ -372,8 +417,8 @@ public class DBConnectionClass
 		return newArr;
 
 	}
-	
-	
+
+
 
 	public static String[][] searchByDate(String date)
 	{
@@ -490,7 +535,9 @@ public class DBConnectionClass
 		db = dbArr;
 	}
 
-	public static int validDate(String date) {
+
+	public static int validDate(String date)
+	{
 		int c=0;
 		String[] dArr = date.split(".");
 		if(date == null)
@@ -510,7 +557,7 @@ public class DBConnectionClass
 		if (c != 2)
 			return -1;
 		if(Integer.parseInt(dArr[0]) < 0 || Integer.parseInt(dArr[0]) > 31)
-				return -1;
+			return -1;
 		if(Integer.parseInt(dArr[1]) < 0 || Integer.parseInt(dArr[1]) > 12)
 			return -1;
 		if(Integer.parseInt(dArr[3]) < 0)
@@ -520,6 +567,7 @@ public class DBConnectionClass
 				return -1;
 		return 0;
 	}
+
 
 
 }

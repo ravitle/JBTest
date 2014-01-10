@@ -3,7 +3,7 @@
 
 
 <div id="navigation-bar">
-				<a href="Sys_Main" style="color:white">דף הבית </a>
+				<a href="Sys_Main" >דף הבית </a>
 				<form action="Sys_Update" method ="get" id="form" name="updateform" dir="rtl">
 					<h3>
 						עדכון פרטי סטודנט: <input type="text" name="updateReq">
@@ -11,9 +11,9 @@
 					</h3>
 				</form>
 				<h3>
-					<a href="Sys_Schedule" style="color:white">צפייה בלו"ז </a><br>
-					<a href="Sys_History" style="color:white">דו"ח תקופתי </a><br>
-					<a href="Sys_Courses" style="color:white">קורסים </a><br>
-					<a href="Main" style="color:white">התנתק </a><br>
+					<a href="Sys_Schedule" >צפייה בלו"ז </a><br>
+					<a href="Sys_History" >דו"ח תקופתי </a><br>
+					<a href="Sys_Courses">קורסים </a><br>
+					<a href="Main" >התנתק </a><br>
 				</h3>
 </div>

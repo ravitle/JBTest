@@ -32,8 +32,12 @@ body
 
 #page-container
 {
-	background-image: url('https://dl.dropboxusercontent.com/u/229188151/pic/simple-gray-background_1600x1000.jpg'); 	
+	background-color: #f4f4f4;
 	background-size: 100%;
+	min-height:600px;
+	padding: 50px 50px;
+	margin: auto;
+	width: 1200px;
 	background-repeat: no-repeat;
 	padding: 0px 50px;
 	margin: auto;
@@ -48,19 +52,29 @@ body
 
 #header
 {
-	width: 1300px;
+	width: 1200px;
 	height: 100px;
 	margin: 5px;	
 	border-radius: 10px;
+	
+	margin: auto;
+	
 }
 #headline
 {
 	text-align:center;
-	font-size:50px;
-	color:red;
-	font-family: fantasy;
+	color:white;
 }
-
+#footer
+{
+	clear: both;
+	height: 100px;
+	width: 1200px;
+	border-radius: 10px;
+	
+	margin: auto;
+	
+}
 
 #jbtest-logo
 {
@@ -92,6 +106,18 @@ body
 	float: right;
 	padding: 5px;
 	margin: 5px 5px;
+	text-align: center;
+}
+
+#headline-reg
+{
+	background-color: #F00000;
+	width: 1200px;
+	height: 50px;
+	border-radius: 10px;
+	float: right;
+	padding: 5px;
+	margin: 20px 5px;
 	text-align: center;
 }
 
@@ -134,7 +160,7 @@ body
 	display:block;
 	border-radius:10px;
 	background: #F00000;
-	
+	color:white;
 }
 
 
@@ -160,7 +186,6 @@ body
 #todays-test-sys
 {
 	width: 900px;
-	
 	text-align: center;
 	margin: 5px;
 }
@@ -169,7 +194,6 @@ body
 #new-test-sys
 {
 	width: 900px;
-	
 	text-align: center;
 	margin: 5px;
 }
@@ -177,7 +201,6 @@ body
 #cancle-test-sys
 {
 	width: 900px;
-
 	text-align: center;
 	margin: 5px;
 }
@@ -230,7 +253,12 @@ body
 /** --------------- */
 
 /** set tables */
-
+#table
+{
+	background: white;
+	border:1px solid black;
+	text-align: center;
+}
 #todayTable
 {
 	background: white;
@@ -293,10 +321,18 @@ body
 .field
 {
 	display:inline-block;
-	padding: 10px 25px;
+	padding: 20px 25px;
 	float: right;
 }
 
+
+#sys-user
+ {
+	margin: 2px;
+	float: right;
+ }
+ 
+ 
 #buttondiv
 {
 	clear: both;
@@ -315,7 +351,7 @@ body
 	font-weight: bold;
 	font-size: 15px;
 	border-radius:10px;
-	background: red;
+	background: #F00000;
 	font-family: "JBTestWebFont";
 	display: inline;
 	
@@ -337,13 +373,7 @@ body
 
 /** set footer */
 
-#footer
-{
-	clear: both;
-	height: 100px;
-	width: 1300px;
-	border-radius: 10px;
-}
+
 
 
 #microsoft-prometric-logo
@@ -363,3 +393,10 @@ body
 	width: 20px;
 }
 /** --------------- */
+
+#regTest
+{
+	
+	text-align: center;
+	margin: 40px;
+}

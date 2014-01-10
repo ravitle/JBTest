@@ -1,3 +1,4 @@
+<%@page import="jbtestPro_v1.server.CalenderClass"%>
 <%@page import="jbtestPro_v1.server.StudentClass"%>
 <%@page import="jbtestPro_v1.server.DBConnectionClass"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -5,7 +6,6 @@
 
 <%
 	
-	DBConnectionClass.getStudentByID(111111111);
 	String user = request.getParameter("username");	
 	String password = request.getParameter("password");
 	
@@ -14,6 +14,7 @@
 	{
 		if (DBConnectionClass.compUserStudent( user, password)==0)
 		{	
+			session.setAttribute("visitMainPage", 0);
 			session.setAttribute("currStudent", user);
 			String redirectURL = "student_main";
 		    response.sendRedirect(redirectURL);	
