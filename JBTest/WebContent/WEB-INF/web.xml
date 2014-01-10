@@ -21,7 +21,7 @@
   </servlet-mapping>
   <servlet>
  
-      <servlet-name>studentForgetPasswordJSP</servlet-name>
+    <servlet-name>studentForgetPasswordJSP</servlet-name>
     <jsp-file>/WEB-INF/jsp/StudentForgetPassword.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
@@ -36,6 +36,24 @@
   <servlet-mapping>
     <servlet-name>passwordHasChangedJSP</servlet-name>
     <url-pattern>/PasswordHasChanged</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  
+      <servlet-name>sysForgotPasswordUserJSP</servlet-name>
+    <jsp-file>/WEB-INF/jsp/sysForgotPasswordUser.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>sysForgotPasswordUserJSP</servlet-name>
+    <url-pattern>/sysForgotPasswordUser</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  
+      <servlet-name>UserHasChangedJSP</servlet-name>
+    <jsp-file>/WEB-INF/jsp/UserHasChanged.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserHasChangedJSP</servlet-name>
+    <url-pattern>/UserHasChanged</url-pattern>
   </servlet-mapping>
   <servlet>
   

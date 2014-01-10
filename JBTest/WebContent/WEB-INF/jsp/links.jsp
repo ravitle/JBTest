@@ -13,16 +13,17 @@
 </head>
 <body>
 <%@ include file="header.jsp"%>
-	<div id="pageContainer">
+<div id="pageContainer">
 
-<div id="mainTool" dir="rtl">
-<h2>
-	<a href="Sys_MainEntrance" style="color:white">כניסת סגל</a>
-	<a href="Main" style="color:white">כניסת סטודנט</a>
-	<a href="aboutUs" style="color:white">אודות</a>
-	<a href="contactUs" style="color:white">צור קשר</a>
-</h2>	
-</div>
+	<div id="mainTool" dir="rtl">
+	<h2>
+		<a href="Sys_MainEntrance" style="color:white">כניסת סגל</a>
+		<a href="Main" style="color:white">כניסת סטודנט</a>
+		<a href="aboutUs" style="color:white">אודות</a>
+		<a href="contactUs" style="color:white">צור קשר</a>
+	</h2>	
+	
+	</div>
 	<div id="pageContainerTable" align="center">
 
 		<h1 align="center" dir="rtl">קישורים</h1>

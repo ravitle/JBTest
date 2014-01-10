@@ -4,17 +4,18 @@
 <%
 	
 	String userName = request.getParameter("userName");	
-	String email = request.getParameter("Email");
+	String email = request.getParameter("email");
 	
 	// session
 	if (userName != null && email != null)
 	{
-		int user = Integer.parseInt(userName);
-		if (DBConnectionClass.changePasswordCheck(user, email) == 0)
+		
+		if (DBConnectionClass.changePasswordCheck(userName, email) == 0)
 		{	
-			String redirectURL = "/PasswordHasChanged";
+			String redirectURL = "PasswordHasChanged";
 		    response.sendRedirect(redirectURL);	
 		}
+	
 	}
 %>
 
@@ -35,15 +36,15 @@
 	<div id="pageContainer">
 		<div id="mainTool" dir="rtl">
 		<h2>
-		<a href="/Sys_MainEntrance" style="color:white" >כניסת סגל</a>
-		<a href="/links" style="color:white">קישורים</a>
+		<a href="Sys_MainEntrance" style="color:white" >כניסת סגל</a>
+		<a href="links" style="color:white">קישורים</a>
 		<a href=aboutUs style="color:white">אודות</a>
-		<a href="/contactUs" style="color:white">צור קשר</a>
+		<a href="contactUs" style="color:white">צור קשר</a>
 		</h2>
 		</div>
 	<br>
 	<div id="pageContainerTable">
-		<form action="/StudentForgetPassword" align= "center" method="post" id="enterFrom" name="enter" dir="rtl">
+		<form action="StudentForgetPassword" align= "center" method="post" id="enterFrom" name="enter" dir="rtl">
 			שם משתמש:<input type="text" name="userName"> <br>
 			אימייל:<input type="text" name="email"><br>
 			<input type="submit" value="אשר" id="changePassword">

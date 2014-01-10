@@ -2,9 +2,7 @@
 
 <%@ page import= "jbtestPro_v1.server.DBConnectionClass" %>
 
-<%
-	
-	String user = request.getParameter("username");	
+<%	String user = request.getParameter("username");	
 	String password = request.getParameter("password");
 		
 	// session
@@ -50,11 +48,11 @@
 			<table dir="rtl" bgcolor="#E0E0E0" bordercolor="#C8C8C8" border="1"
 				width="30%" align="center" cellpadding="30" cellspacing="20">
 				<tr>
-					<form action="Sys_MainEntrance"
-						method="post" id="enterFrom" name="enter" dir="rtl">
-						<td>שם משתמש:<input type="text" name="username"> <br>
+					<form action="Sys_MainEntrance" method="post" id="enterFrom" name="enter" dir="rtl">
+						<td>
+							שם משתמש:<input type="text" name="username"> <br>
 							סיסמא:<input type="password" name="password"> <br> <a
-							href="Sys_Construction">שכחת סיסמא/שם משתמש?</a><br>
+							href="sysForgotPasswordUser">שכחת סיסמא/שם משתמש?</a><br>
 							<input type="submit" value="כניסה" id="enterbutton">
 						</td> 
 					</form>

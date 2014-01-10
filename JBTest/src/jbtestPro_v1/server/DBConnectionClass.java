@@ -430,17 +430,44 @@ public class DBConnectionClass
 		return -1;
 	}
 
-	public static int changePasswordCheck(int userName, String Email)
+	public static int changePasswordCheck(String userName, String Email)
 	{
-
+		
 		int i;
 		for(i = 0; i < db.getStudents().length;i++)
 		{
-			if(db.getStudents()[i].getId() == userName && db.getStudents()[i].getEmail().equals(Email))
+			
+			String temp=Integer.toString(db.getStudents()[i].getId());
+			if(temp.equals(userName) && db.getStudents()[i].getEmail().equals(Email))
+				return 0;
+			
+		}
+		return -1;
+	}
+	
+	public static int changeSysPasswordCheck(String userName, String Email)
+	{
+
+		int i;
+		for(i = 0; i < db.getStaff().length;i++)
+		{
+			if(db.getStaff()[i].getUserName() == userName && db.getStaff()[i].getEmail().equals(Email))
 				return 0;
 		}
 		return -1;
 	}
+	public static int changeSysUserCheck(String Email)
+	{
+
+		int i;
+		for(i = 0; i < db.getStaff().length;i++)
+		{
+			if(db.getStaff()[i].getEmail().equals(Email))
+				return 0;
+		}
+		return -1;
+	}
+		
 
 
 	public static int rowsNum(String[][] arr)

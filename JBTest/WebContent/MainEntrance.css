@@ -22,8 +22,8 @@ html
 
 #pageContainerTable
 {
+	
 	width: 1000px;
-	heigth: 300px;
 	border-radius: 10px;
 	float: center;
 	margin: auto;
@@ -36,8 +36,8 @@ html
 	
 #pageContainer
 {
+	min-height: 700px;
 	width: 1000px;
-	heigth: 600px;
 	border-radius: 10px;
 	float: center;
 	dir: center;
@@ -85,6 +85,11 @@ html
 	float: right;
 	text-align: right;
 	
+}
+#h5
+{
+	font-style: oblique;
+	text-decoration: underline; 
 }
 
 #mainTool
