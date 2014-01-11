@@ -203,6 +203,7 @@ public class DBConnectionClass
 
 	}
 	
+<<<<<<< HEAD
 
 	//------------------update test results----------------------------//
 	
@@ -247,6 +248,55 @@ public class DBConnectionClass
 	
 	//---------------------------------------------------------//
 	
+=======
+	public static Vector<String[]> getNextTestById(int studentId)
+	{
+		Vector<String[]> toReturn=new  Vector<String[]>();
+
+		Connection conn=null;
+		Statement stmt = null;
+		String sql;
+		String user="user=margarita;";
+		String password="password=Mb123456";
+		String dataBaseName="databaseName=JBTest;";
+		String instanceName="instanceName=MSSQLSERVER;";
+		String sqlPath="jdbc:sqlserver://212.150.144.16:1433;";
+		try {
+			//to connect to the SQL server
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
+			String conString =sqlPath+instanceName+dataBaseName+user+password;
+			conn = DriverManager.getConnection(conString);
+			stmt = conn.createStatement();
+			String studID = Integer.toString(studentId);
+			sql = "SELECT code , name , scheduledate , hour "
+					+ "FROM manager m,tests t "
+					+ "WHERE m.testcode=t.code AND m.studentid="+studID+" AND m.scheduledate >= "+CalenderClass.getTodayFullDate();
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next()){
+				String[] temp=new String[4];
+
+				temp[0] = rs.getString("code");
+				temp[1] = rs.getString("name");
+				temp[2] = rs.getString("scheduledate");
+				temp[3] = rs.getString("hour");
+
+				toReturn.add(temp);
+			}	
+			rs.close();
+			stmt.close();
+			conn.close();
+		} 
+		catch (ClassNotFoundException e){e.printStackTrace();} 
+		catch (SQLException e){e.printStackTrace();	}
+		
+		return toReturn;
+
+
+	}
+	
+	
+>>>>>>> 66c37145f84734cabcbfba1c2257f8a450226e7f
 	public static Vector<String[]> getHistoryTestById(int studentId)
 	{
 		Vector<String[]> toReturn=new  Vector<String[]>();
@@ -270,13 +320,9 @@ public class DBConnectionClass
 			sql = "SELECT code , name , scheduledate , passed "
 					+ "FROM manager m,tests t "
 					+ "WHERE m.testcode=t.code AND m.studentid="+studID+" AND m.scheduledate < "+CalenderClass.getTodayFullDate();
-			System.out.println(sql);
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){
-
-
 				String[] temp=new String[4];
-
 
 				temp[0] = rs.getString("code");
 				temp[1] = rs.getString("name");
@@ -643,7 +689,7 @@ public class DBConnectionClass
 	public static StudentClass searchStudent(String sid)
 	{
 		if(sid == null)
-		{
+		{ 
 			return null;
 		}
 
