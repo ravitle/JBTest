@@ -904,6 +904,79 @@ public class DBConnectionClass
 		return 0;
 	}
 
+	public static Vector<String> getCourseByCollage(String location) 
+	{
+		Vector <String> codeList=new Vector<String>();
+		Connection conn=null;
+		Statement stmt = null;
+		String sql;
+		String user="user=margarita;";
+		String password="password=Mb123456";
+		String dataBaseName="databaseName=JBTest;";
+		String instanceName="instanceName=MSSQLSERVER;";
+		String sqlPath="jdbc:sqlserver://212.150.144.16:1433;";
+		try {
+			//to connect to the SQL server
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			String conString =sqlPath+instanceName+dataBaseName+user+password;
+			conn = DriverManager.getConnection(conString);
+			stmt = conn.createStatement();
+			sql = "SELECT code FROM courses c WHERE c.location='"+location+"'";
+			ResultSet rs = stmt.executeQuery(sql);
+			System.out.println(location);
+			while(rs.next()){
+				
+				String code = rs.getString("code");
+				codeList.add(code);
+				//System.out.print("code: " + code);
+				
+				
+			}
+			rs.close();
+			stmt.close();
+			conn.close();
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return codeList;
+	}
+	
 
+	public static void insertToSql(int id,String firstnameheb,String lastnameheb,String firstnameeng,String lastnameeng,String passw, String address,String city,String email,String phone1,String phone2,String collage,String course) 
+	{
+		Connection conn=null;
+		Statement stmt = null;
+		String sql;
+		String user="user=margarita;";
+		String password="password=Mb123456";
+		String dataBaseName="databaseName=JBTest;";
+		String instanceName="instanceName=MSSQLSERVER;";
+		String sqlPath="jdbc:sqlserver://212.150.144.16:1433;";
+		try {
+			//to connect to the SQL server
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			String conString =sqlPath+instanceName+dataBaseName+user+password;
+			conn = DriverManager.getConnection(conString);
+			stmt = conn.createStatement();
+			sql= "INSERT INTO students"+"VALUES("+id+","+"'"+firstnameheb+"'"+","+"'"+lastnameheb+"','"+firstnameeng+"'"+","+"'"+lastnameeng+"'"+","+"'"+"'"+passw+"'"+","+"'"+address+"'"+","+"'"+city+"'"+","+"'"+email+"'"+","+"'"+phone1+"'"+","+"'"+phone2+"'"+","+"'"+collage+"','"+course+"')";			
+			stmt.executeUpdate(sql);
+			conn.close();
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		} 
+		
+	}
 
 }
