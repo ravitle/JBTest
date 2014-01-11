@@ -203,7 +203,7 @@ public class DBConnectionClass
 
 	}
 	
-<<<<<<< HEAD
+
 
 	//------------------update test results----------------------------//
 	
@@ -248,7 +248,7 @@ public class DBConnectionClass
 	
 	//---------------------------------------------------------//
 	
-=======
+
 	public static Vector<String[]> getNextTestById(int studentId)
 	{
 		Vector<String[]> toReturn=new  Vector<String[]>();
@@ -296,7 +296,7 @@ public class DBConnectionClass
 	}
 	
 	
->>>>>>> 66c37145f84734cabcbfba1c2257f8a450226e7f
+
 	public static Vector<String[]> getHistoryTestById(int studentId)
 	{
 		Vector<String[]> toReturn=new  Vector<String[]>();
