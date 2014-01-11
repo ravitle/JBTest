@@ -7,11 +7,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 
-
 public class DBConnectionClass
 {
-	public static void getTodayTests() //today table
+	
+	//------------system main page--------------//
+	public static Vector<String[]> getTodayTests() //today table
 	{
+		Vector<String[]> toReturn=new  Vector<String[]>();
+		
 		Connection conn=null;
 		Statement stmt = null;
 		String sql;
@@ -27,19 +30,21 @@ public class DBConnectionClass
 			String conString =sqlPath+instanceName+dataBaseName+user+password;
 			conn = DriverManager.getConnection(conString);
 			stmt = conn.createStatement();
-			sql = "SELECT id, firstnameheb, lastnameheb, hour FROM manager m, students s WHERE m.studentid = s.id AND m.scheduledate="+CalenderClass.getTodayFullDate();
+			sql = "SELECT id, firstnameheb, lastnameheb, hour FROM manager m, students s"
+					+ " WHERE m.studentid = s.id AND m.passed IS NULL AND m.scheduledate="+CalenderClass.getTodayFullDate();
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
-				int id  = rs.getInt("id");
-				String firstnameheb = rs.getString("firstnameheb");
-				String lastnameheb = rs.getString("lastnameheb");
-				String hour = rs.getString("hour");
+				
+				String[] today = new String[4];
 
-				System.out.print("ID: " + id);
-				System.out.print(", First Name: " + firstnameheb);
-				System.out.print(", Last Name: " + lastnameheb);
-				System.out.println(", hour: " + hour);
+
+				today[0] = Integer.toString(rs.getInt("id"));
+				today[1] = rs.getString("firstnameheb");
+				today[2] = rs.getString("lastnameheb");
+				today[3] = rs.getString("hour");
+
+				toReturn.add(today);
 			}
 			rs.close();
 			stmt.close();
@@ -53,11 +58,14 @@ public class DBConnectionClass
 		{
 			e.printStackTrace();
 		}
-
+		
+		return toReturn;
 	}
-
-	public static void getNewTestsRequest() //new table - test for confirmation
+	
+	public static Vector<String[]> getNewTestsRequest() //new table - test for confirmation
 	{
+		Vector<String[]> toReturn=new  Vector<String[]>();
+		
 		Connection conn=null;
 		Statement stmt = null;
 		String sql;
@@ -72,21 +80,21 @@ public class DBConnectionClass
 			String conString =sqlPath+instanceName+dataBaseName+user+password;
 			conn = DriverManager.getConnection(conString);
 			stmt = conn.createStatement();
-			sql = "SELECT id, firstnameheb, lastnameheb, scheduledate, hour FROM manager m, students s WHERE m.studentid = s.id AND m.confirmed='no' AND m.scheduledate > "+CalenderClass.getTodayFullDate();
+			sql = "SELECT id, firstnameheb, lastnameheb, scheduledate, hour FROM manager m, students s "
+					+ "WHERE m.studentid = s.id AND m.confirmed='no' AND m.scheduledate > "+CalenderClass.getTodayFullDate();
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
-				int id  = rs.getInt("id");
-				String firstnameheb = rs.getString("firstnameheb");
-				String lastnameheb = rs.getString("lastnameheb");
-				String date = rs.getString("scheduledate");
-				String hour = rs.getString("hour");
+				
+				String[] newTest = new String[5];
 
-				System.out.print("ID: " + id);
-				System.out.print(", First Name: " + firstnameheb);
-				System.out.print(", Last Name: " + lastnameheb);
-				System.out.println(", date: " + date);
-				System.out.println(", hour: " + hour);
+				newTest[0] = Integer.toString(rs.getInt("id"));
+				newTest[1] = rs.getString("firstnameheb");
+				newTest[2] = rs.getString("lastnameheb");
+				newTest[3] = rs.getString("scheduledate");
+				newTest[4] = rs.getString("hour");
+
+				toReturn.add(newTest);
 			}
 			rs.close();
 			stmt.close();
@@ -100,12 +108,13 @@ public class DBConnectionClass
 		{
 			e.printStackTrace();
 		}
-
+		return toReturn;
 	}
-	
-	
-	public static void getCancelTestsRequest() //cancel table - test for cancellation
+	 
+	public static Vector<String[]> getCancelTestsRequest() //cancel table - test for cancellation
 	{
+		Vector<String[]> toReturn=new  Vector<String[]>();
+		
 		Connection conn=null;
 		Statement stmt = null;
 		String sql;
@@ -120,21 +129,22 @@ public class DBConnectionClass
 			String conString =sqlPath+instanceName+dataBaseName+user+password;
 			conn = DriverManager.getConnection(conString);
 			stmt = conn.createStatement();
-			sql = "SELECT id, firstnameheb, lastnameheb, scheduledate, hour FROM manager m, students s WHERE m.studentid = s.id AND m.cancelledTest='yes' AND m.scheduledate > "+CalenderClass.getTodayFullDate();
+			sql = "SELECT id, firstnameheb, lastnameheb, scheduledate, hour "
+					+ "FROM manager m, students s "
+					+ "WHERE m.studentid = s.id AND m.cancelledTest='yes'AND m.scheduledate > "+CalenderClass.getTodayFullDate();
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
-				int id  = rs.getInt("id");
-				String firstnameheb = rs.getString("firstnameheb");
-				String lastnameheb = rs.getString("lastnameheb");
-				String date = rs.getString("scheduledate");
-				String hour = rs.getString("hour");
+				
+				String[] cancelTest = new String[5];
 
-				System.out.print("ID: " + id);
-				System.out.print(", First Name: " + firstnameheb);
-				System.out.print(", Last Name: " + lastnameheb);
-				System.out.println(", date: " + date);
-				System.out.println(", hour: " + hour);
+				cancelTest[0] = Integer.toString(rs.getInt("id"));
+				cancelTest[1] = rs.getString("firstnameheb");
+				cancelTest[2] = rs.getString("lastnameheb");
+				cancelTest[3] = rs.getString("scheduledate");
+				cancelTest[4] = rs.getString("hour");
+
+				toReturn.add(cancelTest);
 			}
 			rs.close();
 			stmt.close();
@@ -149,8 +159,96 @@ public class DBConnectionClass
 			e.printStackTrace();
 		}
 
+		return toReturn;
 	}
 	
+	
+	//------------------cancel test----------------------------//
+	
+	
+	public static void deleteTest(int id, String date) //delete test that was already confirmed
+	{
+		Connection conn=null;
+		Statement stmt = null;
+		String sql;
+		String sqlsch;
+		String user="user=margarita;";
+		String password="password=Mb123456";
+		String dataBaseName="databaseName=JBTest;";
+		String instanceName="instanceName=MSSQLSERVER;";
+		String sqlPath="jdbc:sqlserver://212.150.144.16:1433;";
+		try {
+			//to connect to the SQL server
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			String conString =sqlPath+instanceName+dataBaseName+user+password;
+			conn = DriverManager.getConnection(conString);
+			stmt = conn.createStatement();
+			sql = "DELETE FROM manager WHERE cancelledTest='yes' AND studentid ="+id+" AND scheduledate='"+date+"'";
+			sqlsch = "UPDATE schedule SET numoftests=numoftests-1 WHERE date='"+date+"'";
+			
+			stmt.executeUpdate(sql);
+			stmt.executeUpdate(sqlsch);
+
+			stmt.close();
+			conn.close();
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+
+	}
+	
+
+
+	//------------------update test results----------------------------//
+	
+	
+		public static void updateTestResult(int id, String passYN) //update test result --> pass / fail
+		{
+			Connection conn=null;
+			Statement stmt = null;
+			String sql;
+			String user="user=margarita;";
+			String password="password=Mb123456";
+			String dataBaseName="databaseName=JBTest;";
+			String instanceName="instanceName=MSSQLSERVER;";
+			String sqlPath="jdbc:sqlserver://212.150.144.16:1433;";
+			try {
+				//to connect to the SQL server
+				Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+				String conString =sqlPath+instanceName+dataBaseName+user+password;
+				conn = DriverManager.getConnection(conString);
+				stmt = conn.createStatement();
+				sql = "UPDATE manager SET passed='"+passYN+"' WHERE studentid="+id+" AND scheduledate="+ CalenderClass.getTodayFullDate();
+				System.out.println(sql);
+				stmt.executeUpdate(sql);
+
+				stmt.close();
+				conn.close();
+			} 
+			catch (ClassNotFoundException e) 
+			{
+				e.printStackTrace();
+			} 
+			catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+
+		}
+		
+
+	
+	
+	
+	//---------------------------------------------------------//
+	
+
 	public static Vector<String[]> getNextTestById(int studentId)
 	{
 		Vector<String[]> toReturn=new  Vector<String[]>();
@@ -198,6 +296,7 @@ public class DBConnectionClass
 	}
 	
 	
+
 	public static Vector<String[]> getHistoryTestById(int studentId)
 	{
 		Vector<String[]> toReturn=new  Vector<String[]>();
@@ -590,7 +689,7 @@ public class DBConnectionClass
 	public static StudentClass searchStudent(String sid)
 	{
 		if(sid == null)
-		{
+		{ 
 			return null;
 		}
 

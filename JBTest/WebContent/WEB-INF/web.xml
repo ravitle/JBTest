@@ -128,7 +128,17 @@
     <url-pattern>/showCoursesOfCollage</url-pattern>
   </servlet-mapping>
   <servlet>
-     
+    
+    
+         <servlet-name>updateRecordTestResult</servlet-name>
+    <jsp-file>/WEB-INF/jsp/updateRecordTestResult.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>updateRecordTestResult</servlet-name>
+    <url-pattern>/updateRecordTestResult</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    
       
       <servlet-name>SearchStudentPageJSP</servlet-name>
     <jsp-file>/WEB-INF/jsp/sys_searchResult.jsp</jsp-file>

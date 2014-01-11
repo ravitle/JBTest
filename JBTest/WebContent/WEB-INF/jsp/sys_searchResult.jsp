@@ -1,10 +1,26 @@
-<%@ page import="jbtestPro_v1.server.DBConnectionClass" %>
+<%@ page import="jbtestPro_v1.server.DBConnectionClass"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%	
 	String radio_checked =  request.getParameter("rsearch");
 	String search = request.getParameter("searchReq");	
+	String redirectURL = "Sys_Main";
+	
+	if(radio_checked.equals("id") && DBConnectionClass.searchStudent(search) == null )
+	{
+		response.sendRedirect(redirectURL);  
+	}	
+	else if( radio_checked.equals("course") && DBConnectionClass.searchByCourseCode(search) == null)
+	{
+		response.sendRedirect(redirectURL);  
+	}
+	
+	else if(radio_checked.equals("date") && DBConnectionClass.validDate(search) == -1)
+	{
+		response.sendRedirect(redirectURL);  
+	}
 %>
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -23,29 +39,29 @@
 			<%@ include file="sys_navigation.jsp"%>
 			
 			<div id="load-student" dir="rtl">
-			</br></br></br></br>
-			<% if (radio_checked.equals("id")){ %>
+			<br><br><br><br>
+			<% if (radio_checked.equals("id") && DBConnectionClass.searchStudent(search) != null){ %>
 			<form method ="post" id="form" name="studentinfoform" dir="rtl">
 				ת.ז:<input readonly type="text" name="id" value=<%=search%>>
 				sr:<input readonly type="text" name="sr" value="-">
 				שם משפחה:<input readonly type="text" name="lnh" value=<%=DBConnectionClass.searchStudent(search).getlNameHeb()%>>
 				שם פרטי:<input readonly type="text" name="pnh" value=<%=DBConnectionClass.searchStudent(search).getpNameHeb()%>>
-				</br></br>
+				<br><br>
 				שם משפחה(אנגלית):<input readonly type="text" name="lne" value=<%=DBConnectionClass.searchStudent(search).getlNameEng()%>>
 				שם פרטי(אנגלית):<input readonly type="text" name="pne" value=<%=DBConnectionClass.searchStudent(search).getpNameEng()%>>
 				אימייל:<input readonly type="text" name="email" value=<%=DBConnectionClass.searchStudent(search).getEmail()%>>
-				</br></br>
+				<br><br>
 				כתובת:<input readonly type="text" name="address" value=<%=DBConnectionClass.searchStudent(search).getAddress()%>>
 				עיר:<input readonly type="text" name="city" value=<%=DBConnectionClass.searchStudent(search).getCity()%>>
 				טלפון:<input readonly type="text" name="phone1" value="-">
 				פלאפון:<input readonly type="text" name="phone2" value=<%=DBConnectionClass.searchStudent(search).getCellNum()%>>
-				</br></br>
+				<br><br>
 				קורס:<input readonly type="text" name="course" value=<%=DBConnectionClass.searchStudent(search).getsCourses().getCourseId()%>>	
 				מכללה:<input readonly type="text" name="collage" value=<%=DBConnectionClass.searchStudent(search).getCollage()%>>
 				מבחנים חינם:<input readonly type="text" name="freetest" value=<%=DBConnectionClass.searchStudent(search).getFreeTest()%>>	
 			</form>
 					
-			</br>
+			<br>
 			<% String[][] newArr = DBConnectionClass.searchStudentNewTest(search);%>
 			<% int rowsNew = DBConnectionClass.rowsNum(newArr);%>	
 			<% if (rowsNew != 0){ %>
@@ -123,13 +139,13 @@
 			
 			</table>
 			
-			</br>
+			<br>
 			<form method="post" id="form" name="updateform" dir="rtl">
 				<center><input type="submit" value="עדכן פרטים" id="update"></center>
 			</form>
 			<% } %>
 			
-			<% if (radio_checked.equals("course")){ %>
+			<% if (radio_checked.equals("course") && DBConnectionClass.searchByCourseCode(search) != null){ %>
 			<table id="courseTable" dir="rtl" width="50%" align="center" cellpadding="5" cellspacing="5">
 			<tr bgcolor="#909090">
 				<td>מס'</td>
@@ -137,8 +153,7 @@
 				<td>שם משפחה</td>
 				<td>שם פרטי</td>
 			</tr>
-			
-			
+						
 			<% for (int i=0; i<4; i++) { %>
 				<tr>
 					<% for (int j=0; j<4; j++) { %>
@@ -158,7 +173,7 @@
 			
 			<% } %>
 			
-			<% if (radio_checked.equals("date")){ %>
+			<% if (radio_checked.equals("date") && DBConnectionClass.validDate(search) != -1){ %>
 			<table id="dateTable" dir="rtl" width="50%" align="center" cellpadding="5" cellspacing="5">
 			<tr bgcolor="#909090">
 				<td>ת.ז</td>
