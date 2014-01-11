@@ -12,20 +12,23 @@
 	<td></td>
 </tr>
 
-<% String[][] cancelledArr = DBConnectionClass.searchCancelledTests(); %>
+<%@page import="java.util.*" %>
+<% Vector<String[]> cancelledArr = DBConnectionClass.getCancelTestsRequest(); 
+   String[] tempC; %>
+
 <% if (cancelledArr != null){ %>
-<% int rowsCan = DBConnectionClass.rowsNum(cancelledArr); %>
-<% for (int i=0; i<rowsCan; i++) { %>
+<% for (int i=0; i < cancelledArr.size(); i++) { %>
 	<tr id="cancelRow<%=i%>">
+	<% tempC = cancelledArr.get(i); %>
 	<% for (int j=0; j<5; j++) { %>
 		<td>
-			<%= cancelledArr[i][j] %>
+			<%= tempC[j] %>
  		</td>
    	<% } %>
    	<td id="tableTD">
-   		
    		<input type="submit" value="בטל" id="cancel<%=i%>" class="cancelButton">
-   		<input type="hidden" value="<%=cancelledArr[i][0] %>" id="userId" />
+   		<input type="hidden" value="<%=cancelledArr.get(i)[0] %>" id="userId" />
+   		<input type="hidden" value="<%=cancelledArr.get(i)[3] %>" id="date" />
    	</td>
 	</tr>
 <% } %>
@@ -39,12 +42,10 @@
 		// get the saba of the button
 		var selectedRow = $(this).parent().parent();
 		var UserId = selectedRow.find('#userId').val();
-		
-		
+		var date = selectedRow.find('#date').val();
 		
 		// sending request to server to remove from db
-		//var _ret;
-		var dataString = 'id='+ UserId;
+		var dataString = 'id='+ UserId +'&date=' + date;
 		
 		
 		$.ajax({
@@ -62,11 +63,5 @@
 				}
 			}
 		});
-
-		
-		
-		//alert(selectedRow.attr("id"));
-		//alert($(this).attr("id"));
-		//alert("Ravit is the queen");
 	});
 </script>

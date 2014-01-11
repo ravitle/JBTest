@@ -11,21 +11,24 @@
 	<td>שעה</td>
 </tr>
 
-<% String[][] newArr = DBConnectionClass.searchNewTests(); %>
-<% if (newArr != null){ %>
-<% int rowsNew = DBConnectionClass.rowsNum(newArr); %>
-<% for (int i=0; i<rowsNew; i++) { %>
+<%@page import="java.util.*" %>
+<% Vector<String[]> newArr = DBConnectionClass.getNewTestsRequest(); 
+   String[] temp; %>
+<% if (newArr != null){ 
+   for (int i=0; i < newArr.size(); i++) { %>
 	<tr>
-	<% for (int j=0; j<5; j++) { %>
+	<% temp = newArr.get(i); 
+		 for (int j=0; j<5; j++) { %>
 		<td>
 			<% if (j == 0) {%>
-			<a href="Sys_Confirm?tid=<%= newArr[i][j] %>">
-				<%= newArr[i][j] %>
+			<a href="Sys_Confirm?tid=<%=temp[j]%>">
+				<%= temp[j] %>
 			</a>
 			<% } %>
 			<% if (j != 0) {%>
-				<%= newArr[i][j] %>
+				<%= temp[j] %>
 			<% } %>	
+			
  		</td>
    	<% } %>
 	</tr>
