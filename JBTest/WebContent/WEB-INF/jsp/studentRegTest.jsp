@@ -13,6 +13,7 @@
 	<body>
 		<%@ include file="header.jsp"%>
 		<div id="page-container">
+			<%@ include file="studentSearch.jsp" %>
 			<%@ include file="studentNavigation.jsp"%>
 		
 			<%@ include file="regToTest.jsp" %>

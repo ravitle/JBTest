@@ -1,7 +1,8 @@
 <%@ page import="jbtestPro_v1.server.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div id="calender">
-<table   dir="rtl" width="50%" align="center"  >
+
+<table id="calanderTable"   dir="rtl" width="50%" align="center"  >
 	<tr bgcolor="#909090">
 	<td>א</td>
 	<td>ב</td>
@@ -17,6 +18,8 @@
 <%int startDay=CalenderClass.getFirstDayOfMonth(currYear, currMonth); %>
 <%int dayInMonth=CalenderClass.daysInMonth(currYear, currMonth); %>
 
+
+<%=CalenderClass.getHebMonthName(currMonth) %>
 <%int toPrint=1; %>
 <% for (int i=0; i<6; i++) { %>
 	<%if(toPrint>dayInMonth)break; %>

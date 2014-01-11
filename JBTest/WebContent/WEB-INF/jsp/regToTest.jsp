@@ -1,22 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div id="regTest" >
-			
+			<br> 
+			<br> 
 			<h1 align="center">הרשמה למבחן</h1>
-			
+			<div id="calenderButton">
+<input id="monthNextButton" type="submit" value="חודש הבא"> 
+<input id="monthPrevButton" type="submit" value="חודש קודם">
+</div> 
+<br><br>
 			<%@ include file="calender.jsp" %>
 			<br>
-			<div align="center"><form id="test_reg_form" dir="rtl">
+			<div  align="center"><form id="test_reg_form" dir="rtl">
 				תאריך: <input type="text" name="startDate"> 
 				שעה: <input type="text" name="startDate"> 
-				קורס:<select>
+				מבחן:<select>
 					<optgroup>
 						<option value="001">001 רשתות</option>
 						<option value="002">002 תכנות</option>
 						<option value="003">003 שיווק באינטרנט</option>
 						<option value="004">004 גרפיקה</option>
+						
 					</optgroup>
-				</select><br>
-				<br> <input type="submit" value="הרשם"> <input
-					type="submit" value="ביטול">
+				</select>
+				<input id="regButton" type="submit" value="הרשם"> 
+				<br> 
+				<br> 
 			</form></div>
 </div>			

@@ -253,11 +253,6 @@ body
 /** --------------- */
 
 /** set tables */
-#calenderCell
-{
-	 border:2px solid black;
-	
-}
 
 #table
 {
@@ -405,4 +400,33 @@ body
 	
 	text-align: center;
 	margin: 40px;
+}
+
+/*--------------------*/
+#calender
+{
+	width:1050;
+}
+#calenderCell
+{
+	 border:2px solid black;
+	
+}
+#calanderTable
+{
+	padding-bottom: 30px;
+}
+#monthNextButton
+{
+	float:left;
+}
+#monthNextButton
+{
+	float:right;
+}
+#calenderButton
+{
+	width:760px;
+	float:left;
+	margin:auto;
 }
