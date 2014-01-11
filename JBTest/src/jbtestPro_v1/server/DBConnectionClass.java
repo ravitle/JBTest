@@ -547,7 +547,7 @@ public class DBConnectionClass
 	public static StudentClass searchStudent(String sid)
 	{
 		if(sid == null)
-		{
+		{ 
 			return null;
 		}
 
