@@ -10,6 +10,14 @@ import java.util.Vector;
 public class DBConnectionClass
 {
 	
+	
+	static final String user="user=margarita;";
+	static final String password="password=Mb123456";
+	static final String dataBaseName="databaseName=JBTest;";
+	static final String instanceName="instanceName=MSSQLSERVER;";
+	static final String sqlPath="jdbc:sqlserver://212.150.144.16:1433;";
+	static final String conString =sqlPath+instanceName+dataBaseName+user+password; 
+	
 	//------------system main page--------------//
 	public static Vector<String[]> getTodayTests() //today table
 	{
@@ -18,16 +26,10 @@ public class DBConnectionClass
 		Connection conn=null;
 		Statement stmt = null;
 		String sql;
-		String user="user=margarita;";
-		String password="password=Mb123456";
-		String dataBaseName="databaseName=JBTest;";
-		String instanceName="instanceName=MSSQLSERVER;";
-		String sqlPath="jdbc:sqlserver://212.150.144.16:1433;";
+		
 		try {
 			//to connect to the SQL server
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			
-			String conString =sqlPath+instanceName+dataBaseName+user+password;
 			conn = DriverManager.getConnection(conString);
 			stmt = conn.createStatement();
 			sql = "SELECT id, firstnameheb, lastnameheb, hour FROM manager m, students s"
@@ -69,11 +71,6 @@ public class DBConnectionClass
 		Connection conn=null;
 		Statement stmt = null;
 		String sql;
-		String user="user=margarita;";
-		String password="password=Mb123456";
-		String dataBaseName="databaseName=JBTest;";
-		String instanceName="instanceName=MSSQLSERVER;";
-		String sqlPath="jdbc:sqlserver://212.150.144.16:1433;";
 		try {
 			//to connect to the SQL server
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -118,11 +115,7 @@ public class DBConnectionClass
 		Connection conn=null;
 		Statement stmt = null;
 		String sql;
-		String user="user=margarita;";
-		String password="password=Mb123456";
-		String dataBaseName="databaseName=JBTest;";
-		String instanceName="instanceName=MSSQLSERVER;";
-		String sqlPath="jdbc:sqlserver://212.150.144.16:1433;";
+		
 		try {
 			//to connect to the SQL server
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -172,11 +165,7 @@ public class DBConnectionClass
 		Statement stmt = null;
 		String sql;
 		String sqlsch;
-		String user="user=margarita;";
-		String password="password=Mb123456";
-		String dataBaseName="databaseName=JBTest;";
-		String instanceName="instanceName=MSSQLSERVER;";
-		String sqlPath="jdbc:sqlserver://212.150.144.16:1433;";
+		
 		try {
 			//to connect to the SQL server
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -213,11 +202,7 @@ public class DBConnectionClass
 			Connection conn=null;
 			Statement stmt = null;
 			String sql;
-			String user="user=margarita;";
-			String password="password=Mb123456";
-			String dataBaseName="databaseName=JBTest;";
-			String instanceName="instanceName=MSSQLSERVER;";
-			String sqlPath="jdbc:sqlserver://212.150.144.16:1433;";
+			
 			try {
 				//to connect to the SQL server
 				Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -256,11 +241,7 @@ public class DBConnectionClass
 		Connection conn=null;
 		Statement stmt = null;
 		String sql;
-		String user="user=margarita;";
-		String password="password=Mb123456";
-		String dataBaseName="databaseName=JBTest;";
-		String instanceName="instanceName=MSSQLSERVER;";
-		String sqlPath="jdbc:sqlserver://212.150.144.16:1433;";
+		
 		try {
 			//to connect to the SQL server
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -304,11 +285,7 @@ public class DBConnectionClass
 		Connection conn=null;
 		Statement stmt = null;
 		String sql;
-		String user="user=margarita;";
-		String password="password=Mb123456";
-		String dataBaseName="databaseName=JBTest;";
-		String instanceName="instanceName=MSSQLSERVER;";
-		String sqlPath="jdbc:sqlserver://212.150.144.16:1433;";
+		
 		try {
 			//to connect to the SQL server
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -347,11 +324,7 @@ public class DBConnectionClass
 		Connection conn=null;
 		Statement stmt = null;
 		String sql;
-		String user="user=margarita;";
-		String password="password=Mb123456";
-		String dataBaseName="databaseName=JBTest;";
-		String instanceName="instanceName=MSSQLSERVER;";
-		String sqlPath="jdbc:sqlserver://212.150.144.16:1433;";
+		
 		try {
 			//to connect to the SQL server
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -396,11 +369,7 @@ public class DBConnectionClass
 		Connection conn=null;
 		Statement stmt = null;
 		String sql;
-		String user="user=margarita;";
-		String password="password=Mb123456";
-		String dataBaseName="databaseName=JBTest;";
-		String instanceName="instanceName=MSSQLSERVER;";
-		String sqlPath="jdbc:sqlserver://212.150.144.16:1433;";
+		
 		try {
 
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -910,11 +879,7 @@ public class DBConnectionClass
 		Connection conn=null;
 		Statement stmt = null;
 		String sql;
-		String user="user=margarita;";
-		String password="password=Mb123456";
-		String dataBaseName="databaseName=JBTest;";
-		String instanceName="instanceName=MSSQLSERVER;";
-		String sqlPath="jdbc:sqlserver://212.150.144.16:1433;";
+		
 		try {
 			//to connect to the SQL server
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -953,11 +918,7 @@ public class DBConnectionClass
 		Connection conn=null;
 		Statement stmt = null;
 		String sql;
-		String user="user=margarita;";
-		String password="password=Mb123456";
-		String dataBaseName="databaseName=JBTest;";
-		String instanceName="instanceName=MSSQLSERVER;";
-		String sqlPath="jdbc:sqlserver://212.150.144.16:1433;";
+		
 		try {
 			//to connect to the SQL server
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
