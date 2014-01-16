@@ -1,11 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import=" java.sql.*"%>
+
 
 <div>
-		<form id="main-form">
+	<form id="main-form">
 		<div id="headline-reg">
-			<h2 id="headline">
-				הרשמה לסטודנט חדש
-			</h2>
+			<h2 id="headline">הרשמה לסטודנט חדש</h2>
 		</div>
 		<div class="field">
 			<input type="text" name="id">:ת.ז
@@ -43,18 +44,17 @@
 		<div class="field">
 			<input type="text" name="seconderyphone">:טלפון משני<br>
 		</div>
-		<div class="field" dir = "rtl">
-			בחר מכללה:
-			<select required name = "Collage" id="collage">
+		<div class="field" dir="rtl">
+			בחר מכללה: <select required name="Collage" id="collage">
 				<option value="empty">בחר</option>
 				<option value="JBTJer">מכללת ג'ון ברייס ירושלים</option>
- 				<option value="JBTTlv">מכללת ג'ון ברייס תל אביב</option>
-  				<option value="HColl">המכללה החרדית</option>
-  				<option value="Extern">אקסטרני</option>
+				<option value="JBTTlv">מכללת ג'ון ברייס תל אביב</option>
+				<option value="HColl">המכללה החרדית</option>
+				<option value="Extern">אקסטרני</option>
 			</select>
-			
-			
-<script type="text/javascript">
+
+
+			<script type="text/javascript">
 	$('#collage').change(function(){
 		
 		var collageId = $(this).val();
@@ -74,53 +74,46 @@
 			data: dataString,
 			success: function(ret){
 				// success
-				
 				var _ret = ret.trim();
 				var res = _ret.split(",");
-				
-				var options = '<option value="n">בחר קורס</option>';
-					for (var i = 0; i < res.length; i+=2) {
-		  					// success
-							options += '<option value="' + res[i+1] + '">' + res[i] + '</option>';
-		  				}
-						$("#courses").html(options);
-
+				var options = '<option value="n">בחר קורס</option>';			
+				for(var i =0;i < res.length-1; i+=2)
+					options += '<option value="' + res[i] + '">' + res[i+1]+ '</option>';
+				$("#courses").html(options);
+						
 			}
 		});
-
-		
-		
-		//alert(selectedRow.attr("id"));
-		//alert($(this).attr("id"));
-		//alert("Ravit is the queen");
 	});
 </script>
 		</div>
-		<div class="field" dir = "rtl">
-			בחר קורס:
-			<select required name = "Course" id="courses">
+		<div class="field" dir="rtl">
+			בחר קורס: <select required name="Course" id="courses">
 				<option value="empty">בחר</option>
 			</select>
 		</div>
 		<div class="field" dir="rtl">
-			<br><br>
-			<input type="checkbox" name="siteRegulations" value="regulation">קראתי את ה<a href="">תקנון</a><br>
+			<br>
+			<br> <input type="checkbox" name="siteRegulations"
+				value="regulation">קראתי את ה<a href="">תקנון</a><br>
 		</div>
-		
-		
-		
+
+
+
 		<div id="buttondiv">
 			<a href="www.google.com">
 				<div>
-					<input type="submit" value="אשר" class="buttons" style="color:white">
+					<input type="submit" value="אשר" class="buttons"
+						style="color: white">
 				</div>
 			</a> <a href="/Reg">
 				<div>
-					<input type="submit" value="בטל" class="buttons" style="color:white">
+					<input type="submit" value="בטל" class="buttons"
+						style="color: white">
 				</div>
 			</a> <a href="/Reg">
 				<div>
-					<input type="submit" value="נקה" class="buttons" style="color:white">
+					<input type="submit" value="נקה" class="buttons"
+						style="color: white">
 				</div>
 			</a>
 		</div>

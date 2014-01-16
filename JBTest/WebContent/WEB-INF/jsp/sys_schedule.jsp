@@ -22,7 +22,7 @@
 				<br>
 				<br>
 				<br>
-				<img src="https://dl.dropboxusercontent.com/u/229188151/schedual.png">
+				<%@ include file="calender.jsp" %>
 			</div>
 		</div>
 		<%@ include file="footer.jsp"%>
