@@ -3,7 +3,7 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<table id="todayTable" dir="rtl" width="50%" align="center" cellpadding="5" cellspacing="5">
+<table id="todayTable" dir="rtl" width="80%" align="center" cellpadding="5" cellspacing="5">
 	<tr bgcolor="#909090">
 		<td>ת.ז</td>
 		<td>שם משפחה</td>
