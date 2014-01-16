@@ -225,7 +225,6 @@ public class DBConnectionClass
 				conn = DriverManager.getConnection(conString);
 				stmt = conn.createStatement();
 				sql = "UPDATE manager SET passed='"+passYN+"' WHERE studentid="+id+" AND scheduledate="+ CalenderClass.getTodayFullDate();
-				System.out.println(sql);
 				stmt.executeUpdate(sql);
 
 				stmt.close();
