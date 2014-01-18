@@ -5,6 +5,6 @@
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/sqljdbc4.jar"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry exported="true" kind="lib" path="/Servers/Tomcat v7.0 Server at localhost-config"/>
+	<classpathentry kind="lib" path="/Servers/Tomcat v7.0 Server at localhost-config"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
