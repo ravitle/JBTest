@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 
-<table id="table" dir="rtl" width="50%" align="center" cellpadding="5" cellspacing="5">
+<table id="table" dir="rtl" width="80%" align="center" cellpadding="5" cellspacing="5">
 	<tr bgcolor="#909090">
 	<td>ת.ז</td>
 	<td>שם משפחה</td>
@@ -20,11 +20,14 @@
 <% for (int i=0; i < cancelledArr.size(); i++) { %>
 	<tr id="cancelRow<%=i%>">
 	<% tempC = cancelledArr.get(i); %>
-	<% for (int j=0; j<5; j++) { %>
+	<% for (int j=0; j<4; j++) { %>
 		<td>
 			<%= tempC[j] %>
  		</td>
    	<% } %>
+   	<td>
+   		<%=tempC[4].substring(0, 5) %>
+   	</td>
    	<td id="tableTD">
    		<input type="submit" value="בטל" id="cancel<%=i%>" class="cancelButton">
    		<input type="hidden" value="<%=cancelledArr.get(i)[0] %>" id="userId" />

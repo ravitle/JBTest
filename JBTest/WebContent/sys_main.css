@@ -32,18 +32,18 @@ body
 
 #page-container
 {
-	background-color: #f4f4f4;
-	background-size: 100%;
-	min-height:600px;
-	padding: 50px 50px;
-	margin: auto;
+
+	
+	
 	width: 1200px;
-	background-repeat: no-repeat;
-	padding: 0px 50px;
+	min-height:100%;
+	padding: 20px 50px;
 	margin: auto;
 	border-radius: 30px;
-	float: center;		
+	position: absolute;
+	clear:both;	
 			
+
 }
 
 
@@ -54,11 +54,7 @@ body
 {
 	width: 1200px;
 	height: 100px;
-	margin: 5px;	
-	border-radius: 10px;
-	
 	margin: auto;
-	
 }
 #headline
 {
@@ -67,13 +63,27 @@ body
 }
 #footer
 {
-	clear: both;
-	height: 100px;
 	width: 1200px;
+
+	height: 100px;
+
 	border-radius: 10px;
-	
+	position:static;
 	margin: auto;
 	
+	
+	
+}
+#mainContain
+{
+	background-color: #f4f4f4;
+	margin:auto;
+	padding-bottom: 20px;
+	padding: 20px 50px;
+	border-radius: 30px;
+	min-height:850px;
+	float:left;
+	padding-bottom: 20px;
 }
 
 #jbtest-logo
@@ -100,13 +110,14 @@ body
 #search-sys
 {
 	background-color: #F00000;
-	width: 1200px;
+	width: 1100px;
 	height: 50px;
 	border-radius: 10px;
 	float: right;
 	padding: 5px;
-	margin: 5px 5px;
+	margin: auto;
 	text-align: center;
+	clear:both;
 }
 
 #headline-reg
@@ -229,6 +240,7 @@ body
 	height: 350px;
 	text-align: center;
 	margin: 5px;
+	clear: left;
 }
 
 
@@ -297,6 +309,12 @@ body
 	
 }
 
+#studentUpComingTable
+{
+	background: white;
+	border:1px solid black;
+	text-align: center;
+}
 
 #studentConfirmTable
 {
@@ -333,6 +351,11 @@ body
 	float: right;
  }
  
+#sys-date
+ {
+	margin: 2px;
+	float: left;
+ } 
  
 #buttondiv
 {
@@ -403,18 +426,27 @@ body
 }
 
 /*--------------------*/
+#calender-sys
+{
+	text-align: center;
+	margin: 40px;
+}
 #calender
 {
-	width:1050;
+	text-align: center;
+	margin: 40px;
+}
+
+#calanderTable
+{
+	margin:auto;
 }
 #calenderCell
 {
-	 border:2px solid black;
-	
-}
-#calanderTable
-{
-	padding-bottom: 30px;
+	background-color:white;
+	border:2px solid black;
+	height:110px;
+	min-width: 100px;
 }
 #monthNextButton
 {
@@ -426,7 +458,5 @@ body
 }
 #calenderButton
 {
-	width:760px;
-	float:left;
 	margin:auto;
 }

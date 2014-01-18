@@ -1,13 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div id="regTest" >
 			<br> 
-			<br> 
+			
 			<h1 align="center">הרשמה למבחן</h1>
-			<div id="calenderButton">
-<input id="monthNextButton" type="submit" value="חודש הבא"> 
-<input id="monthPrevButton" type="submit" value="חודש קודם">
-</div> 
-<br><br>
+			 
+
 			<%@ include file="calender.jsp" %>
 			<br>
 			<div  align="center"><form id="test_reg_form" dir="rtl">

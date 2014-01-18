@@ -92,6 +92,15 @@
     <url-pattern>/aboutUs</url-pattern>
   </servlet-mapping>
   <servlet>
+  
+  <servlet-name>SysCourseInfoPageJSP</servlet-name>
+    <jsp-file>/WEB-INF/jsp/Sys_CourseInfo.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SysCourseInfoPageJSP</servlet-name>
+    <url-pattern>/Sys_CourseInfo</url-pattern>
+  </servlet-mapping>
+  <servlet>
  
       <servlet-name>MainSystemPageJSP</servlet-name>
     <jsp-file>/WEB-INF/jsp/sys_main.jsp</jsp-file>
@@ -102,15 +111,35 @@
   </servlet-mapping>
   <servlet>
 
-      <servlet-name>ConfirmStudentPageJSP</servlet-name>
-    <jsp-file>/WEB-INF/jsp/sys_confirmStudent.jsp</jsp-file>
+      <servlet-name>StudentPageJSP</servlet-name>
+    <jsp-file>/WEB-INF/jsp/sys_studentPage.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ConfirmStudentPageJSP</servlet-name>
-    <url-pattern>/Sys_Confirm</url-pattern>
+    <servlet-name>StudentPageJSP</servlet-name>
+    <url-pattern>/Sys_StudentPage</url-pattern>
   </servlet-mapping>
   <servlet>
  
+ 
+  <servlet-name>confirmRecordNewTest</servlet-name>
+    <jsp-file>/WEB-INF/jsp/confirmRecordNewTest.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>confirmRecordNewTest</servlet-name>
+    <url-pattern>/confirmRecordNewTest</url-pattern>
+  </servlet-mapping>
+  <servlet>
+ 
+  <servlet-name>updateRecordStudentDetails</servlet-name>
+    <jsp-file>/WEB-INF/jsp/updateRecordStudentDetails.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>updateRecordStudentDetails</servlet-name>
+    <url-pattern>/updateRecordStudentDetails</url-pattern>
+  </servlet-mapping>
+  <servlet>
+   
+
       <servlet-name>removeRecordFromCancelTable</servlet-name>
     <jsp-file>/WEB-INF/jsp/removeRecordFromCancelTable.jsp</jsp-file>
   </servlet>
