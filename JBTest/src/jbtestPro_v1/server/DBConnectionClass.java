@@ -947,7 +947,7 @@ public class DBConnectionClass
 		return codeList;
 	}
 	
-
+ 
 	public static void insertToSql(int id,String firstnameheb,String lastnameheb,String firstnameeng,String lastnameeng,String passw, String address,String city,String email,String phone1,String phone2,String collage,String course) 
 	{
 		Connection conn=null;
@@ -964,7 +964,10 @@ public class DBConnectionClass
 			String conString =sqlPath+instanceName+dataBaseName+user+password;
 			conn = DriverManager.getConnection(conString);
 			stmt = conn.createStatement();
-			sql= "INSERT INTO students"+"VALUES("+id+","+"'"+firstnameheb+"'"+","+"'"+lastnameheb+"','"+firstnameeng+"'"+","+"'"+lastnameeng+"'"+","+"'"+"'"+passw+"'"+","+"'"+address+"'"+","+"'"+city+"'"+","+"'"+email+"'"+","+"'"+phone1+"'"+","+"'"+phone2+"'"+","+"'"+collage+"','"+course+"')";			
+			sql= "INSERT INTO students"+"VALUES("+id+","+"'"+firstnameheb+"'"+","+"'"+lastnameheb
+					+"','"+firstnameeng+"'"+","+"'"+lastnameeng+"'"+","+"'"+"'"+passw
+					+"'"+","+"'"+address+"'"+","+"'"+city+"'"+","+"'"+email+"'"+","+"'"+phone1
+					+"'"+","+"'"+phone2+"'"+","+"'"+collage+"','"+course+"')";			
 			stmt.executeUpdate(sql);
 			conn.close();
 		} 
