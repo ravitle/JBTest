@@ -251,7 +251,7 @@ public class DBConnectionClass
 			String studID = Integer.toString(studentId);
 			sql = "SELECT code , name , scheduledate , hour "
 					+ "FROM manager m,tests t "
-					+ "WHERE m.testcode=t.code AND m.studentid="+studID+" AND m.scheduledate >= "+CalenderClass.getTodayFullDate();
+					+ "WHERE m.testcode=t.code AND m.studentid="+studID+" AND m.scheduledate >= "+CalenderClass.getTodayFullDate()+" AND m.passed IS NULL";
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){
 				String[] temp=new String[4];
@@ -396,6 +396,48 @@ public class DBConnectionClass
 		return toReturn;
 	}
 
+	public static Vector<String[]> getNamesOfRegStudInDate(String date)
+	{
+		Vector<String[]> toReturn=new  Vector<String[]>();
+		Connection conn=null;
+		Statement stmt = null;
+		String sql;
+		
+		
+		try {
+
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			String conString =sqlPath+instanceName+dataBaseName+user+password;
+			conn = DriverManager.getConnection(conString);
+			stmt = conn.createStatement();
+			sql = "SELECT s.firstnameheb , s.lastnameheb "
+					+ "FROM manager m , students s  "
+					+ "WHERE m.studentid=s.id AND  m.scheduledate='"+date+"T00:00:00.000'";
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next())
+			{
+				String[] temp=new String[2];
+				
+				temp[0] = rs.getString("firstnameheb");
+				temp[1] = rs.getString("lastnameheb");
+
+				toReturn.add(temp);
+
+			}
+			rs.close();
+			stmt.close();
+			conn.close();
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return toReturn;
+	}
 
 
 

@@ -1,7 +1,18 @@
 <%@ page import="jbtestPro_v1.server.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div id="calender">
+<%int currYear=CalenderClass.getTodayYear(); %>
+<%int currMonth=CalenderClass.getTodayMonth(); %>
+<%int startDay=CalenderClass.getFirstDayOfMonth(currYear, currMonth); %>
+<%int dayInMonth=CalenderClass.daysInMonth(currYear, currMonth); %>
 
+
+<center><%=CalenderClass.getHebMonthName(currMonth) %></center>
+<div id="calenderButton">
+	<input id="monthNextButton" type="submit" value="חודש הבא"> 
+	<input id="monthPrevButton" type="submit" value="חודש קודם">
+</div>
+<br><br>
 <table id="calanderTable"   dir="rtl" width="50%" align="center"  >
 	<tr bgcolor="#909090">
 	<td>א</td>
@@ -13,13 +24,8 @@
 	<td>ש</td>
 </tr>
 
-<%int currYear=CalenderClass.getTodayYear(); %>
-<%int currMonth=CalenderClass.getTodayMonth(); %>
-<%int startDay=CalenderClass.getFirstDayOfMonth(currYear, currMonth); %>
-<%int dayInMonth=CalenderClass.daysInMonth(currYear, currMonth); %>
 
 
-<%=CalenderClass.getHebMonthName(currMonth) %>
 <%int toPrint=1; %>
 <% for (int i=0; i<6; i++) { %>
 	<%if(toPrint>dayInMonth)break; %>

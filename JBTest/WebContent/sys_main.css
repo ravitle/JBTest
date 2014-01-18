@@ -34,12 +34,10 @@ body
 {
 	background-color: #f4f4f4;
 	background-size: 100%;
-	min-height:600px;
-	padding: 50px 50px;
-	margin: auto;
+	min-height:800px;
 	width: 1200px;
 	background-repeat: no-repeat;
-	padding: 0px 50px;
+	padding: 20px 50px;
 	margin: auto;
 	border-radius: 30px;
 	float: center;		
@@ -54,11 +52,9 @@ body
 {
 	width: 1200px;
 	height: 100px;
-	margin: 5px;	
 	border-radius: 10px;
-	
 	margin: auto;
-	
+	clear:both;
 }
 #headline
 {
@@ -74,6 +70,10 @@ body
 	
 	margin: auto;
 	
+}
+#mainContain
+{
+	clear:both;
 }
 
 #jbtest-logo
@@ -107,6 +107,7 @@ body
 	padding: 5px;
 	margin: 5px 5px;
 	text-align: center;
+	clear:both;
 }
 
 #headline-reg
@@ -229,6 +230,7 @@ body
 	height: 350px;
 	text-align: center;
 	margin: 5px;
+	clear: left;
 }
 
 
@@ -403,18 +405,27 @@ body
 }
 
 /*--------------------*/
+#calender-sys
+{
+	text-align: center;
+	margin: 40px;
+}
 #calender
 {
-	width:1050;
+	text-align: center;
+	margin: 40px;
+}
+
+#calanderTable
+{
+	margin:auto;
 }
 #calenderCell
 {
-	 border:2px solid black;
-	
-}
-#calanderTable
-{
-	padding-bottom: 30px;
+	background-color:white;
+	border:2px solid black;
+	height:130px;
+	min-width: 120px;
 }
 #monthNextButton
 {
@@ -426,7 +437,5 @@ body
 }
 #calenderButton
 {
-	width:760px;
-	float:left;
 	margin:auto;
 }
