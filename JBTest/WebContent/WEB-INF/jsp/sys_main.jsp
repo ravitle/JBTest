@@ -14,8 +14,10 @@
 		<script type="text/javascript" language="javascript" src="script_sys.js"></script>
 	</head>
 	<body>
-		<%@ include file="header.jsp"%>
+		
 		<div id="page-container">
+		<%@ include file="header.jsp"%>
+		<div id="mainContain">
 			<div id = "sys-user">
 				<h4 align ="right"><%=DBConnectionClass.staffName(currSys)%> מחובר</h4>
 			</div>
@@ -24,6 +26,7 @@
 			</div>
 			<%@ include file="sys_search.jsp"%>
 			<%@ include file="sys_navigation.jsp"%>
+			
 			<div id="todays-test-sys">
 				<br><br>
 				<h3>:נבחנים היום</h3>
@@ -40,7 +43,9 @@
 				<br>
 				<%@ include file="sys_cancelledTable.jsp"%>
 			</div>
+			</div>
+			<%@ include file="footer.jsp"%>
 		</div>
-		<%@ include file="footer.jsp"%>
+		
 	</body>
 </html>

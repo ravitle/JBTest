@@ -12,8 +12,10 @@
 <title>links</title>
 </head>
 <body>
-<%@ include file="header.jsp"%>
+
 <div id="pageContainer">
+<%@ include file="header.jsp"%>
+		<div id="mainContain">
 
 	<div id="mainTool" dir="rtl">
 	<h2>
@@ -32,8 +34,10 @@
 		<%@ include file="logo_links.jsp"%>
 	
 	</div>
+	</div>
+	<%@ include file="footer.jsp"%>
 </div>
-<%@ include file="footer.jsp"%>
+
 
 </body>
 </html>

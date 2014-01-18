@@ -16,8 +16,11 @@
 	<%String currStud=(String)session.getAttribute("currStudent"); %>
 	<%Vector <String[]> nextTest=new Vector<String[]>();
 	nextTest=	DBConnectionClass.getNextTestById(Integer.parseInt(currStud)); %>
-		<%@ include file="header.jsp"%>
+		
 		<div id="page-container">
+		<%@ include file="header.jsp"%>
+				<div id="mainContain">
+		
 			<%@ include file="studentSearch.jsp" %>
 			<%@ include file="studentNavigation.jsp"%>
 			
@@ -46,9 +49,9 @@
 
 			</table>
 			
-			
+			</div>
+					<%@ include file="footer.jsp"%>
 			
 		</div>
-		<%@ include file="footer.jsp"%>
 	</body>
 </html>
