@@ -19,13 +19,17 @@
 <body>
 	
 	
-	<%@ include file="header.jsp"%>
+	
 	<div id="page-container">
+		<%@ include file="header.jsp"%>
+				<div id="mainContain">
 		
 		<%@ include file="studentSearch.jsp" %>
 		<%@ include file="studentNavigation.jsp"%>
 		<%@ include file="studentMainContain.jsp" %>
+		</div>
+			<%@ include file="footer.jsp"%>
 	</div>
-	<%@ include file="footer.jsp"%>
+
 </body>
 </html>

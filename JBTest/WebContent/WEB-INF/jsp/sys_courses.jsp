@@ -13,8 +13,11 @@
 		<script type="text/javascript" language="javascript" src="script_sys.js"></script>
 	</head>
 	<body>
+		
+	<div id="page-container">
 		<%@ include file="header.jsp"%>
-		<div id="page-container">
+		<div id="mainContain">
+		
 			<%@ include file="sys_search.jsp"%>
 			<%@ include file="sys_navigation.jsp"%>
 			<br><br><br><br><br>
@@ -65,7 +68,10 @@
 			<form action="Sys_New_Course" method ="post" id="form">
 				<center><input type="submit" value="הוספת קורס חדש" id="createCourseButton"></center>
 			</form>
+			</div>
+			<%@ include file="footer.jsp"%>
+			
 		</div>
-		<%@ include file="footer.jsp"%>
+		
 	</body>
 </html>

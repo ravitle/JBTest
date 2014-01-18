@@ -12,7 +12,7 @@
 	<input id="monthNextButton" type="submit" value="חודש הבא"> 
 	<input id="monthPrevButton" type="submit" value="חודש קודם">
 </div>
-<br><br>
+<br>
 <table id="calanderTable"   dir="rtl" width="50%" align="center"  >
 	<tr bgcolor="#909090">
 	<td>א</td>

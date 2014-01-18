@@ -14,18 +14,23 @@
 		<script type="text/javascript" language="javascript" src="script_sys.js"></script>
 	</head>
 	<body>
-		<%@ include file="header.jsp"%>
-		<div id="page-container">
 		
+		<div id="page-container">
+
+		<%@ include file="header.jsp"%>
+		<div id="mainContain">
+
+		
+
 			<div id = "sys-user">
 				<h4 align ="right"><%=DBConnectionClass.staffName(currSys)%> מחובר</h4>
 			</div>
 			<div id = "sys-date">
-				<h4 align ="left"><%=CalenderClass.getTodayFullDate()%></h4>
+				<h4 align ="left"><%=CalenderClass.getTodayFullDate() %></h4>
 			</div>
 			<%@ include file="sys_search.jsp"%>
 			<%@ include file="sys_navigation.jsp"%>
-				<div id="mainContain">
+
 			<div id="todays-test-sys">
 				<br><br>
 				<h3>:נבחנים היום</h3>
@@ -43,7 +48,9 @@
 				<%@ include file="sys_cancelledTable.jsp"%>
 			</div>
 			</div>
+
+			<%@ include file="footer.jsp"%>
 		</div>
-		<%@ include file="footer.jsp"%>
+		
 	</body>
 </html>

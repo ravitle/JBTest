@@ -11,8 +11,10 @@
 		<script type="text/javascript" language="javascript" src="script_sys.js"></script>
 	</head>
 	<body>
-		<%@ include file="header.jsp"%>
+		
 		<div id="page-container">
+		<%@ include file="header.jsp"%>
+		<div id="mainContain">
 			<div id="construction-sys">
 				<br>
 				<br>
@@ -23,7 +25,9 @@
 				<br>
 				<center><a href="/Main">חזור לעמוד הראשי</a></center>
 			</div>	
+			</div>
+			<%@ include file="footer.jsp"%>
 		</div>
-		<%@ include file="footer.jsp"%>
+		
 	</body>
 </html>
