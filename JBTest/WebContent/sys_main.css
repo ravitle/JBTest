@@ -297,6 +297,12 @@ body
 	
 }
 
+#studentUpComingTable
+{
+	background: white;
+	border:1px solid black;
+	text-align: center;
+}
 
 #studentConfirmTable
 {
@@ -333,6 +339,11 @@ body
 	float: right;
  }
  
+#sys-date
+ {
+	margin: 2px;
+	float: left;
+ } 
  
 #buttondiv
 {

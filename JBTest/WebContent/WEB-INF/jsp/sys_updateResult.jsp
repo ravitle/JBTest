@@ -1,9 +1,15 @@
 <%@ page import="jbtestPro_v1.server.DBConnectionClass" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%	
-	String update = request.getParameter("updateReq");	
-%>
+<%
+ int id = 0;
+ if (request.getParameter("tid") != null){ 
+	id = Integer.parseInt(request.getParameter("tid").toString());
+} 
+
+ String[] students = DBConnectionClass.getStudentByID(id);
+ 
+ %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -21,28 +27,73 @@
 			<%@ include file="sys_search.jsp"%>
 			<%@ include file="sys_navigation.jsp"%>
 		
-			</br></br></br></br>
-			<form method ="post" id="form" name="studentupdateform" dir="rtl">
-				ת.ז:<input type="text" name="id" value=<%=update%>>
-				sr:<input type="text" name="sr" value="-">
-				שם משפחה:<input type="text" name="lnh" value=<%=DBConnectionClass.searchStudent(update).getlNameHeb()%>>
-				שם פרטי:<input type="text" name="pnh" value=<%=DBConnectionClass.searchStudent(update).getpNameHeb()%>>
-				</br></br>
-				שם משפחה(אנגלית):<input type="text" name="lne" value=<%=DBConnectionClass.searchStudent(update).getlNameEng()%>>
-				שם פרטי(אנגלית):<input type="text" name="pne" value=<%=DBConnectionClass.searchStudent(update).getpNameEng()%>>
-				אימייל:<input type="text" name="email" value=<%=DBConnectionClass.searchStudent(update).getEmail()%>>
-				</br></br>
-				כתובת:<input type="text" name="address" value=<%=DBConnectionClass.searchStudent(update).getAddress()%>>
-				עיר:<input type="text" name="city" value=<%=DBConnectionClass.searchStudent(update).getCity()%>>
-				טלפון:<input type="text" name="phone1" value="-">
-				פלאפון:<input type="text" name="phone2" value=<%=DBConnectionClass.searchStudent(update).getCellNum()%>>
-				</br></br>
-				קורס:<input type="text" name="course" value=<%=DBConnectionClass.searchStudent(update).getsCourses().getCourseId()%>>	
-				מכללה:<input type="text" name="collage" value=<%=DBConnectionClass.searchStudent(update).getCollage()%>>
-				מבחנים חינם:<input type="text" name="freetest" value=<%=DBConnectionClass.searchStudent(update).getFreeTest()%>>	
-				</br></br>
-				<center><input type="submit" value="עדכן פרטים" id="update"></center>
+			<br><br><br><br>
+						
+			<form method ="post" id="updateform" name="studentinfoform" dir="rtl">
+				ת.ז:<input readonly type="text" id="id" value=<%=students[0]%>>
+				sr:<input type="text" id="sr" value=<%=students[1]%>>
+				שם משפחה:<input type="text" id="lnh" value=<%=students[2]%>>
+				שם פרטי:<input type="text" id="pnh" value=<%=students[3]%>>
+				<br><br>
+				שם משפחה(אנגלית):<input type="text" id="lne" value=<%=students[4]%>>
+				שם פרטי(אנגלית):<input type="text" id="pne" value=<%=students[5]%>>
+				אימייל:<input type="text" id="email" value=<%=students[8]%>>
+				<br><br>
+				כתובת:<input type="text" id="address" value=<%=students[6]%>>
+				עיר:<input type="text" id="city" value=<%=students[7]%>>
+				טלפון:<input type="text" id="phone1" value=<%=students[9]%>>
+				פלאפון:<input type="text" id="phone2" value=<%=students[10]%>>
+				<br><br>
+				קורס:<input type="text" id="course" value=<%=students[12]%>>	
+				מכללה:<input type="text" id="collage" value=<%=students[11]%>>
+				מבחנים חינם:<input readonly type="text" id="freetest" value=<%=students[13]%>>	
+				<center><input type="submit" value="עדכן" id="updateStudent" class="updateStudentButton"></center>
+				<br><br>
 			</form>
+			
+			
+			<script type="text/javascript">
+				$('.updateStudentButton').click(function() {
+
+					var selectform =  $(this).parent().parent();
+					var id = selectform.find('#id').val();
+					var sr = selectform.find('#sr').val();
+					var lnameh = selectform.find('#lnh').val();
+					var pnameh = selectform.find('#pnh').val();
+					var lnamee = selectform.find('#lne').val();
+					var pnamee = selectform.find('#pne').val();
+					var email = selectform.find('#email').val();
+					var address = selectform.find('#address').val();
+					var city = selectform.find('#city').val();
+					var phone1 = selectform.find('#phone1').val();
+					var phone2 = selectform.find('#phone2').val();
+					var course = selectform.find('#course').val();
+					var collage = selectform.find('#collage').val();
+										
+					var dataString = 'sid=' + id + '&ssr=' + sr + '&slnh=' + lnameh + '&spnh=' + pnameh
+					+ '&slne=' + lnamee + '&spne=' + pnamee + '&semail=' + email + '&saddr=' + address
+					+ '&scity=' + city + '&sphone1=' + phone1 + '&sphone2=' + phone2
+					+ '&scourse=' + course + '&scollage=' + collage;
+					
+					
+					$.ajax({
+						async : false,
+						type : "POST",
+						url : "updateRecordStudentDetails",
+						data : dataString,
+						success : function(ret) {
+							// success
+
+							var _ret = ret.trim();
+							if (_ret == 1) {
+								alert("עודכן!");
+							}
+						}
+					});
+				});
+			</script>
+			
+			
 		</div>
 		<%@ include file="footer.jsp"%>
 	</body>
