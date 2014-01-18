@@ -1404,7 +1404,7 @@ public class DBConnectionClass
 	}
 	
 	
-	public static int compUserNameStudent(int userName, String pass)
+	public static int compUserNameStudent(String userName, String pass)
 	{
 
 		Connection conn=null;
@@ -1420,7 +1420,7 @@ public class DBConnectionClass
 			stmt = conn.createStatement();
 			sql = "SELECT id ,password FROM students WHERE id='"+userName+"'";
 			ResultSet rs = stmt.executeQuery(sql);
-			//System.out.println(sql);
+			System.out.println(sql);
 			while(rs.next()){
 				
 				String passW = rs.getString("password");
@@ -1492,6 +1492,12 @@ public class DBConnectionClass
 			return toReturn;
 
 	}
+	
+	
+	
+	
+	
+	
 		
 	
 	
