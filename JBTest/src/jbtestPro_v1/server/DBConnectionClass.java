@@ -501,8 +501,7 @@ public class DBConnectionClass
 				String conString =sqlPath+instanceName+dataBaseName+user+password;
 				conn = DriverManager.getConnection(conString);
 				stmt = conn.createStatement();
-				sql = "SELECT code "
-						+ "FROM tests ";
+				sql = "SELECT code FROM tests ";
 				
 				ResultSet rs = stmt.executeQuery(sql);
 				while(rs.next()){

@@ -59,9 +59,10 @@
 			success:function(ret){
 				var _ret=ret.trim();
 				if (_ret==1)
+					alert("הרשמה למבחן בוצעה בהצלחה!");
 			}
 		
-		alert("הרשמה למבחן בוצעה בהצלחה!")
+		
 		
 		
 		});
