@@ -460,3 +460,12 @@ body
 {
 	margin:auto;
 }
+#newStudent
+{
+	float: left;
+}
+#main-form input {
+	
+	margin-left :35px;
+	margin-bottom: 15px;
+}

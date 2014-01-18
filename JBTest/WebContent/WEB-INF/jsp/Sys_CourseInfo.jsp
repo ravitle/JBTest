@@ -23,9 +23,12 @@
 		<script type="text/javascript" language="javascript" src="/script_sys.js"></script>
 	</head>
 	<body>
-		<%@ include file="header.jsp"%>
+		
 		
 		<div id="page-container">
+		<%@ include file="header.jsp"%>
+				<div id="mainContain">
+		
 			<%@ include file="sys_search.jsp"%>
 			<%@ include file="sys_navigation.jsp"%>
 			
@@ -88,7 +91,8 @@
 			<center><input type="submit" value="עדכן" id="upDateButton"></center>
 			</form>
 			</div>
-			
+			</div>
 		<%@ include file="footer.jsp"%>
+		</div>
 	</body>
 </html>

@@ -3,23 +3,23 @@
 <%@ page import=" java.sql.*"%>
 
 
-<div>
+<div id="newStudent">
 	<div id="headline-reg">
 			<h2 id="headline">הרשמה לסטודנט חדש</h2>
-	</div>
+	</div >
 	<form id="main-form" method="post" name="studregi" dir="rtl">
-			<input type="text" id="sid">:ת.ז
-			<input type="text" id="firstname">:שם פרטי
-			<input type="text" id="lastname">:שם משפחה<br>
-			<input type="text" id="firstname(eng)">:שם פרטי (English)
-			<input type="text" id="lastname(eng)">:שם משפחה (English)<br>
-			<input type="text" id="password">:סיסמא
-			<input type="text" id="confirmpassword">:אישור סיסמא<br>
-			<input type="text" id="e-mail">:e-mail<br>
-			<input type="text" id="address">(English):כתובת מגורים
-			<input type="text" id="city">:עיר<br>
-			<input type="text" id="phone">:מספר טלפון
-			<input type="text" id="seconderyphone">:טלפון משני<br>
+			ת.ז:<input type="text" id="sid">
+			שם פרטי:<input type="text" id="firstname">
+			שם משפחה:<input type="text" id="lastname">
+			שם פרטי (English):<input type="text" id="firstname(eng)"> <br>
+			שם משפחה (English):<input type="text" id="lastname(eng)">
+			סיסמא:<input type="text" id="password">
+			אישור סיסמא:<input type="text" id="confirmpassword"><br>
+			e-mail:<input type="text" id="e-mail">
+			כתובת מגורים (English):<input type="text" id="address">
+			עיר:<input type="text" id="city"><br>
+			מספר טלפון:<input type="text" id="phone">
+			טלפון משני:<input type="text" id="seconderyphone">
 			בחר מכללה: <select required name="Collage" id="collage">
 				<option value="empty">בחר</option>
 				<option value="JBTJer">מכללת ג'ון ברייס ירושלים</option>
@@ -48,10 +48,7 @@
 			var id= selectform.find('#sid').val();
 			alert(id);
 			
-			}
-					
-			
-			)
+			});
 	
 			$('#collage').change(function(){
 		
@@ -78,4 +75,5 @@
 		});
 	});
 </script>
+
 </div>
