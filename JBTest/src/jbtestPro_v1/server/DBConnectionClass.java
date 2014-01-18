@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 
+import javax.xml.soap.Detail;
+
 import com.sun.crypto.provider.RSACipher;
 import com.sun.org.apache.regexp.internal.recompile;
 
@@ -1073,7 +1075,49 @@ public class DBConnectionClass
 		else return -1;
 		
 	}
+	
+	public static String[] getStudentHebDetail(int userName)
+	{
 
+		Connection conn=null;
+		Statement stmt = null;
+		String sql;
+		
+		String[] detail= {"",""};
+		try {
+			//to connect to the SQL server
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			String conString =sqlPath+instanceName+dataBaseName+user+password;
+			conn = DriverManager.getConnection(conString);
+			stmt = conn.createStatement();
+			sql = "SELECT firstnameheb,lastnameheb FROM students WHERE id='"+userName+"'";
+			ResultSet rs = stmt.executeQuery(sql);
+			//System.out.println(sql);
+			while(rs.next()){
+				detail[0]=rs.getString("firstnameheb");
+				detail[1]=rs.getString("lastnameheb");
+				
+			}
+			
+			rs.close();
+			stmt.close();
+			conn.close();
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return detail;
+		
+	}
+	
+	
+	
+	
 	public static int changePasswordCheck(String userName, String Email)
 	{
 
