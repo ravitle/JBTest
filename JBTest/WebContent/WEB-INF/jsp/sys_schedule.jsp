@@ -18,8 +18,12 @@
 			<%@ include file="sys_search.jsp"%>
 			<%@ include file="sys_navigation.jsp"%>
 			<div id="mainContain"><%@ include file="sysCalender.jsp" %></div>
+<<<<<<< HEAD
 			</div>
 		<%@ include file="footer.jsp"%>	
+=======
+			
+>>>>>>> 6095bede805dfd9fe5551cc2c27f034e3aa1fe2f
 		</div>
 		
 	</body>

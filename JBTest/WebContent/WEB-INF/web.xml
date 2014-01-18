@@ -92,6 +92,15 @@
     <url-pattern>/aboutUs</url-pattern>
   </servlet-mapping>
   <servlet>
+  
+  <servlet-name>SysCourseInfoPageJSP</servlet-name>
+    <jsp-file>/WEB-INF/jsp/Sys_CourseInfo.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SysCourseInfoPageJSP</servlet-name>
+    <url-pattern>/Sys_CourseInfo</url-pattern>
+  </servlet-mapping>
+  <servlet>
  
       <servlet-name>MainSystemPageJSP</servlet-name>
     <jsp-file>/WEB-INF/jsp/sys_main.jsp</jsp-file>
