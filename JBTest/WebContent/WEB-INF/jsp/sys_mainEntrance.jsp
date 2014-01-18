@@ -5,6 +5,7 @@
 <%	String user = request.getParameter("username");	
 	String password = request.getParameter("password");
 		
+	//DBConnectionClass.compUserStaff(user, password);	
 	// session
 	if (user != null && password != null)
 	{
