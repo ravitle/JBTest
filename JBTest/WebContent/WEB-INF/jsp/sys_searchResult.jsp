@@ -12,7 +12,7 @@
 	}	
 	else if( radio_checked.equals("course") && DBConnectionClass.searchByCourseCode(search) == null)
 	{
-		response.sendRedirect(redirectURL);
+		response.sendRedirect(redirectURL);  
 	}
 	
 	else if(radio_checked.equals("date") && DBConnectionClass.validDate(search) == -1)

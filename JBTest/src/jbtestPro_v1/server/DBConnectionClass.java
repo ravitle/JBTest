@@ -1317,54 +1317,31 @@ public class DBConnectionClass
 		
 	}
 	
-	public static int searchStudent(String sid)
+	public static StudentClass searchStudent(String sid)
 	{
 		if(sid == null)
 		{ 
-			return 0;
+			return null;
 		}
+
 		for(int i = 0;i < sid.length();i++)
 		{
-			if(sid.charAt(i) <'0'  || sid.charAt(i) > '9')
-				return 0;
+			if(sid.charAt(i) <'0' || sid.charAt(i) > '9')
+				return null;
 		}
 		if(sid.length() < 9 || sid.length() > 9)
-			return 0;
+			return null;
 
-		Connection conn=null;
-		Statement stmt = null;
-		String sql;
-		
-		int id=0;
-		try {
-			//to connect to the SQL server
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			String conString =sqlPath+instanceName+dataBaseName+user+password;
-			conn = DriverManager.getConnection(conString);
-			stmt = conn.createStatement();
-			sql = "SELECT id FROM students s WHERE s.id='"+sid+"'";
-			ResultSet rs = stmt.executeQuery(sql);
-		//	System.out.println(location);
-			id = rs.getInt(sid);
-			
-			rs.close();
-			
-			stmt.close();
-			conn.close();
-		} 
-		catch (ClassNotFoundException e) 
+		int id = Integer.parseInt(sid);
+		for (int i=0; i<db.getStudents().length ;i++)
 		{
-			e.printStackTrace();
-		} 
-		catch (SQLException e) 
-		{
-			e.printStackTrace();
+			if (db.getStudents()[i].getId() == id)
+				return db.getStudents()[i];
 		}
-		
-		return id;
-		
-		
+
+		return null;
 	}
+
 
 	public static Vector<String[]> coursesTable() 
 	{
