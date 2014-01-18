@@ -19,8 +19,8 @@
     <servlet-name>MainSysPageJSP</servlet-name>
     <url-pattern>/Sys_MainEntrance</url-pattern>
   </servlet-mapping>
+  
   <servlet>
- 
     <servlet-name>studentForgetPasswordJSP</servlet-name>
     <jsp-file>/WEB-INF/jsp/StudentForgetPassword.jsp</jsp-file>
   </servlet>
@@ -28,8 +28,18 @@
     <servlet-name>studentForgetPasswordJSP</servlet-name>
     <url-pattern>/StudentForgetPassword</url-pattern>
   </servlet-mapping>
+
   <servlet>
+    <servlet-name>insertStudent</servlet-name>
+    <jsp-file>/WEB-INF/jsp/insertStudentToDB.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>insertStudent</servlet-name>
+    <url-pattern>/insertStudentToDB</url-pattern>
+  </servlet-mapping>
   
+  
+    <servlet>  
       <servlet-name>passwordHasChangedJSP</servlet-name>
     <jsp-file>/WEB-INF/jsp/PasswordHasChanged.jsp</jsp-file>
   </servlet>
