@@ -48,10 +48,7 @@
 			var id= selectform.find('#sid').val();
 			alert(id);
 			
-			}
-					
-			
-			)
+			});
 	
 			$('#collage').change(function(){
 		
@@ -78,41 +75,5 @@
 		});
 	});
 </script>
-<<<<<<< HEAD
-		</div>
-		<div class="field" dir="rtl">
-			בחר קורס: <select required name="Course" id="courses">
-				<option value="empty">בחר</option>
-			</select>
-		</div>
-		<div class="field" dir="rtl">
-			<br>
-			<br> <input type="checkbox" name="siteRegulations"
-				value="regulation">קראתי את ה<a href="">תקנון</a><br>
-		</div>
 
-
-
-
-		<div id="buttondiv">
-			<a href="www.google.com">
-				<div>
-					<input type="submit" value="אשר" class="buttons"
-						style="color: white">
-				</div>
-			</a> <a href="/Reg">
-				<div>
-					<input type="submit" value="בטל" class="buttons"
-						style="color: white">
-				</div>
-			</a> <a href="/Reg">
-				<div>
-					<input type="submit" value="נקה" class="buttons"
-						style="color: white">
-				</div>
-			</a>
-		</div>
-	</form>
-=======
->>>>>>> 2224f2711393c844b408360e4d636ff5d8e314e6
 </div>
