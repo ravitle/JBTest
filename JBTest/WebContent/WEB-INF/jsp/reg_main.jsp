@@ -13,10 +13,15 @@
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 </head>
 <body style ="background: transparent">
-	<%@ include file="header.jsp"%>
+	
 		<div id="page-container">
+		<%@ include file="header.jsp"%>
+						<div id="mainContain">
+		
 		<%@ include file="contain.jsp"%>
+		</div>
+		<%@ include file="footer.jsp"%>
 	</div>
-	<%@ include file="footer.jsp"%>
+	
 </body>
 </html>
