@@ -132,8 +132,7 @@ public class CalenderClass extends DBConnectionClass
 		}
 	}
 	
-<<<<<<< HEAD
-=======
+
 	//****ravit******
 	
 
@@ -164,6 +163,5 @@ public class CalenderClass extends DBConnectionClass
 	}
 
 
->>>>>>> 60c2133d9e87b529f8c15a9b5c5875c5d516986e
 	
 }
