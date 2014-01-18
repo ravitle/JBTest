@@ -9,7 +9,7 @@
 	// session
 	if (user != null && password != null)
 	{
-		if (DBConnectionClass.compUserStaff(user, password) == 0)
+		if (DBConnectionClass.compUserNameStaff(user, password) == 0)
 		{
 			session.setAttribute("currSystem",user);
 			String redirectURL = "Sys_Main";

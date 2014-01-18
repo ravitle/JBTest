@@ -48,10 +48,7 @@
 			var id= selectform.find('#sid').val();
 			alert(id);
 			
-			}
-					
-			
-			)
+			});
 	
 			$('#collage').change(function(){
 		
@@ -78,4 +75,5 @@
 		});
 	});
 </script>
+
 </div>

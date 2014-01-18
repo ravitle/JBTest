@@ -31,7 +31,7 @@ public class DBConnectionClass
 			conn = DriverManager.getConnection(conString);
 			stmt = conn.createStatement();
 			sql = "SELECT id, firstnameheb, lastnameheb, hour FROM manager m, students s"
-					+ " WHERE m.studentid = s.id AND m.passed IS NULL AND m.scheduledate="+CalenderClass.getTodayFullDate();
+					+ " WHERE m.studentid = s.id AND m.passed IS NULL AND m.scheduledate='"+CalenderClass.getTodayFullDate()+"'";
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
@@ -76,7 +76,8 @@ public class DBConnectionClass
 			conn = DriverManager.getConnection(conString);
 			stmt = conn.createStatement();
 			sql = "SELECT id, firstnameheb, lastnameheb, scheduledate, hour FROM manager m, students s "
-					+ "WHERE m.studentid = s.id AND m.confirmed='no' AND m.scheduledate > "+CalenderClass.getTodayFullDate();
+					+ "WHERE m.studentid = s.id AND m.confirmed='no' AND m.cancelledTest='no'"
+					+ " AND m.scheduledate > '"+CalenderClass.getTodayFullDate()+"'";
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
@@ -122,7 +123,7 @@ public class DBConnectionClass
 			stmt = conn.createStatement();
 			sql = "SELECT id, firstnameheb, lastnameheb, scheduledate, hour "
 					+ "FROM manager m, students s "
-					+ "WHERE m.studentid = s.id AND m.cancelledTest='yes'AND m.scheduledate > "+CalenderClass.getTodayFullDate();
+					+ "WHERE m.studentid = s.id AND m.cancelledTest='yes'AND m.scheduledate > '"+CalenderClass.getTodayFullDate()+"'";
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
@@ -258,7 +259,7 @@ public class DBConnectionClass
 			conn = DriverManager.getConnection(conString);
 			stmt = conn.createStatement();
 			sql = "SELECT testcode, scheduledate, hour, secondshot FROM manager "
-					+ "WHERE studentid="+id +" AND confirmed='no' AND scheduledate > "+CalenderClass.getTodayFullDate();
+					+ "WHERE studentid="+id +" AND confirmed='no' AND scheduledate > '"+CalenderClass.getTodayFullDate()+"'";
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
@@ -304,7 +305,7 @@ public class DBConnectionClass
 				conn = DriverManager.getConnection(conString);
 				stmt = conn.createStatement();
 				sql = "SELECT testcode, scheduledate, hour, secondshot FROM manager "
-						+ "WHERE studentid="+id +" AND confirmed='yes' AND scheduledate >= "+CalenderClass.getTodayFullDate();
+						+ "WHERE studentid="+id +" AND confirmed='yes' AND scheduledate >= '"+CalenderClass.getTodayFullDate()+"'";
 				ResultSet rs = stmt.executeQuery(sql);
 				
 				while(rs.next()){
@@ -353,7 +354,7 @@ public class DBConnectionClass
 			stmt = conn.createStatement();
 			sql = "SELECT testcode , scheduledate , hour, passed ,secondshot "
 					+ "FROM manager "
-					+ "WHERE studentid="+studentId+" AND scheduledate < "+CalenderClass.getTodayFullDate();
+					+ "WHERE studentid="+studentId+" AND scheduledate < '"+CalenderClass.getTodayFullDate()+"'";
 			
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){
@@ -432,7 +433,7 @@ public class DBConnectionClass
 				String conString =sqlPath+instanceName+dataBaseName+user+password;
 				conn = DriverManager.getConnection(conString);
 				stmt = conn.createStatement();
-				sql = "UPDATE manager SET passed='"+passYN+"' WHERE studentid="+id+" AND scheduledate="+ CalenderClass.getTodayFullDate();
+				sql = "UPDATE manager SET passed='"+passYN+"' WHERE studentid="+id+" AND scheduledate='"+ CalenderClass.getTodayFullDate()+"'";
 				stmt.executeUpdate(sql);
 
 				stmt.close();
@@ -505,7 +506,7 @@ public class DBConnectionClass
 			String studID = Integer.toString(studentId);
 			sql = "SELECT code , name , scheduledate , hour "
 					+ "FROM manager m,tests t "
-					+ "WHERE m.testcode=t.code AND m.studentid="+studID+" AND m.scheduledate >= "+CalenderClass.getTodayFullDate()+" AND m.passed IS NULL";
+					+ "WHERE m.testcode=t.code AND m.studentid="+studID+" AND m.scheduledate >= '"+CalenderClass.getTodayFullDate()+"' AND m.passed IS NULL";
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){
 				String[] temp=new String[4];
@@ -549,7 +550,7 @@ public class DBConnectionClass
 			String studID = Integer.toString(studentId);
 			sql = "SELECT code , name , scheduledate , passed "
 					+ "FROM manager m,tests t "
-					+ "WHERE m.testcode=t.code AND m.studentid="+studID+" AND m.passed IS NOT NULL AND m.scheduledate <= "+CalenderClass.getTodayFullDate();
+					+ "WHERE m.testcode=t.code AND m.studentid="+studID+" AND m.passed IS NOT NULL AND m.scheduledate <= '"+CalenderClass.getTodayFullDate()+"'";
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){
 				String[] temp=new String[4];
@@ -1165,7 +1166,7 @@ public class DBConnectionClass
 		return codeList;
 	}
 	
-
+ 
 	public static void insertToSql(int id,String firstnameheb,String lastnameheb,String firstnameeng,String lastnameeng,String passw, String address,String city,String email,String phone1,String phone2,String collage,String course) 
 	{
 		Connection conn=null;
@@ -1178,7 +1179,10 @@ public class DBConnectionClass
 			String conString =sqlPath+instanceName+dataBaseName+user+password;
 			conn = DriverManager.getConnection(conString);
 			stmt = conn.createStatement();
-			sql= "INSERT INTO students"+"VALUES("+id+","+"'"+firstnameheb+"'"+","+"'"+lastnameheb+"','"+firstnameeng+"'"+","+"'"+lastnameeng+"'"+","+"'"+"'"+passw+"'"+","+"'"+address+"'"+","+"'"+city+"'"+","+"'"+email+"'"+","+"'"+phone1+"'"+","+"'"+phone2+"'"+","+"'"+collage+"','"+course+"')";			
+			sql= "INSERT INTO students"+"VALUES("+id+","+"'"+firstnameheb+"'"+","+"'"+lastnameheb
+					+"','"+firstnameeng+"'"+","+"'"+lastnameeng+"'"+","+"'"+"'"+passw
+					+"'"+","+"'"+address+"'"+","+"'"+city+"'"+","+"'"+email+"'"+","+"'"+phone1
+					+"'"+","+"'"+phone2+"'"+","+"'"+collage+"','"+course+"')";			
 			stmt.executeUpdate(sql);
 			conn.close();
 		} 
@@ -1404,7 +1408,7 @@ public class DBConnectionClass
 	}
 	
 	
-	public static int compUserNameStudent(int userName, String pass)
+	public static int compUserNameStudent(String userName, String pass)
 	{
 
 		Connection conn=null;
@@ -1420,7 +1424,7 @@ public class DBConnectionClass
 			stmt = conn.createStatement();
 			sql = "SELECT id ,password FROM students WHERE id='"+userName+"'";
 			ResultSet rs = stmt.executeQuery(sql);
-			//System.out.println(sql);
+			System.out.println(sql);
 			while(rs.next()){
 				
 				String passW = rs.getString("password");
@@ -1492,6 +1496,12 @@ public class DBConnectionClass
 			return toReturn;
 
 	}
+	
+	
+	
+	
+	
+	
 		
 	
 	

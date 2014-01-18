@@ -48,33 +48,10 @@
 			} %>
 	
 			
-			<% if (radio_checked.equals("course") && DBConnectionClass.searchByCourseCode(search) != null){ %>
-			<table id="courseTable" dir="rtl" width="50%" align="center" cellpadding="5" cellspacing="5">
-			<tr bgcolor="#909090">
-				<td>מס'</td>
-				<td>ת.ז</td>
-				<td>שם משפחה</td>
-				<td>שם פרטי</td>
-			</tr>
-						
-			<% for (int i=0; i<4; i++) { %>
-				<tr>
-					<% for (int j=0; j<4; j++) { %>
-						<td>
-							<% if(j==0){%>
-								<%=i+1%>
-							<% } %>
-							<% if(j!=0){%>
-								<%=DBConnectionClass.searchCourse(search)[i][j]%>	
- 							<% } %>
- 						</td>
- 					<% } %>
-				</tr>
-			<% } %>
+			<% if (radio_checked.equals("course") && DBConnectionClass.getCourseByCode(search) != null){ 
+				response.sendRedirect("Sys_CourseInfo?tcode=?tcode="+search);		
+			} %>	
 			
-			</table>
-			
-			<% } %>
 			
 			<% if (radio_checked.equals("date") && DBConnectionClass.validDate(search) != -1){ %>
 			<table id="dateTable" dir="rtl" width="50%" align="center" cellpadding="5" cellspacing="5">

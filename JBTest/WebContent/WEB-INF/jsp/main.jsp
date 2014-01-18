@@ -12,7 +12,7 @@
 	// session
 	if (user != null && password != null)
 	{
-		if (DBConnectionClass.compUserNameStudent( Integer.parseInt(user), password)==0)
+		if (DBConnectionClass.compUserNameStudent(user, password)==0)
 		{	
 			session.setAttribute("visitMainPage", 0);
 			session.setAttribute("currStudent", user);
