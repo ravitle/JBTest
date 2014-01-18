@@ -1223,8 +1223,6 @@ public class DBConnectionClass
 			{
 				sqlFreeTest="UPDATE students SET freetestnum=0 WHERE id="+id;
 			}
-			System.out.println(sqlFreeTest);
-			System.out.println(sql);
 			stmt.executeUpdate(sql);
 			stmt.executeUpdate(sqlFreeTest);
 			conn.close();
@@ -1291,18 +1289,18 @@ public class DBConnectionClass
 			stmt = conn.createStatement();
 			sql= "INSERT INTO schedule"+" VALUES("+"'"+date+" 00:00:00.000'"+","+"'"+"1"
 					+"')";		
-			System.out.println(sql);
+			
 			stmt.executeUpdate(sql);
 			conn.close();
 		} 
 		catch (ClassNotFoundException e) 
 		{
-			System.out.println("222");
+			
 			e.printStackTrace();
 		} 
 		catch (SQLException e) 
 		{
-			System.out.println("222");
+			
 			e.printStackTrace();
 		} 
 		
@@ -1320,7 +1318,7 @@ public class DBConnectionClass
 			conn = DriverManager.getConnection(conString);
 			stmt = conn.createStatement();
 			sql = "UPDATE schedule SET numoftests=numoftests+1 WHERE date='"+date+"T00:00:00.000'";
-			System.out.println(sql);
+			
 			stmt.executeUpdate(sql);
 			
 			stmt.close();
@@ -1328,12 +1326,12 @@ public class DBConnectionClass
 		} 
 		catch (ClassNotFoundException e) 
 		{
-			System.out.println("111");
+			
 			e.printStackTrace();
 		} 
 		catch (SQLException e) 
 		{
-			System.out.println("111");
+			
 			e.printStackTrace();
 		}
 	}
