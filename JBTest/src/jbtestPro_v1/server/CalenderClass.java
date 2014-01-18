@@ -132,5 +132,38 @@ public class CalenderClass extends DBConnectionClass
 		}
 	}
 	
+<<<<<<< HEAD
+=======
+	//****ravit******
+	
+
+	//change format of date 
+	public static String dateFormatWebToServer(String d)
+	{
+		String date="";
+		String[] temp=new String[3];
+		temp[0] = d.substring(0,2);
+		temp[1] = d.substring(3,5);
+		temp[2] = d.substring(6,d.length());
+		date = temp[2]+"-"+temp[1]+"-"+temp[0];
+	//	System.out.println(date);
+		return date;
+	}
+
+	//change format of date 
+	public static String dateFormatServerToWeb(String d)
+	{
+		String date="";
+		String[] temp=new String[3];
+		temp[0] = d.substring(0,4);
+		temp[1] = d.substring(5,7);
+		temp[2] = d.substring(8,d.length());
+		date = temp[2]+"."+temp[1]+"."+temp[0];
+	//	System.out.println(date);
+		return date;
+	}
+
+
+>>>>>>> 60c2133d9e87b529f8c15a9b5c5875c5d516986e
 	
 }

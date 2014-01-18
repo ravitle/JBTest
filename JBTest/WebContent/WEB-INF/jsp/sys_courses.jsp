@@ -1,4 +1,5 @@
-<%@ page import="jbtestPro_v1.server.DBConnectionClass" %>
+<%@page import="java.util.*" %>
+<%@ page import="jbtestPro_v1.server.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 
@@ -12,8 +13,11 @@
 		<script type="text/javascript" language="javascript" src="script_sys.js"></script>
 	</head>
 	<body>
+		
+	<div id="page-container">
 		<%@ include file="header.jsp"%>
-		<div id="page-container">
+		<div id="mainContain">
+		
 			<%@ include file="sys_search.jsp"%>
 			<%@ include file="sys_navigation.jsp"%>
 			<br><br><br><br><br>
@@ -24,35 +28,50 @@
 				<td>שם קורס</td>
 				<td>תאריך התחלה </td>
 				<td>תאריך סיום</td>
+				<td>כניסה</td>
 			</tr>
 			
-			<% String[][] courseArr = DBConnectionClass.courseInfo(); %>
-			<% int rows = DBConnectionClass.rowsNum(courseArr); %>
-			<% for (int i = 0; i < rows; i++) { %>
-				<tr>
-				<% for (int j = 0; j < 2; j++) { %>
-					<td>
-						<% if (j == 0) {%>
-						<a href="Sys_CourseUpdate?ccode=<%= courseArr[i][j] %>">
-							<%= courseArr[i][j] %>
-						</a>
-						<% } %>
-						<% if (j != 0) {%>
-							<%= courseArr[i][j] %>
-						<% } %>	
-			 		</td>
-			   	<% } %>
-				</tr>
+			<% Vector<String[]> courseArr = DBConnectionClass.coursesTable();
+			String[] tempC;%>
+			<%if(courseArr != null){ %>
+				<% for (int i = 0; i < courseArr.size(); i++) { %>
+					<tr id="courseRow<%=i%>">
+					<% tempC = courseArr.get(i);			
+					   for (int j=0; j<4; j++) { %>
+						<td>
+								<%= tempC[j] %>
+				 		</td>
+				 		<% } %>	
+				   	<td id="tableTD">
+				   		<input type="submit" value="כניסה" id="course<%=i%>" class="courseButton">
+				   		<input type="hidden" value="<%=courseArr.get(i)[0] %>" id="courseCode">
+				   		
+				   	
+				   	</td>
+					</tr>
+				<% } %>
 			<% } %>
-				
 			</table>
+			
+		<script type="text/javascript">
+		$('.courseButton').click(function(){
+			
+			// get the saba of the button
+			var selectedRow = $(this).parent().parent();
+			var courseCode = selectedRow.find('#courseCode').val();
+			window.location.href = 'Sys_CourseInfo?tcode=' + courseCode;
+		});
+		</script>
 			
 			</div>
 			<br><br>
 			<form action="Sys_New_Course" method ="post" id="form">
 				<center><input type="submit" value="הוספת קורס חדש" id="createCourseButton"></center>
 			</form>
+			</div>
+			<%@ include file="footer.jsp"%>
+			
 		</div>
-		<%@ include file="footer.jsp"%>
+		
 	</body>
 </html>

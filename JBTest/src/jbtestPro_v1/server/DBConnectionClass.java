@@ -1193,5 +1193,308 @@ public class DBConnectionClass
 		} 
 		
 	}
+	
+	//********ravit************////
+	public static Vector<String[]> CourseCode(String ccode)
+	{
+		Vector <String[]> courseList=new Vector<String[]>();
+		Connection conn=null;
+		Statement stmt = null;
+		String sql;
+		
+		try {
+			//to connect to the SQL server
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			String conString =sqlPath+instanceName+dataBaseName+user+password;
+			conn = DriverManager.getConnection(conString);
+			stmt = conn.createStatement();
+			sql = "SELECT id,firstnameheb,lastnameheb FROM students s WHERE s.course='"+ccode+"'";
+			ResultSet rs = stmt.executeQuery(sql);
+			//System.out.println(sql);
+
+			while(rs.next()){
+				
+				String[] temp=new String[3];
+				temp[0] = rs.getString("id");
+				temp[1] = rs.getString("firstnameheb");
+				temp[2] = rs.getString("lastnameheb");
+				courseList.add(temp);
+			}
+			rs.close();
+			stmt.close();
+			conn.close();
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return courseList;
+
+	}
+	
+	public static String[] getCourseByCode(String code) 
+	{
+		String[] course = new String[4];
+		Connection conn=null;
+		Statement stmt = null;
+		String sql;
+		
+		try {
+			//to connect to the SQL server
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			String conString =sqlPath+instanceName+dataBaseName+user+password;
+			conn = DriverManager.getConnection(conString);
+			stmt = conn.createStatement();
+			sql = "SELECT code ,name,startDate,endDate FROM courses c WHERE c.code='"+code+"'";
+			ResultSet rs = stmt.executeQuery(sql);
+
+			while(rs.next()){
+				
+					course[0] = rs.getString("code");
+					course[1] = rs.getString("name");
+					course[2] = CalenderClass.dateFormatServerToWeb(rs.getString("startDate"));
+					course[3] =  CalenderClass.dateFormatServerToWeb(rs.getString("endDate"));
+					
+			}
+			
+			rs.close();
+			stmt.close();
+			conn.close();
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return course;
+	}
+	
+
+	public static Vector<String[]> coursesTable() 
+	{
+		Vector <String[]> courseList=new Vector<String[]>();
+		Connection conn=null;
+		Statement stmt = null;
+		String sql;
+		
+		try {
+			//to connect to the SQL server
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			String conString =sqlPath+instanceName+dataBaseName+user+password;
+			conn = DriverManager.getConnection(conString);
+			stmt = conn.createStatement();
+			sql = "SELECT code ,name,startDate,endDate FROM courses c WHERE c.location='ירושלים'";
+			ResultSet rs = stmt.executeQuery(sql);
+
+			while(rs.next()){
+					String[] temp=new String[4];
+					
+					temp[0] = rs.getString("code");
+					temp[1] = rs.getString("name");
+					temp[2] = CalenderClass.dateFormatServerToWeb(rs.getString("startDate"));
+					temp[3] = CalenderClass.dateFormatServerToWeb(rs.getString("endDate"));
+					courseList.add(temp);
+			
+			}
+			
+			rs.close();
+			stmt.close();
+			conn.close();
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return courseList;
+	}
+	
+	public static int changePassword(String userName, String Email)
+	{
+
+		Connection conn=null;
+		Statement stmt = null;
+		String sql;
+		int flag = 0;
+
+		try {
+			//to connect to the SQL server
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			String conString =sqlPath+instanceName+dataBaseName+user+password;
+			conn = DriverManager.getConnection(conString);
+			stmt = conn.createStatement();
+			sql = "SELECT id ,password FROM students WHERE id='"+userName+"'";
+			ResultSet rs = stmt.executeQuery(sql);
+			//System.out.println(sql);
+			while(rs.next()){
+				
+				String emailS = rs.getString("email");
+				if(Email.equals(emailS))
+					flag = 1;
+
+			}
+			
+			rs.close();
+			stmt.close();
+			conn.close();
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		if (flag == 1)
+			return 0;
+		else return -1;
+	}
+	
+	public static int compUserNameStaff(String userName, String pass)
+	{
+		
+		Connection conn=null;
+		Statement stmt = null;
+		String sql;
+		int flag = 0;
+
+		try {
+			//to connect to the SQL server
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			String conString =sqlPath+instanceName+dataBaseName+user+password;
+			conn = DriverManager.getConnection(conString);
+			stmt = conn.createStatement();
+			sql = "SELECT username ,password FROM staff WHERE username='"+userName+"'";
+			ResultSet rs = stmt.executeQuery(sql);
+			//System.out.println(sql);
+			while(rs.next()){
+				
+				String passW = rs.getString("password");
+				if(passW.equals(pass))
+					flag = 1;
+
+			}
+			
+			rs.close();
+			stmt.close();
+			conn.close();
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		if (flag == 1)
+			return 0;
+		else return -1;
+
+	}
+	
+	
+	public static int compUserNameStudent(int userName, String pass)
+	{
+
+		Connection conn=null;
+		Statement stmt = null;
+		String sql;
+		int flag = 0;
+
+		try {
+			//to connect to the SQL server
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			String conString =sqlPath+instanceName+dataBaseName+user+password;
+			conn = DriverManager.getConnection(conString);
+			stmt = conn.createStatement();
+			sql = "SELECT id ,password FROM students WHERE id='"+userName+"'";
+			ResultSet rs = stmt.executeQuery(sql);
+			//System.out.println(sql);
+			while(rs.next()){
+				
+				String passW = rs.getString("password");
+				if(passW.equals(pass))
+					flag = 1;
+
+			}
+			
+			rs.close();
+			stmt.close();
+			conn.close();
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		if (flag == 1)
+			return 0;
+		else return -1;
+		
+	}
+	
+	
+	//------------history result page------------------
+	public static Vector<String[]>historyResult(String startD,String endD)
+	{
+		Vector<String[]> toReturn=new  Vector<String[]>();
+				
+		Connection conn=null;
+		Statement stmt = null;
+		String sql;
+				
+		try {
+		//to connect to the SQL server
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
+			String conString =sqlPath+instanceName+dataBaseName+user+password;
+			conn = DriverManager.getConnection(conString);
+			stmt = conn.createStatement();
+			sql = "SELECT studentid,lastnameheb,firstnameheb,scheduledate,hour,cost "
+						+ "FROM manager m, students s "
+						+ "WHERE m.studentid = s.id AND m.scheduledate >= '"+startD+"' AND m.scheduledate <= '"+endD+"'";
+			//	System.out.println(sql);
+
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next()){
+			String[] temp=new String[6];
+
+			temp[0] = rs.getString("studentid");
+			temp[1] = rs.getString("lastnameheb");
+			temp[2] = rs.getString("firstnameheb");
+			temp[3] = CalenderClass.dateFormatServerToWeb(rs.getString("scheduledate"));
+			temp[4] = rs.getString("hour");
+			temp[5] = rs.getString("cost");
+						
+			toReturn.add(temp);
+			}	
+			rs.close();
+			stmt.close();
+			conn.close();
+			} 
+			catch (ClassNotFoundException e){e.printStackTrace();} 
+			catch (SQLException e){e.printStackTrace();	}
+				
+			return toReturn;
+
+	}
+		
+	
+	
 
 }

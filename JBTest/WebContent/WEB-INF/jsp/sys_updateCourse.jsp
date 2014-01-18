@@ -16,8 +16,10 @@
 		<script type="text/javascript" language="javascript" src="script_sys.js"></script>
 	</head>
 	<body>
-		<%@ include file="header.jsp"%>
+		
 		<div id="page-container">
+		<%@ include file="header.jsp"%>
+		<div id="mainContain">
 			<%@ include file="sys_search.jsp"%>
 			<%@ include file="sys_navigation.jsp"%>
 			<div id="new-course-sys">
@@ -30,7 +32,9 @@
 					<input type="submit" value="עדכן" id="updateCourseButton">
 				</form>
 			</div>
+			</div>
+			<%@ include file="footer.jsp"%>
 		</div>
-		<%@ include file="footer.jsp"%>
+		
 	</body>
 </html>

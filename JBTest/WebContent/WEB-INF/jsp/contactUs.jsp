@@ -14,9 +14,10 @@
 <title>contactUs</title>
 </head>
 <body>
-	<%@ include file="header.jsp"%>
+	
 	<div id="pageContainer">
-
+	<%@ include file="header.jsp"%>
+		<div id="mainContain">
 
 		<div id="mainTool" dir="rtl">
 			<h2>
@@ -55,8 +56,10 @@
 				</table>
 			</div>
 		</div>
+		</div>
+		<%@ include file="footer.jsp"%>
 	</div>
-	<%@ include file="footer.jsp"%>
+	
 
 </body>
 </html>
