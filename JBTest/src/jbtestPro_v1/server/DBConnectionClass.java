@@ -7,9 +7,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Vector;
 
+import com.sun.crypto.provider.RSACipher;
+import com.sun.org.apache.regexp.internal.recompile;
+
 public class DBConnectionClass
 {
-	
 	
 	static final String user="user=margarita;";
 	static final String password="password=Mb123456";
@@ -229,7 +231,6 @@ public class DBConnectionClass
 
 	
 	
-	
 	//---------------------------------------------------------//
 	
 
@@ -318,6 +319,53 @@ public class DBConnectionClass
 
 
 	}
+	
+	
+	//------------history result page------------------
+		public static Vector<String[]>historyResult(String startD,String endD)
+		{
+			Vector<String[]> toReturn=new  Vector<String[]>();
+			
+			Connection conn=null;
+			Statement stmt = null;
+			String sql;
+			
+			try {
+				//to connect to the SQL server
+				Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+
+				String conString =sqlPath+instanceName+dataBaseName+user+password;
+				conn = DriverManager.getConnection(conString);
+				stmt = conn.createStatement();
+				sql = "SELECT studentid,lastnameheb,firstnameheb,scheduledate,hour,cost "
+						+ "FROM manager m, students s "
+						+ "WHERE m.studentid = s.id AND m.scheduledate >= '"+startD+"' AND m.scheduledate <= '"+endD+"'";
+			//	System.out.println(sql);
+
+				ResultSet rs = stmt.executeQuery(sql);
+				while(rs.next()){
+					String[] temp=new String[6];
+
+					temp[0] = rs.getString("studentid");
+					temp[1] = rs.getString("lastnameheb");
+					temp[2] = rs.getString("firstnameheb");
+					temp[3] = CalenderClass.dateFormatServerToWeb(rs.getString("scheduledate"));
+					temp[4] = rs.getString("hour");
+					temp[5] = rs.getString("cost");
+					
+					toReturn.add(temp);
+				}	
+				rs.close();
+				stmt.close();
+				conn.close();
+			} 
+			catch (ClassNotFoundException e){e.printStackTrace();} 
+			catch (SQLException e){e.printStackTrace();	}
+			
+			return toReturn;
+
+		}
+		
 	public static void getStudentByID(int studentId)
 	{
 		Connection conn=null;
@@ -397,14 +445,11 @@ public class DBConnectionClass
 	}
 
 
-
-
-
 	private static DBArrClass db = new DBArrClass();
 
 
 
-	/*	private DBConnectionClass()
+	private DBConnectionClass()
 	{
 
 	}
@@ -417,7 +462,7 @@ public class DBConnectionClass
 				db = new DBArrClass();
 			}
 		return theInstance;
-	}*/
+	}
 
 
 	public static String[][] searchHistory(String start,String end)
@@ -654,73 +699,7 @@ public class DBConnectionClass
 		return 0;
 	}
 
-	public static StudentClass searchStudent(String sid)
-	{
-		if(sid == null)
-		{ 
-			return null;
-		}
-
-		for(int i = 0;i < sid.length();i++)
-		{
-			if(sid.charAt(i) <'0' || sid.charAt(i) > '9')
-				return null;
-		}
-		if(sid.length() < 9 || sid.length() > 9)
-			return null;
-
-		int id = Integer.parseInt(sid);
-		for (int i=0; i<db.getStudents().length ;i++)
-		{
-			if (db.getStudents()[i].getId() == id)
-				return db.getStudents()[i];
-		}
-
-		return null;
-	}
-
-
-
-	public static CourseClass searchByCourseCode(String ccode)
-	{
-
-		if(ccode == null)
-			return null;
-		for(int i = 0;i < ccode.length();i++)
-			if(ccode.charAt(i) < '0' || ccode.charAt(i) > '9')
-				return null;
-		int id = Integer.parseInt(ccode);
-		for (int i=0; i<db.getCourse().length ;i++)
-		{
-			if (db.getCourse()[i].getCourseId() == id)
-				return db.getCourse()[i];
-		}
-
-		return null;
-	}
-
-	public static String[][] searchCourse(String scode)
-	{
-		int j = 0;
-		int code = Integer.parseInt(scode);
-		String[][] newArr = new String[20][20];
-
-		for(int i = 0; i < db.getStudents().length; i++)
-		{
-			if(db.getStudents()[i].getsCourses().getCourseId() == code)
-			{
-				if (j < newArr.length)
-				{
-					newArr[j][1] = Integer.toString(db.getStudents()[i].getId());
-					newArr[j][2] = db.getStudents()[i].getlNameHeb();
-					newArr[j][3] = db.getStudents()[i].getpNameHeb();
-				}
-				j++;
-			}
-		}
-		return newArr;
-
-	}
+	
 
 
 
@@ -751,47 +730,132 @@ public class DBConnectionClass
 
 
 
-	public static int compUserStaff(String userName, String password)
+	public static int compUserStaff(String userName, String pass)
 	{
-		int i;
-		for(i = 0; i < db.getStaff().length;i++)
-		{
-			String tempPass = db.getStaff()[i].getPassword();
-			String tempUser = (db.getStaff()[i].getUserName());
-			if(tempUser.equals(userName) && tempPass.equals(password))
-			{
-				return 0;
+		
+		Connection conn=null;
+		Statement stmt = null;
+		String sql;
+		int flag = 0;
+
+		try {
+			//to connect to the SQL server
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			String conString =sqlPath+instanceName+dataBaseName+user+password;
+			conn = DriverManager.getConnection(conString);
+			stmt = conn.createStatement();
+			sql = "SELECT username ,password FROM staff WHERE username='"+userName+"'";
+			ResultSet rs = stmt.executeQuery(sql);
+			//System.out.println(sql);
+			while(rs.next()){
+				
+				String passW = rs.getString("password");
+				if(passW.equals(pass))
+					flag = 1;
+
 			}
-		}	
-		return -1;
+			
+			rs.close();
+			stmt.close();
+			conn.close();
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		if (flag == 1)
+			return 0;
+		else return -1;
 
 	}
 
-	public static int compUserStudent(String userName, String password)
+	public static int compUserStudent(int userName, String pass)
 	{
-		int i;
-		for(i = 0; i < db.getStudents().length;i++)
+
+		Connection conn=null;
+		Statement stmt = null;
+		String sql;
+		int flag = 0;
+
+		try {
+			//to connect to the SQL server
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			String conString =sqlPath+instanceName+dataBaseName+user+password;
+			conn = DriverManager.getConnection(conString);
+			stmt = conn.createStatement();
+			sql = "SELECT id ,password FROM students WHERE id='"+userName+"'";
+			ResultSet rs = stmt.executeQuery(sql);
+			//System.out.println(sql);
+			while(rs.next()){
+				
+				String passW = rs.getString("password");
+				if(passW.equals(pass))
+					flag = 1;
+
+			}
+			
+			rs.close();
+			stmt.close();
+			conn.close();
+		} 
+		catch (ClassNotFoundException e) 
 		{
-			String temp=Integer.toString(db.getStudents()[i].getId());
-			if(temp.equals(userName) && db.getStudents()[i].getPassword().equals(password))
-				return 0;
-		}	
-		return -1;
+			e.printStackTrace();
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		if (flag == 1)
+			return 0;
+		else return -1;
+		
 	}
 
 	public static int changePasswordCheck(String userName, String Email)
 	{
 
-		int i;
-		for(i = 0; i < db.getStudents().length;i++)
+		Connection conn=null;
+		Statement stmt = null;
+		String sql;
+		int flag = 0;
+
+		try {
+			//to connect to the SQL server
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			String conString =sqlPath+instanceName+dataBaseName+user+password;
+			conn = DriverManager.getConnection(conString);
+			stmt = conn.createStatement();
+			sql = "SELECT id ,password FROM students WHERE id='"+userName+"'";
+			ResultSet rs = stmt.executeQuery(sql);
+			//System.out.println(sql);
+			while(rs.next()){
+				
+				String emailS = rs.getString("email");
+				if(Email.equals(emailS))
+					flag = 1;
+
+			}
+			
+			rs.close();
+			stmt.close();
+			conn.close();
+		} 
+		catch (ClassNotFoundException e) 
 		{
-
-			String temp=Integer.toString(db.getStudents()[i].getId());
-			if(temp.equals(userName) && db.getStudents()[i].getEmail().equals(Email))
-				return 0;
-
+			e.printStackTrace();
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
 		}
-		return -1;
+		if (flag == 1)
+			return 0;
+		else return -1;
 	}
 
 	public static int changeSysPasswordCheck(String userName, String Email)
@@ -818,7 +882,7 @@ public class DBConnectionClass
 	}
 
 
-
+/*
 	public static int rowsNum(String[][] arr)
 	{
 		int rows = 0;
@@ -838,7 +902,7 @@ public class DBConnectionClass
 	public static void setDb(DBArrClass dbArr) {
 		db = dbArr;
 	}
-
+*/
 
 	public static int validDate(String date)
 	{
@@ -917,15 +981,27 @@ public class DBConnectionClass
 		Connection conn=null;
 		Statement stmt = null;
 		String sql;
-		
+		String sqlFreeTest;
 		try {
 			//to connect to the SQL server
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			String conString =sqlPath+instanceName+dataBaseName+user+password;
 			conn = DriverManager.getConnection(conString);
 			stmt = conn.createStatement();
-			sql= "INSERT INTO students"+"VALUES("+id+","+"'"+firstnameheb+"'"+","+"'"+lastnameheb+"','"+firstnameeng+"'"+","+"'"+lastnameeng+"'"+","+"'"+"'"+passw+"'"+","+"'"+address+"'"+","+"'"+city+"'"+","+"'"+email+"'"+","+"'"+phone1+"'"+","+"'"+phone2+"'"+","+"'"+collage+"','"+course+"')";			
+			sql= "INSERT INTO students"+"VALUES("+id+","+"'"+firstnameheb+"'"+","+"'"+lastnameheb+"','"+firstnameeng
+					+"'"+","+"'"+lastnameeng+"'"+","+"'"+"'"+passw+"'"+","+"'"+address
+					+"'"+","+"'"+city+"'"+","+"'"+email+"'"+","+"'"+phone1+"'"+","+"'"+phone2+"'"+","+"'"+collage
+					+"','"+course+"')";	
+			if(collage.equals("jbt jer") || collage.equals("jbt tlv"))
+			{
+				sqlFreeTest="UPDATE students SET freetestnum=4 WHERE id="+id;
+			}
+			else
+			{
+				sqlFreeTest="UPDATE students SET freetestnum=0 WHERE id="+id;
+			}
 			stmt.executeUpdate(sql);
+			stmt.executeUpdate(sqlFreeTest);
 			conn.close();
 		} 
 		catch (ClassNotFoundException e) 
@@ -938,5 +1014,211 @@ public class DBConnectionClass
 		} 
 		
 	}
+	
+/*	public static int searchStudent(String sid)
+	{
+		if(sid == null)
+		{ 
+			return 0;
+		}
+		for(int i = 0;i < sid.length();i++)
+		{
+			if(sid.charAt(i) <'0'  || sid.charAt(i) > '9')
+				return 0;
+		}
+		if(sid.length() < 9 || sid.length() > 9)
+			return 0;
 
+		Connection conn=null;
+		Statement stmt = null;
+		String sql;
+		
+		try {
+			//to connect to the SQL server
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			String conString =sqlPath+instanceName+dataBaseName+user+password;
+			conn = DriverManager.getConnection(conString);
+			stmt = conn.createStatement();
+			sql = "SELECT id FROM students s WHERE s.id='"+sid+"'";
+			ResultSet rs = stmt.executeQuery(sql);
+		//	System.out.println(location);
+			id = rs.getInt(sid);
+			
+			rs.close();
+			stmt.close();
+			conn.close();
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return id;
+		
+		
+	}*/
+
+	public static Vector<String[]> coursesTable() 
+	{
+		Vector <String[]> courseList=new Vector<String[]>();
+		Connection conn=null;
+		Statement stmt = null;
+		String sql;
+		
+		try {
+			//to connect to the SQL server
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			String conString =sqlPath+instanceName+dataBaseName+user+password;
+			conn = DriverManager.getConnection(conString);
+			stmt = conn.createStatement();
+			sql = "SELECT code ,name,startDate,endDate FROM courses c WHERE c.location='ירושלים'";
+			ResultSet rs = stmt.executeQuery(sql);
+
+			while(rs.next()){
+					String[] temp=new String[4];
+					
+					temp[0] = rs.getString("code");
+					temp[1] = rs.getString("name");
+					temp[2] = CalenderClass.dateFormatServerToWeb(rs.getString("startDate"));
+					temp[3] = CalenderClass.dateFormatServerToWeb(rs.getString("endDate"));
+					courseList.add(temp);
+			
+			}
+			
+			rs.close();
+			stmt.close();
+			conn.close();
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return courseList;
+	}
+	
+	public static String[] getCourseByCode(String code) 
+	{
+		String[] course = new String[4];
+		Connection conn=null;
+		Statement stmt = null;
+		String sql;
+		
+		try {
+			//to connect to the SQL server
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			String conString =sqlPath+instanceName+dataBaseName+user+password;
+			conn = DriverManager.getConnection(conString);
+			stmt = conn.createStatement();
+			sql = "SELECT code ,name,startDate,endDate FROM courses c WHERE c.code='"+code+"'";
+			ResultSet rs = stmt.executeQuery(sql);
+
+			while(rs.next()){
+				
+					course[0] = rs.getString("code");
+					course[1] = rs.getString("name");
+					course[2] = CalenderClass.dateFormatServerToWeb(rs.getString("startDate"));
+					course[3] =  CalenderClass.dateFormatServerToWeb(rs.getString("endDate"));
+					
+			}
+			
+			rs.close();
+			stmt.close();
+			conn.close();
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return course;
+	}
+		
+	
+	
+
+	public static Vector<String[]> CourseCode(String ccode)
+	{
+		Vector <String[]> courseList=new Vector<String[]>();
+		Connection conn=null;
+		Statement stmt = null;
+		String sql;
+		
+		try {
+			//to connect to the SQL server
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			String conString =sqlPath+instanceName+dataBaseName+user+password;
+			conn = DriverManager.getConnection(conString);
+			stmt = conn.createStatement();
+			sql = "SELECT id,firstnameheb,lastnameheb FROM students s WHERE s.course='"+ccode+"'";
+			ResultSet rs = stmt.executeQuery(sql);
+			//System.out.println(sql);
+
+			while(rs.next()){
+				
+				String[] temp=new String[3];
+				temp[0] = rs.getString("id");
+				temp[1] = rs.getString("firstnameheb");
+				temp[2] = rs.getString("lastnameheb");
+				courseList.add(temp);
+			}
+			rs.close();
+			stmt.close();
+			conn.close();
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return courseList;
+
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	public static String[][] searchCourse(String scode)
+	{
+		int j = 0;
+		int code = Integer.parseInt(scode);
+		String[][] newArr = new String[20][20];
+
+		for(int i = 0; i < db.getStudents().length; i++)
+		{
+			if(db.getStudents()[i].getsCourses().getCourseId() == code)
+			{
+				if (j < newArr.length)
+				{
+					newArr[j][1] = Integer.toString(db.getStudents()[i].getId());
+					newArr[j][2] = db.getStudents()[i].getlNameHeb();
+					newArr[j][3] = db.getStudents()[i].getpNameHeb();
+				}
+				j++;
+			}
+		}
+		return newArr;
+
+	}
+	
+	
+	
+	
 }
