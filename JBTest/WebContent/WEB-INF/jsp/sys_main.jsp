@@ -16,6 +16,7 @@
 	<body>
 		<%@ include file="header.jsp"%>
 		<div id="page-container">
+		
 			<div id = "sys-user">
 				<h4 align ="right"><%=DBConnectionClass.staffName(currSys)%> מחובר</h4>
 			</div>
@@ -24,6 +25,7 @@
 			</div>
 			<%@ include file="sys_search.jsp"%>
 			<%@ include file="sys_navigation.jsp"%>
+				<div id="mainContain">
 			<div id="todays-test-sys">
 				<br><br>
 				<h3>:נבחנים היום</h3>
@@ -39,6 +41,7 @@
 				<h3>:נרשמים שמחכים לאישור ביטול</h3>
 				<br>
 				<%@ include file="sys_cancelledTable.jsp"%>
+			</div>
 			</div>
 		</div>
 		<%@ include file="footer.jsp"%>

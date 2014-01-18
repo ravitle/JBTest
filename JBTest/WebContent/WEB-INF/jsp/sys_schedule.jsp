@@ -15,15 +15,8 @@
 		<div id="page-container">
 			<%@ include file="sys_search.jsp"%>
 			<%@ include file="sys_navigation.jsp"%>
-			<div id="schedule-sys">
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<br>
-				<%@ include file="calender.jsp" %>
-			</div>
+			<div id="mainContain"><%@ include file="sysCalender.jsp" %></div>
+			
 		</div>
 		<%@ include file="footer.jsp"%>
 	</body>
