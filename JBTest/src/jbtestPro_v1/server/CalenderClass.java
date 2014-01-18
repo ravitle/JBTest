@@ -81,7 +81,7 @@ public class CalenderClass extends DBConnectionClass
 	public static int getNumOfRegStudent(String day,String month,String year)
 
 	{
-		int toReturn=0;
+		int toReturn=-1;
 		String fullDate=""+year+"-"+month+"-"+day;
 		toReturn=getNumOfRegStudInDate(fullDate);	
 		return toReturn;	

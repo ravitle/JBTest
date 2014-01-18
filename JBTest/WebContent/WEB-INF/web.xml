@@ -207,8 +207,24 @@
   </servlet-mapping>
   <servlet>
  
+  <servlet-name>GetTestJSP</servlet-name>
+    <jsp-file>/WEB-INF/jsp/getTest.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetTestJSP</servlet-name>
+    <url-pattern>/getTestList</url-pattern>
+  </servlet-mapping>
+  <servlet>
  
- 
+      
+      <servlet-name>InsertManager</servlet-name>
+    <jsp-file>/WEB-INF/jsp/insertNewTest.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InsertManager</servlet-name>
+    <url-pattern>/insertManager</url-pattern>
+  </servlet-mapping>
+  <servlet>
  
  
       <servlet-name>ScheduleSystemPageJSP</servlet-name>
@@ -254,6 +270,25 @@
     <servlet-name>ConstructionSystemPageJSP</servlet-name>
     <url-pattern>/Sys_Construction</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>UpdateDetailsJSP</servlet-name>
+    <jsp-file>/WEB-INF/jsp/studentUpdateDetails.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateDetailsJSP</servlet-name>
+    <url-pattern>/studentUpdateDetail</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>UpdateDetailsInDBJSP</servlet-name>
+    <jsp-file>/WEB-INF/jsp/updateStudentInDB.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateDetailsInDBJSP</servlet-name>
+    <url-pattern>/studentUpdateInDB</url-pattern>
+  </servlet-mapping>
+  
  
   <servlet>
     <servlet-name>studentCancelTest</servlet-name>
