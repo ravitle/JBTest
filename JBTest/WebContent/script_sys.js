@@ -11,5 +11,8 @@ $(document).ready(function(){
 	$("#cancelform").click(function(){
 		$("#form").submit();
 	});
+	$("#confirmButton").click(function(){
+		$("#form").submit();
+	});
 });
 

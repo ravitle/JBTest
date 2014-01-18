@@ -1,3 +1,4 @@
+<%@page import="java.util.Vector"%>
 <%@ page import="jbtestPro_v1.server.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div id="calender">
@@ -5,14 +6,13 @@
 <%int currMonth=CalenderClass.getTodayMonth(); %>
 <%int startDay=CalenderClass.getFirstDayOfMonth(currYear, currMonth); %>
 <%int dayInMonth=CalenderClass.daysInMonth(currYear, currMonth); %>
-
-
+<br><br>
 <center><%=CalenderClass.getHebMonthName(currMonth) %></center>
 <div id="calenderButton">
 	<input id="monthNextButton" type="submit" value="חודש הבא"> 
 	<input id="monthPrevButton" type="submit" value="חודש קודם">
 </div>
-<br><br>
+<br>
 <table id="calanderTable"   dir="rtl" width="50%" align="center"  >
 	<tr bgcolor="#909090">
 	<td>א</td>
@@ -23,6 +23,9 @@
 	<td>ו</td>
 	<td>ש</td>
 </tr>
+
+
+
 
 
 
@@ -42,17 +45,19 @@
 			<%
 			String tempDate=Integer.toString(currYear)+"-"+Integer.toString(currMonth)+"-"+temp;
 			int testInDay=DBConnectionClass.getNumOfRegStudInDate(tempDate);
+			Vector<String[]> names=DBConnectionClass.getNamesOfRegStudInDate(tempDate);
 			
-			for(int n=0;n<3;n++){
+			
+			for(int n=0;n<testInDay;n++){
 				if(j!=0 && j!=5 && j!=6){
-				if(testInDay>0)
-				{%>
-					<a id="takenPlace" style="background-color:red;">תפוס</a><br>
-					<%testInDay--;
-				}else{%>
-					<a id="freePlace" style="background-color:#7CFC00;">פנוי</a><br>
-				<%}
-				} 
+				%>
+					
+					<%=names.get(n)[0] %>
+					<%=names.get(n)[1] %>
+					
+					
+				<br>
+				<%} 
 			}
 			
 			%>

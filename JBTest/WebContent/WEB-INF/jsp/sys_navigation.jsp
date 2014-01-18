@@ -6,7 +6,7 @@
 				<a href="Sys_Main" >דף הבית </a>
 				<form action="Sys_Update" method ="get" id="form" name="updateform" dir="rtl">
 					<h3>
-						עדכון פרטי סטודנט: <input type="text" name="updateReq">
+						עדכון פרטי סטודנט: <input type="text" name="tid">
 						<input type="submit" value="עדכן" id="updateButton" style="color:white">
 					</h3>
 				</form>
