@@ -549,7 +549,7 @@ public class DBConnectionClass
 			String studID = Integer.toString(studentId);
 			sql = "SELECT code , name , scheduledate , passed "
 					+ "FROM manager m,tests t "
-					+ "WHERE m.testcode=t.code AND m.studentid="+studID+" AND m.scheduledate < "+CalenderClass.getTodayFullDate();
+					+ "WHERE m.testcode=t.code AND m.studentid="+studID+" AND m.passed IS NOT NULL AND m.scheduledate <= "+CalenderClass.getTodayFullDate();
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){
 				String[] temp=new String[4];
