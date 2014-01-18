@@ -1,3 +1,4 @@
+<%@page import="jbtestPro_v1.server.CalenderClass"%>
 <%@ page import="jbtestPro_v1.server.DBConnectionClass" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
@@ -22,7 +23,11 @@
 	<% tempC = cancelledArr.get(i); %>
 	<% for (int j=0; j<4; j++) { %>
 		<td>
-			<%= tempC[j] %>
+			<%if (j==3){ %>
+				<%=CalenderClass.dateFormatServerToWeb(tempC[j]) %>
+			<%}else{%>
+				<%= tempC[j] %>
+			<%} %>
  		</td>
    	<% } %>
    	<td>

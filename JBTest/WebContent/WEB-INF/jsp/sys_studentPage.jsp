@@ -1,3 +1,4 @@
+<%@page import="jbtestPro_v1.server.CalenderClass"%>
 <%@ page import="jbtestPro_v1.server.DBConnectionClass" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
@@ -57,7 +58,7 @@
 			
 			<br>
 			<center><h4> מבחן לאשר </h4></center>
-			<table id="studentConfirmTable" dir="rtl" width="50%" align="center" cellpadding="5" cellspacing="5">
+			<table id="studentConfirmTable" dir="rtl" width="80%" align="center" cellpadding="5" cellspacing="5">
 			<tr bgcolor="#909090">
 				<td>מבחן</td>
 				<td>תאריך</td>
@@ -77,7 +78,13 @@
 					<% temp = newArr.get(i); 
 		 			for (int j=0; j<4; j++) { %>
 						<td>
-							<%= temp[j] %>			
+								<%if (j==1){ %>
+									<%=CalenderClass.dateFormatServerToWeb(temp[j]) %>
+								<%}else if(j==2){ %>
+									<%=temp[2].substring(0, 5) %>
+								<%}else{%>
+									<%= temp[j] %>
+								<%} %>			
  						</td>
    					<% } %>
    					<td id="tableTD">
@@ -92,7 +99,7 @@
 
 
 			<center><h4> מבחנים קרובים </h4></center>
-			<table id="studentUpComingTable" dir="rtl" width="50%" align="center" cellpadding="5" cellspacing="5">
+			<table id="studentUpComingTable" dir="rtl" width="80%" align="center" cellpadding="5" cellspacing="5">
 			<tr bgcolor="#909090">
 				<td>מבחן</td>
 				<td>תאריך</td>
@@ -109,7 +116,13 @@
 					<% tempUpC = upCArr.get(i); 
 		 			for (int j=0; j<4; j++) { %>
 						<td id="tableUC">
-							<%= tempUpC[j] %>			
+							<%if (j==1){ %>
+								<%=CalenderClass.dateFormatServerToWeb(tempUpC[j]) %>
+							<%}else if(j==2){ %>
+								<%=tempUpC[2].substring(0, 5) %>
+							<%}else{%>
+								<%= tempUpC[j] %>
+							<%} %>			
  						</td>
    					<% } %>
 				</tr>
@@ -120,7 +133,7 @@
 			
 
 			<center><h4> מבחנים קודמים </h4></center>
-			<table id="studentPastTable" dir="rtl" width="50%" align="center" cellpadding="5" cellspacing="5">
+			<table id="studentPastTable" dir="rtl" width="80%" align="center" cellpadding="5" cellspacing="5">
 			<tr bgcolor="#909090">
 				<td>מבחן</td>
 				<td>תאריך</td>
@@ -136,10 +149,16 @@
 			<% if (prevArr != null){ 
    				for (int i=0; i < prevArr.size(); i++) { %>
 					<tr>
-					<% temp = prevArr.get(i); 
+					<% temprev = prevArr.get(i); 
 		 			for (int j=0; j<5; j++) { %>
 						<td>
-							<%= temp[j] %>			
+							<%if (j==1){ %>
+								<%=CalenderClass.dateFormatServerToWeb(temprev[j]) %>
+							<%}else if(j==2){ %>
+								<%=temprev[2].substring(0, 5) %>
+							<%}else{%>
+								<%= temprev[j] %>
+							<%} %>			
  						</td>
    					<% } %>
 				</tr>
