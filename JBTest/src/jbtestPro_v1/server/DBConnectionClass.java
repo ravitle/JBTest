@@ -705,15 +705,15 @@ public class DBConnectionClass
 
 
 
-	private static DBArrClass db = new DBArrClass();
+	public static DBArrClass db = new DBArrClass();
 
 
 
-	private DBConnectionClass()
+	public DBConnectionClass()
 	{
 
 	}
-	private static DBConnectionClass theInstance;
+	public static DBConnectionClass theInstance;
 	public static DBConnectionClass getInstance()
 	{
 		if (theInstance==null)
