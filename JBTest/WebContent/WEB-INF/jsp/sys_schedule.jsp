@@ -10,21 +10,17 @@
 		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 		<script type="text/javascript" language="javascript" src="script_sys.js"></script>
 	</head>
-	<body>
-		
-		<div id="page-container">
+	<body>	
+	<div id="page-container">
 		<%@ include file="header.jsp"%>
 			<div id="mainContain">
 			<%@ include file="sys_search.jsp"%>
 			<%@ include file="sys_navigation.jsp"%>
-			<div id="mainContain"><%@ include file="sysCalender.jsp" %></div>
-<<<<<<< HEAD
+			<%@ include file="sysCalender.jsp" %>
+
 			</div>
 		<%@ include file="footer.jsp"%>	
-=======
-			
->>>>>>> 6095bede805dfd9fe5551cc2c27f034e3aa1fe2f
-		</div>
+	</div>
 		
 	</body>
 </html>

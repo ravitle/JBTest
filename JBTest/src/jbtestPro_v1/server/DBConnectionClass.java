@@ -1199,24 +1199,35 @@ public class DBConnectionClass
 		return codeList;
 	}
 	
- 
+
 	public static void insertToSql(int id,String firstnameheb,String lastnameheb,String firstnameeng,String lastnameeng,String passw, String address,String city,String email,String phone1,String phone2,String collage,String course) 
 	{
 		Connection conn=null;
 		Statement stmt = null;
 		String sql;
-		
+		String sqlFreeTest;
 		try {
 			//to connect to the SQL server
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			String conString =sqlPath+instanceName+dataBaseName+user+password;
 			conn = DriverManager.getConnection(conString);
 			stmt = conn.createStatement();
-			sql= "INSERT INTO students"+"VALUES("+id+","+"'"+firstnameheb+"'"+","+"'"+lastnameheb
-					+"','"+firstnameeng+"'"+","+"'"+lastnameeng+"'"+","+"'"+"'"+passw
-					+"'"+","+"'"+address+"'"+","+"'"+city+"'"+","+"'"+email+"'"+","+"'"+phone1
-					+"'"+","+"'"+phone2+"'"+","+"'"+collage+"','"+course+"')";			
+			sql= "INSERT INTO students "+"VALUES ( "+id+","+"'',"+"'"+firstnameheb+"'"+","+"'"+lastnameheb+"','"+firstnameeng
+					+"'"+","+"'"+lastnameeng+"'"+","+"'"+passw+"'"+","+"'"+address
+					+"'"+","+"'"+city+"'"+","+"'"+email+"'"+","+"'"+phone1+"'"+","+"'"+phone2+"'"+","+"'"+collage
+					+"','"+course+"',0)";	
+			if(collage.equals("JBTJer") || collage.equals("JBTTlv"))
+			{
+				sqlFreeTest="UPDATE students SET freetestnum=4 WHERE id="+id;
+			}
+			else
+			{
+				sqlFreeTest="UPDATE students SET freetestnum=0 WHERE id="+id;
+			}
+			System.out.println(sqlFreeTest);
+			System.out.println(sql);
 			stmt.executeUpdate(sql);
+			stmt.executeUpdate(sqlFreeTest);
 			conn.close();
 		} 
 		catch (ClassNotFoundException e) 
@@ -1628,14 +1639,6 @@ public class DBConnectionClass
 			return toReturn;
 
 	}
-	
-	
-	
-	
-	
-	
-		
-	
 	
 
 }
