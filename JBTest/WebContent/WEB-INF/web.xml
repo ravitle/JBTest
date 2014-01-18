@@ -209,8 +209,8 @@
     <servlet-name>ScheduleSystemPageJSP</servlet-name>
     <url-pattern>/Sys_Schedule</url-pattern>
   </servlet-mapping>
-  
   <servlet>
+ 
       <servlet-name>CourseSystemPageJSP</servlet-name>
     <jsp-file>/WEB-INF/jsp/sys_courses.jsp</jsp-file>
   </servlet>
@@ -227,17 +227,6 @@
     <servlet-name>UpdateCoursePageJSP</servlet-name>
     <url-pattern>/Sys_CourseUpdate</url-pattern>
   </servlet-mapping>
- 
-  
-  <servlet>
-    <servlet-name>SysCourseInfoPageJSP</servlet-name>
-    <jsp-file>/WEB-INF/jsp/Sys_CourseInfo.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>SysCourseInfoPageJSP</servlet-name>
-    <url-pattern>/Sys_CourseInfo</url-pattern>
-  </servlet-mapping>
- 
  
   <servlet>
     <servlet-name>CreateCoursePageJSP</servlet-name>

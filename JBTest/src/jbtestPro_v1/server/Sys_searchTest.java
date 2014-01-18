@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class Sys_searchTest {
 
-	/*@Test
+	@Test
 	public void testSearchStudentNull() {
 		DBConnectionClass db = new DBConnectionClass();
 		StudentClass result = db.searchStudent(" ");
@@ -59,5 +59,5 @@ public class Sys_searchTest {
 		int result = db.validDate("2.4.12");
 		assertEquals(-1,result);
 	}
-*/
+
 }

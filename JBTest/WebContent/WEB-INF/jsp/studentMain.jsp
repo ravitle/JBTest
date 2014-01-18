@@ -20,7 +20,7 @@
 	
 	
 	<%@ include file="header.jsp"%>
-	<div id="page-container"> 
+	<div id="page-container">
 		
 		<%@ include file="studentSearch.jsp" %>
 		<%@ include file="studentNavigation.jsp"%>

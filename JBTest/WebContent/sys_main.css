@@ -33,14 +33,14 @@ body
 #page-container
 {
 	background-color: #f4f4f4;
-	background-size: 100%;
-	min-height:800px;
+	
 	width: 1200px;
-	background-repeat: no-repeat;
+	min-height:100%;
 	padding: 20px 50px;
 	margin: auto;
 	border-radius: 30px;
-	float: center;		
+	position: absolute;
+	clear:both;	
 			
 }
 
@@ -67,13 +67,14 @@ body
 	height: 100px;
 	width: 1200px;
 	border-radius: 10px;
-	
+	position:static;
 	margin: auto;
 	
 }
 #mainContain
 {
-	clear:both;
+	float:left;
+	padding-bottom: 20px;
 }
 
 #jbtest-logo

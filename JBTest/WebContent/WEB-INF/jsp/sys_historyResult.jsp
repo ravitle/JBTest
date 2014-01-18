@@ -1,15 +1,10 @@
-<%@page import="java.util.Vector"%>
-<%@ page import="jbtestPro_v1.server.*" %>
+<%@ page import="jbtestPro_v1.server.DBConnectionClass" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%	
 	String startD = request.getParameter("startDate");	
 	String endD = request.getParameter("endDate");	
-	if(startD == null || endD == null)
-	{
-		String redirectURL = "Sys_HistoryResult";
-		response.sendRedirect(redirectURL);  	
-	}
+
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -37,7 +32,7 @@
 					<input type="submit" value="בחר" id="chooseButton"><br>
 				</form>
 				<br>
-				<table id="historyTable" dir="rtl" width="80%" align="center" cellpadding="5" cellspacing="5">
+				<table id="historyTable" dir="rtl" width="50%" align="center" cellpadding="5" cellspacing="5">
 					<tr bgcolor="#909090">
 						<td>ת.ז</td>
 						<td>שם משפחה</td>
@@ -46,32 +41,21 @@
 						<td>שעה</td>
 						<td>עלות</td>
 					</tr>
-				<% if(startD != null && endD != null) {%>
-					
-				<%String start = CalenderClass.dateFormatWebToServer(startD);%>	
-				<%String end = CalenderClass.dateFormatWebToServer(endD); %>					
-						
-				<% Vector<String[]> history = DBConnectionClass.historyResult(start, end); %>
-					<% if (history != null){ %>
-				<% for (int i=0; i<history.size(); i++) { %>
+									
+				<% String[][] historyArr = DBConnectionClass.searchHistory(startD,endD); %>
+					<% if (historyArr != null){ %>
+				<% int rowsHistory = DBConnectionClass.rowsNum(historyArr); %>
+				<% for (int i=0; i<rowsHistory; i++) { %>
 					<tr>
-					<%String[] tempArr = history.get(i);  %>
-					<% for (int j=0; j<4; j++) { %>
+					<% for (int j=0; j<6; j++) { %>
 						<td>
-							<%= tempArr[j] %>
+							<%= historyArr[i][j] %>
 				 		</td>
 				   	<% } %>
-				   	<td>
-				   	<%=tempArr[4].substring(0,5)%>
-				   	</td>
-				   	<td>
-				   	<%=tempArr[5].substring(0,3)%>
-				   	</td>
 					</tr>
 				<% } %>
 				<% } %>
-				<% } %>						
-				
+										
 			 	</table>
 			</div>
 		</div>
