@@ -42,6 +42,7 @@ public class CalenderClass extends DBConnectionClass
 		}
 		
 	}
+		
 	
 	public static int getTodayYear()
 	{
@@ -74,7 +75,7 @@ public class CalenderClass extends DBConnectionClass
 		else
 			month=Integer.toString(getTodayMonth());
 		
-		return "'"+Integer.toString(getTodayYear())+"-"+month+"-"+day+"'";
+		return Integer.toString(getTodayYear())+"-"+month+"-"+day;
 	}
 
 	public static int getNumOfRegStudent(String day,String month,String year)
@@ -130,4 +131,6 @@ public class CalenderClass extends DBConnectionClass
 		
 		}
 	}
+	
+	
 }

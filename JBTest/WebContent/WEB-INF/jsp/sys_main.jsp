@@ -21,7 +21,7 @@
 				<h4 align ="right"><%=DBConnectionClass.staffName(currSys)%> מחובר</h4>
 			</div>
 			<div id = "sys-date">
-				<h4 align ="left"><%=CalenderClass.getTodayFullDate()%></h4>
+				<h4 align ="left"><%=CalenderClass.getTodayFullDate() %></h4>
 			</div>
 			<%@ include file="sys_search.jsp"%>
 			<%@ include file="sys_navigation.jsp"%>
