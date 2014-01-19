@@ -16,6 +16,9 @@
 		{	
 			session.setAttribute("visitMainPage", 0);
 			session.setAttribute("currStudent", user);
+			String[] hebName=DBConnectionClass.getStudentHeb(Integer.parseInt(user));
+			session.setAttribute("fName",hebName[0]); 
+			session.setAttribute("lName",hebName[1]); 
 			String redirectURL = "student_main";
 		    response.sendRedirect(redirectURL);	
 		}

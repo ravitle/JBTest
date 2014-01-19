@@ -243,6 +243,45 @@ public class DBConnectionClass
 		return students;
 	}
 	
+	public static String[] getStudentHeb(int studentId) //cancel table - test for cancellation
+	{
+		String[] students = new String[2];
+		
+		Connection conn=null;
+		Statement stmt = null;
+		String sql;
+		
+		try {
+			//to connect to the SQL server
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			String conString =sqlPath+instanceName+dataBaseName+user+password;
+			conn = DriverManager.getConnection(conString);
+			stmt = conn.createStatement();
+			sql = "SELECT firstnameheb ,lastnameheb  FROM students WHERE id=" + studentId;
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while(rs.next()){
+				
+				students[0] = rs.getString("firstnameheb");
+				students[1] = rs.getString("lastnameheb");
+				
+			}
+			rs.close();
+			stmt.close();
+			conn.close();
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+
+		return students;
+	}
+	
 	//------------------get test to confirm by student----------------------------//
 	
 	public static Vector<String[]> getNewTestByStudentId(int id) //new table - test for confirmation

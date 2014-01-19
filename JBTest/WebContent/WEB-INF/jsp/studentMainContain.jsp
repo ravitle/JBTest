@@ -4,8 +4,8 @@
 
 <%HttpSession studentSession=request.getSession(true); %>
 <%String currStud=(String)session.getAttribute("currStudent"); %>
-<%session.setAttribute("fName",DBConnectionClass.searchStudent(currStud).getpNameHeb()); %>
-<%session.setAttribute("lName",DBConnectionClass.searchStudent(currStud).getlNameHeb()); %>
+<%String[] hebName=DBConnectionClass.getStudentHeb(Integer.parseInt(currStud));%>
+
 	
 <%Vector <String[]> historyTest=new Vector<String[]>();
 historyTest=	DBConnectionClass.getHistoryTestById(Integer.parseInt(currStud)); %>
